@@ -12,7 +12,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Install dependencies
-        run: sudo apt-get update && sudo apt-get install -y cmake ninja-build libssl-dev libboost-all-dev
+        run: sudo apt-get update && sudo apt-get install -y cmake ninja-build libssl-dev libboost-all-dev libleveldb-dev
 
       - name: Configure
         run: cmake -S . -B build -G Ninja -DDRACHMA_BUILD_TESTS=ON -DDRACHMA_BUILD_GUI=OFF

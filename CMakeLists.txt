@@ -11,7 +11,19 @@ option(DRACHMA_COVERAGE "Enable coverage instrumentation" OFF)
 
 find_package(OpenSSL REQUIRED)
 find_package(Boost REQUIRED COMPONENTS system)
-find_package(LevelDB QUIET)
+
+find_path(LEVELDB_INCLUDE_DIR leveldb/db.h)
+find_library(LEVELDB_LIBRARY leveldb)
+
+if(NOT LEVELDB_INCLUDE_DIR OR NOT LEVELDB_LIBRARY)
+    message(FATAL_ERROR "LevelDB development files not found. Install libleveldb-dev or provide LevelDB paths.")
+endif()
+
+add_library(LevelDB::LevelDB UNKNOWN IMPORTED)
+set_target_properties(LevelDB::LevelDB PROPERTIES
+    IMPORTED_LOCATION ${LEVELDB_LIBRARY}
+    INTERFACE_INCLUDE_DIRECTORIES ${LEVELDB_INCLUDE_DIR}
+)
 
 if(DRACHMA_COVERAGE)
     add_compile_options(--coverage)
@@ -46,12 +58,10 @@ target_include_directories(drachma_layer1
 
 target_link_libraries(drachma_layer1
     PUBLIC OpenSSL::Crypto
+    PUBLIC LevelDB::LevelDB
 )
 
-if(LevelDB_FOUND)
-    target_link_libraries(drachma_layer1 PUBLIC LevelDB::LevelDB)
-    target_compile_definitions(drachma_layer1 PUBLIC DRACHMA_HAVE_LEVELDB)
-endif()
+target_compile_definitions(drachma_layer1 PUBLIC DRACHMA_HAVE_LEVELDB)
 
 # Layer 2: services and orchestration
 add_library(drachma_layer2
@@ -77,12 +87,8 @@ target_include_directories(drachma_layer2
 target_link_libraries(drachma_layer2
     PUBLIC drachma_layer1
     PUBLIC Boost::system
-    PUBLIC leveldb
 )
-
-if(LevelDB_FOUND)
-    target_link_libraries(drachma_layer2 PUBLIC LevelDB::LevelDB)
-endif()
+target_link_libraries(drachma_layer2 PUBLIC LevelDB::LevelDB)
 
 # Miners
 add_executable(drachma_cpu_miner miners/cpu/main.cpp miners/stratum.cpp)
