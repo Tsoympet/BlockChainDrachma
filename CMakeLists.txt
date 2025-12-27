@@ -16,14 +16,24 @@ find_path(LEVELDB_INCLUDE_DIR leveldb/db.h)
 find_library(LEVELDB_LIBRARY leveldb)
 
 if(NOT LEVELDB_INCLUDE_DIR OR NOT LEVELDB_LIBRARY)
-    message(FATAL_ERROR "LevelDB development files not found. Install libleveldb-dev or provide LevelDB paths.")
+    message(STATUS "System LevelDB not found; fetching LevelDB via FetchContent")
+    include(FetchContent)
+    set(LEVELDB_BUILD_TESTS OFF CACHE BOOL "" FORCE)
+    set(LEVELDB_BUILD_BENCHMARKS OFF CACHE BOOL "" FORCE)
+    FetchContent_Declare(
+        leveldb
+        GIT_REPOSITORY https://github.com/google/leveldb.git
+        GIT_TAG 1.23
+    )
+    FetchContent_MakeAvailable(leveldb)
+    add_library(LevelDB::LevelDB ALIAS leveldb)
+else()
+    add_library(LevelDB::LevelDB UNKNOWN IMPORTED)
+    set_target_properties(LevelDB::LevelDB PROPERTIES
+        IMPORTED_LOCATION ${LEVELDB_LIBRARY}
+        INTERFACE_INCLUDE_DIRECTORIES ${LEVELDB_INCLUDE_DIR}
+    )
 endif()
-
-add_library(LevelDB::LevelDB UNKNOWN IMPORTED)
-set_target_properties(LevelDB::LevelDB PROPERTIES
-    IMPORTED_LOCATION ${LEVELDB_LIBRARY}
-    INTERFACE_INCLUDE_DIRECTORIES ${LEVELDB_INCLUDE_DIR}
-)
 
 if(DRACHMA_COVERAGE)
     add_compile_options(--coverage)
