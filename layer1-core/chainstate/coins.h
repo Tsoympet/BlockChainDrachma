@@ -10,10 +10,8 @@
 #include <memory>
 
 #ifdef DRACHMA_HAVE_LEVELDB
-namespace leveldb {
-class DB;
-class WriteBatch;
-}
+#include <leveldb/db.h>
+#include <leveldb/write_batch.h>
 #endif
 
 struct OutPointHash {
