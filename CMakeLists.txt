@@ -68,7 +68,7 @@ target_link_libraries(drachma_layer2
 # Miners
 add_executable(drachma_cpu_miner miners/cpu/main.cpp)
 target_include_directories(drachma_cpu_miner PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/layer1-core)
-target_link_libraries(drachma_cpu_miner PRIVATE drachma_layer1)
+target_link_libraries(drachma_cpu_miner PRIVATE drachma_layer1 Boost::system)
 
 # Optional Qt GUI (off by default to avoid toolchain requirement in CI)
 if(DRACHMA_BUILD_GUI)
