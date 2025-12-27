@@ -1,4 +1,3 @@
-# DRACHMA Blockchain
 
 # DRACHMA Blockchain (DRM)
 
