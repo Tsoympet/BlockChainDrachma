@@ -13,6 +13,9 @@
 #include <regex>
 #include <sstream>
 #include <stdexcept>
+#include <regex>
+#include <sstream>
+#include <stdexcept>
 #include <functional>
 #include <fstream>
 #include <mutex>
@@ -40,6 +43,27 @@ RPCServer::RPCServer(boost::asio::io_context& io, const std::string& user, const
 {
 }
 
+
+void RPCServer::SetBlockStorePath(std::string path)
+{
+    m_blockPath = std::move(path);
+}
+
+void RPCServer::AttachCoreHandlers(mempool::Mempool& pool, wallet::WalletBackend& wallet, txindex::TxIndex& index, net::P2PNode& p2p)
+{
+    pool.SetOnAccept([&p2p](const Transaction& tx) {
+        auto payload = Serialize(tx);
+        p2p.Broadcast(net::Message{"tx", payload});
+    });
+
+    Register("getbalance", [&wallet](const std::string&) {
+        return std::to_string(wallet.GetBalance());
+    });
+
+    Register("getblockcount", [&index](const std::string&) {
+        return std::to_string(index.BlockCount());
+    });
+
 void RPCServer::SetBlockStorePath(std::string path)
 {
     m_blockPath = std::move(path);
@@ -79,11 +103,6 @@ void RPCServer::AttachCoreHandlers(mempool::Mempool& pool, wallet::WalletBackend
     Register("getblockcount", [&index](const std::string&) {
         return std::to_string(index.BlockCount());
     });
-
-void RPCServer::SetBlockStorePath(std::string path)
-{
-    m_blockPath = std::move(path);
-}
 
 void RPCServer::AttachCoreHandlers(mempool::Mempool& pool, wallet::WalletBackend& wallet, txindex::TxIndex& index, net::P2PNode& p2p)
 {
@@ -191,6 +210,24 @@ void RPCServer::AttachCoreHandlers(mempool::Mempool& pool, wallet::WalletBackend
         return std::to_string(pool.EstimateFeeRate(percentile));
     });
 }
+
+void RPCServer::Register(const std::string& method, Handler handler)
+{
+    std::lock_guard<std::mutex> g(m_mutex);
+    m_handlers[method] = std::move(handler);
+}
+
+void RPCServer::Start()
+{
+    Accept();
+}
+
+void RPCServer::Stop()
+{
+    boost::system::error_code ec;
+    m_acceptor.close(ec);
+}
+
 
 void RPCServer::Register(const std::string& method, Handler handler)
 {
@@ -358,6 +395,13 @@ bool RPCServer::CheckAuth(const std::string& header) const
     return header == token;
 }
 
+
+bool RPCServer::CheckAuth(const std::string& header) const
+{
+    const std::string token = "Basic " + m_user + ":" + m_pass;
+    return header == token;
+}
+
 RPCServer::Handler RPCServer::GetHandler(const std::string& name)
 {
     std::lock_guard<std::mutex> g(m_mutex);
@@ -425,6 +469,15 @@ std::optional<Block> RPCServer::ReadBlock(uint32_t height)
     }
     return std::nullopt;
 }
+
+std::vector<uint8_t> RPCServer::ParseHex(const std::string& hex)
+{
+    std::vector<uint8_t> out;
+    if (hex.size() % 2) return out;
+    out.reserve(hex.size() / 2);
+    for (size_t i = 0; i < hex.size(); i += 2) {
+        auto byte = std::stoul(hex.substr(i, 2), nullptr, 16);
+        out.push_back(static_cast<uint8_t>(byte));
 
 std::vector<uint8_t> RPCServer::ParseHex(const std::string& hex)
 {
@@ -512,6 +565,7 @@ uint256 RPCServer::ParseHash(const std::string& params)
     std::copy(raw.begin(), raw.end(), h.begin());
     return h;
 }
+
 
 std::optional<Block> RPCServer::ReadBlock(uint32_t height)
 {
