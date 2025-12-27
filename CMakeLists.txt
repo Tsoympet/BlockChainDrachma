@@ -67,8 +67,11 @@ target_link_libraries(drachma_layer2
 )
 
 # Miners
-add_executable(drachma_cpu_miner miners/cpu/main.cpp)
+add_executable(drachma_cpu_miner miners/cpu/main.cpp miners/stratum.cpp)
 target_include_directories(drachma_cpu_miner PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/layer1-core)
+if(CMAKE_SYSTEM_PROCESSOR MATCHES "x86_64|AMD64")
+  target_compile_options(drachma_cpu_miner PRIVATE -msse4.1 -mavx2)
+endif()
 target_link_libraries(drachma_cpu_miner PRIVATE drachma_layer1 Boost::system)
 
 # Optional Qt GUI (off by default to avoid toolchain requirement in CI)
