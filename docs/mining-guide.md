@@ -98,6 +98,13 @@ Key flags:
 - Watch acceptance rate; frequent rejects indicate stale work or unstable overclocks.
 - Restart miners after driver updates to reload kernels.
 
+## Mainnet Readiness Checklist
+
+- Connect miners to trusted endpoints on secured networks (TLS or VPN) and avoid exposing Stratum over the public internet.
+- Set conservative intensity/work-size values first; ramp up only after observing low reject rates.
+- Pin `--min-target-bits` to prevent difficulty downgrades from malicious pools.
+- Keep host firmware, drivers, and the node software patched; rescan configs after each release.
+
 ## Troubleshooting
 
 - **RPC auth failures:** Verify credentials and ensure RPC is bound to the expected interface.
