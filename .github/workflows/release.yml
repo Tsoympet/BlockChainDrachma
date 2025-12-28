@@ -24,7 +24,7 @@ jobs:
 
     env:
       VERSION: ${{ github.ref_name }}
-      CCACHE_DIR: ${{ runner.temp }}/ccache
+      CCACHE_DIR: ${{ github.workspace }}/.ccache
 
     steps:
       - name: Checkout
