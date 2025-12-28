@@ -158,22 +158,29 @@ endif()
 
 # Optional Qt GUI (off by default to avoid toolchain requirement in CI)
 if(DRACHMA_BUILD_GUI)
-    find_package(Qt6 COMPONENTS Widgets Network QUIET)
+    set(CMAKE_AUTOMOC ON)
+    find_package(Qt6 COMPONENTS Widgets Network WebEngineWidgets QUIET)
     find_package(OpenSSL REQUIRED)
 
     set(DRACHMA_QT_RESOURCES)
     set(DRACHMA_QT_LIBS)
+    set(DRACHMA_QT_SOURCES
+        ${CMAKE_CURRENT_SOURCE_DIR}/layer3-app/qt/main.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/layer3-app/qt/sidechainview.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/layer3-app/qt/contractcaller.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/layer3-app/qt/nftgallery.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/layer3-app/qt/dappbrowser.cpp)
     set(DRACHMA_QT_QRC ${CMAKE_CURRENT_SOURCE_DIR}/layer3-app/resources/icons.qrc)
     if(Qt6_FOUND)
         qt_add_resources(DRACHMA_QT_RESOURCES ${DRACHMA_QT_QRC})
-        list(APPEND DRACHMA_QT_LIBS Qt6::Widgets Qt6::Network)
+        list(APPEND DRACHMA_QT_LIBS Qt6::Widgets Qt6::Network Qt6::WebEngineWidgets)
     else()
-        find_package(Qt5 COMPONENTS Widgets Network REQUIRED)
+        find_package(Qt5 COMPONENTS Widgets Network WebEngineWidgets REQUIRED)
         qt5_add_resources(DRACHMA_QT_RESOURCES ${DRACHMA_QT_QRC})
-        list(APPEND DRACHMA_QT_LIBS Qt5::Widgets Qt5::Network)
+        list(APPEND DRACHMA_QT_LIBS Qt5::Widgets Qt5::Network Qt5::WebEngineWidgets)
     endif()
 
-    add_executable(drachma_qt layer3-app/qt/main.cpp ${DRACHMA_QT_RESOURCES})
+    add_executable(drachma_qt ${DRACHMA_QT_SOURCES} ${DRACHMA_QT_RESOURCES})
     target_include_directories(drachma_qt PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/layer1-core ${CMAKE_CURRENT_SOURCE_DIR}/layer2-services)
     target_link_libraries(drachma_qt PRIVATE ${DRACHMA_QT_LIBS} OpenSSL::SSL OpenSSL::Crypto drachma_layer2)
 endif()
