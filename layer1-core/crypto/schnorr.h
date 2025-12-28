@@ -3,6 +3,7 @@
 #include <array>
 #include <cstddef>
 #include <cstdint>
+#include <vector>
 
 // BIP-340 Schnorr signature API for secp256k1 using OpenSSL.
 // All buffers are expected to be exact size: private key 32 bytes,
@@ -23,6 +24,14 @@ bool schnorr_sign_with_aux(const uint8_t* private_key,
 bool schnorr_verify(const uint8_t* public_key_33_compressed,
                     const uint8_t* msg_hash_32,
                     const uint8_t* sig_64);
+
+// Convenience wrapper used by legacy call sites that provide an x-only public
+// key, raw message bytes, and a 64-byte signature. The wrapper hashes the
+// message with SHA-256 and feeds a 33-byte even-parity compressed public key
+// into the lower-level schnorr_verify routine.
+bool VerifySchnorr(const std::array<uint8_t, 32>& pubkey_x,
+                   const std::array<uint8_t, 64>& sig,
+                   const std::vector<uint8_t>& msg);
 
 // Example usage (see schnorr.cpp for details and testing suggestions):
 //   std::array<uint8_t,32> priv{}; // load secret key

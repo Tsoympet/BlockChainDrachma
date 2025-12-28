@@ -420,6 +420,28 @@ bool schnorr_verify(const uint8_t* public_key_33_compressed,
     return y_even && x_matches;
 }
 
+bool VerifySchnorr(const std::array<uint8_t, 32>& pubkey_x,
+                   const std::array<uint8_t, 64>& sig,
+                   const std::vector<uint8_t>& msg) {
+    std::array<uint8_t, 32> msg_hash{};
+    SHA256_CTX ctx;
+    if (SHA256_Init(&ctx) != 1) {
+        return false;
+    }
+    if (!msg.empty() && SHA256_Update(&ctx, msg.data(), msg.size()) != 1) {
+        return false;
+    }
+    if (SHA256_Final(msg_hash.data(), &ctx) != 1) {
+        return false;
+    }
+
+    std::array<uint8_t, 33> compressed_pub{};
+    compressed_pub[0] = 0x02;  // Even Y as defined by BIP-340 x-only keys
+    std::copy(pubkey_x.begin(), pubkey_x.end(), compressed_pub.begin() + 1);
+
+    return schnorr_verify(compressed_pub.data(), msg_hash.data(), sig.data());
+}
+
 // -----------------------------------------------------------------------------
 // Testing guidance:
 // - Use BIP-340 published test vectors. For each vector, feed the secret key,
