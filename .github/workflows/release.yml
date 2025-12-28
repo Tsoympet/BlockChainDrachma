@@ -49,39 +49,38 @@ jobs:
         with:
           name: release-${{ matrix.os }}
           path: dist/${{ matrix.os }}/**
-
+ 
   publish:
-    if: github.event_name == 'push' || inputs.publish_release == 'true'  # Single, clean conditional
+    if: github.event_name == 'push' || inputs.publish_release == 'true'  # Single clean conditional
     name: Publish release
     needs: build
     runs-on: ubuntu-latest
     env:
       VERSION: ${{ github.event_name == 'workflow_dispatch' && inputs.version_tag || github.ref_name }}
-      HAS_GPG_KEY: ${{ secrets.GPG_KEY != '' }}
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Download all artifacts
+      - name: Download all build artifacts
         uses: actions/download-artifact@v4
         with:
-          path: dist
+          path: artifacts
 
-      - name: Flatten and prepare files
+      - name: Display structure and flatten
         run: |
-          find dist -type f -exec mv {} dist/ \;
+          ls -R artifacts
+          mkdir -p dist
+          find artifacts -type f -exec cp {} dist/ \;  # Safe copy + flatten
           ls -la dist/
 
       - name: Compose release notes
         run: |
-          VERSION_PATTERN="^## \\[${VERSION}\\]"
-          if grep -qE "$VERSION_PATTERN" CHANGELOG.md 2>/dev/null; then
-            sed -n "/$VERSION_PATTERN/,/^## /p" CHANGELOG.md | sed '$d' > release_notes.md
+          if grep -q "^## \\[${{ env.VERSION }}\\]" CHANGELOG.md; then
+            sed -n "/^## \\[${{ env.VERSION }}\\]/,/^## /p" CHANGELOG.md | sed '$d' > release_notes.md
           else
             echo "Drachma ${{ env.VERSION }}" > release_notes.md
-            echo "" >> release_notes.md
-            echo "See CHANGELOG.md for details." >> release_notes.md
+            echo "Testnet release - see CHANGELOG.md" >> release_notes.md
           fi
 
       - name: Create GitHub Release
@@ -90,9 +89,9 @@ jobs:
           tag_name: ${{ github.ref_name || inputs.version_tag }}
           name: Drachma ${{ env.VERSION }}
           body_path: release_notes.md
-          files: |
-            dist/*
+          files: dist/*
           draft: false
-          prerelease: ${{ contains(env.VERSION, 'rc') || contains(env.VERSION, 'testnet') || contains(env.VERSION, 'dev') }}
+          prerelease: ${{ contains(env.VERSION, 'rc') || contains(env.VERSION, 'test') }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  
