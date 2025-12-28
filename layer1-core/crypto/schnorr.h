@@ -12,6 +12,14 @@ bool schnorr_sign(const uint8_t* private_key,
                   const uint8_t* msg_hash_32,
                   uint8_t* sig_64);
 
+// Deterministic signing helper that accepts caller-supplied 32-byte auxiliary
+// randomness (as defined in BIP-340). When aux_rand_32 is nullptr, falls back
+// to secure randomness. Intended for test vectors and reproducibility.
+bool schnorr_sign_with_aux(const uint8_t* private_key,
+                           const uint8_t* msg_hash_32,
+                           const uint8_t* aux_rand_32,
+                           uint8_t* sig_64);
+
 bool schnorr_verify(const uint8_t* public_key_33_compressed,
                     const uint8_t* msg_hash_32,
                     const uint8_t* sig_64);
