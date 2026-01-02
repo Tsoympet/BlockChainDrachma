@@ -47,6 +47,8 @@
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QJsonArray>
+#include <QStringList>
+#include <QHash>
 #include <QWebEngineView>
 #include <QStyleFactory>
 #include <QCryptographicHash>
@@ -92,15 +94,28 @@ namespace {
 
 class AssetLocator {
 public:
+    static QStringList candidatePaths()
+    {
+        static QStringList cached;
+        static bool initialized = false;
+        if (!initialized) {
+            const QString legacy = QDir::current().absoluteFilePath("layer3-app/assets");
+            const QString repoRoot = QDir::current().absoluteFilePath("assets");
+            const QString appDir = QCoreApplication::applicationDirPath();
+            const QString installed = QDir(appDir).absoluteFilePath("../assets");
+            if (QDir(legacy).exists()) cached << legacy;
+            if (QDir(repoRoot).exists()) cached << repoRoot;
+            if (QDir(installed).exists()) cached << installed;
+            initialized = true;
+        }
+        return cached;
+    }
+
     static QString basePath()
     {
-        // Prefer the repository-relative path first.
-        QString candidate = QDir::current().absoluteFilePath("layer3-app/assets");
-        if (QDir(candidate).exists()) return candidate;
-        // Fallback to application path.
-        QString appDir = QCoreApplication::applicationDirPath();
-        candidate = QDir(appDir).absoluteFilePath("../assets");
-        return candidate;
+        const auto paths = candidatePaths();
+        if (!paths.isEmpty()) return paths.first();
+        return QDir::current().absoluteFilePath("layer3-app/assets");
     }
 
     static QString textAsset(const QString& relative)
@@ -113,6 +128,10 @@ public:
 
     static QString filePath(const QString& relative)
     {
+        for (const auto& base : candidatePaths()) {
+            QString candidate = QDir(base).absoluteFilePath(relative);
+            if (QFile::exists(candidate)) return candidate;
+        }
         return QDir(basePath()).absoluteFilePath(relative);
     }
 };
@@ -1094,8 +1113,8 @@ public:
         tabs->addTab(buildOverview(), themedIcon("network.svg"), "Overview");
         tabs->addTab(buildSend(), themedIcon("send.svg"), "Send");
         tabs->addTab(buildReceive(), themedIcon("receive.svg"), "Receive");
-        tabs->addTab(buildAddressBook(), themedIcon("wallet.svg"), "Address book");
-        tabs->addTab(buildTransactions(), themedIcon("transactions.svg"), "Transactions");
+        tabs->addTab(buildAddressBook(), themedIcon("address-book.svg"), "Address book");
+        tabs->addTab(buildTransactions(), themedIcon("history.svg"), "Transactions");
         tabs->addTab(buildMining(), themedIcon("mining.svg"), "Mining");
         sidechainTab = buildSidechain();
         tabs->addTab(sidechainTab, themedIcon("network.svg"), "Sidechain");
@@ -1141,11 +1160,34 @@ public:
 private:
     QString iconPath(const QString& name) const
     {
+        const QString cacheKey = (useDarkIcons ? QStringLiteral("dark:") : QStringLiteral("light:")) + name;
+        static QHash<QString, QString> cache;
+        const auto cachedIt = cache.constFind(cacheKey);
+        if (cachedIt != cache.cend()) return cachedIt.value();
+        const QString assetRoot = AssetLocator::filePath(QStringLiteral("ui-icons"));
+        const QString themed = QDir(assetRoot).absoluteFilePath(QStringLiteral("%1/%2").arg(useDarkIcons ? "dark" : "light", name));
+        const QString neutral = QDir(assetRoot).absoluteFilePath(name);
+        if (QFile::exists(themed)) {
+            cache.insert(cacheKey, themed);
+            return themed;
+        }
+        if (QFile::exists(neutral)) {
+            cache.insert(cacheKey, neutral);
+            return neutral;
+        }
         const QString darkPath = QStringLiteral(":/icons/dark/%1").arg(name);
         const QString lightPath = QStringLiteral(":/icons/light/%1").arg(name);
-        if (useDarkIcons && QFile::exists(darkPath)) return darkPath;
-        if (QFile::exists(lightPath)) return lightPath;
-        return useDarkIcons ? lightPath : darkPath;
+        if (useDarkIcons && QFile::exists(darkPath)) {
+            cache.insert(cacheKey, darkPath);
+            return darkPath;
+        }
+        if (QFile::exists(lightPath)) {
+            cache.insert(cacheKey, lightPath);
+            return lightPath;
+        }
+        const QString fallback = useDarkIcons ? lightPath : darkPath;
+        cache.insert(cacheKey, fallback);
+        return fallback;
     }
 
     QIcon themedIcon(const QString& name) const
@@ -1166,8 +1208,8 @@ private:
             tabs->setTabIcon(0, themedIcon("network.svg"));
             tabs->setTabIcon(1, themedIcon("send.svg"));
             tabs->setTabIcon(2, themedIcon("receive.svg"));
-            tabs->setTabIcon(3, themedIcon("wallet.svg"));
-            tabs->setTabIcon(4, themedIcon("transactions.svg"));
+            tabs->setTabIcon(3, themedIcon("address-book.svg"));
+            tabs->setTabIcon(4, themedIcon("history.svg"));
             tabs->setTabIcon(5, themedIcon("mining.svg"));
             tabs->setTabIcon(6, themedIcon("settings.svg"));
         }
@@ -1176,22 +1218,32 @@ private:
         if (whitepaperAction) whitepaperAction->setIcon(themedIcon("logo.svg"));
         if (backupAction) backupAction->setIcon(themedIcon("wallet.svg"));
         if (restoreAction) restoreAction->setIcon(themedIcon("wallet.svg"));
-        if (exitAction) exitAction->setIcon(themedIcon("network-disconnected.svg"));
+        if (exitAction) exitAction->setIcon(themedIcon("warning.svg"));
 
-        if (copyFromBook) copyFromBook->setIcon(themedIcon("wallet.svg"));
-        if (scanQrBtn) scanQrBtn->setIcon(themedIcon("network.svg"));
+        if (copyFromBook) copyFromBook->setIcon(themedIcon("address-book.svg"));
+        if (scanQrBtn) scanQrBtn->setIcon(themedIcon("qr.svg"));
         if (sendBtn) sendBtn->setIcon(themedIcon("send.svg"));
         if (genBtn) genBtn->setIcon(themedIcon("receive.svg"));
-        if (addAddressBtn) addAddressBtn->setIcon(themedIcon("wallet.svg"));
-        if (removeAddressBtn) removeAddressBtn->setIcon(themedIcon("network-disconnected.svg"));
+        if (addAddressBtn) addAddressBtn->setIcon(themedIcon("address-book.svg"));
+        if (removeAddressBtn) removeAddressBtn->setIcon(themedIcon("warning.svg"));
         if (copyAddressBtn) copyAddressBtn->setIcon(themedIcon("receive.svg"));
-        if (startMiningBtn) startMiningBtn->setIcon(themedIcon("mining.svg"));
-        if (stopMiningBtn) stopMiningBtn->setIcon(themedIcon("network-disconnected.svg"));
-        if (browseDirBtn) browseDirBtn->setIcon(themedIcon("network.svg"));
-        if (encryptBtn) encryptBtn->setIcon(themedIcon("settings.svg"));
-        if (unlockBtn) unlockBtn->setIcon(themedIcon("wallet.svg"));
+        if (startMiningBtn) startMiningBtn->setIcon(themedIcon("hash.svg"));
+        if (stopMiningBtn) stopMiningBtn->setIcon(themedIcon("warning.svg"));
+        if (browseDirBtn) browseDirBtn->setIcon(themedIcon("disk.svg"));
+        if (encryptBtn) encryptBtn->setIcon(themedIcon("security.svg"));
+        if (unlockBtn) unlockBtn->setIcon(themedIcon("key.svg"));
+        if (confirmedIcon) confirmedIcon->setPixmap(themedIcon("balance.svg").pixmap(18, 18));
+        if (unconfirmedIcon) unconfirmedIcon->setPixmap(themedIcon("tx-pending.svg").pixmap(18, 18));
+        if (stakingStatusIcon) {
+            const QString name = wallet && wallet->isLocked() ? QStringLiteral("stake-inactive.svg") : QStringLiteral("stake-active.svg");
+            stakingStatusIcon->setPixmap(themedIcon(name).pixmap(18, 18));
+        }
+        if (miningStatusIcon) {
+            const QString name = lastHashrate > 0.0 ? QStringLiteral("hash.svg") : QStringLiteral("mining.svg");
+            miningStatusIcon->setPixmap(themedIcon(name).pixmap(18, 18));
+        }
 
-        const QString statusName = networkConnected ? QStringLiteral("network-connected.svg") : QStringLiteral("network-disconnected.svg");
+        const QString statusName = networkConnected ? QStringLiteral("synced.svg") : QStringLiteral("warning.svg");
         if (networkStatusIcon) {
             networkStatusIcon->setPixmap(themedIcon(statusName).pixmap(18, 18));
         }
@@ -1204,7 +1256,7 @@ private:
         whitepaperAction = fileMenu->addAction(themedIcon("logo.svg"), "Open Whitepaper");
         backupAction = fileMenu->addAction(themedIcon("wallet.svg"), "Backup wallet");
         restoreAction = fileMenu->addAction(themedIcon("wallet.svg"), "Restore wallet");
-        exitAction = fileMenu->addAction(themedIcon("network-disconnected.svg"), "Exit");
+        exitAction = fileMenu->addAction(themedIcon("warning.svg"), "Exit");
         connect(eulaAction, &QAction::triggered, this, &MainWindow::showEulaDialog);
         connect(whitepaperAction, &QAction::triggered, this, &MainWindow::openWhitepaper);
         connect(backupAction, &QAction::triggered, this, &MainWindow::backupWalletFile);
@@ -1231,7 +1283,7 @@ private:
         syncBar->setValue(0);
         networkLbl = new QLabel("Offline", nodeBox);
         networkStatusIcon = new QLabel(nodeBox);
-        networkStatusIcon->setPixmap(themedIcon("status-disconnected.svg").pixmap(18, 18));
+        networkStatusIcon->setPixmap(themedIcon("warning.svg").pixmap(18, 18));
         QWidget* networkRow = new QWidget(nodeBox);
         QHBoxLayout* networkLayout = new QHBoxLayout(networkRow);
         networkLayout->setContentsMargins(0, 0, 0, 0);
@@ -1251,8 +1303,40 @@ private:
         QFormLayout* wf = new QFormLayout(walletBox);
         confirmedLbl = new QLabel("0 DRM", walletBox);
         unconfirmedLbl = new QLabel("0 DRM", walletBox);
-        wf->addRow("Confirmed", confirmedLbl);
-        wf->addRow("Unconfirmed", unconfirmedLbl);
+        confirmedIcon = new QLabel(walletBox);
+        unconfirmedIcon = new QLabel(walletBox);
+        QWidget* confirmedRow = new QWidget(walletBox);
+        QHBoxLayout* confirmedLayout = new QHBoxLayout(confirmedRow);
+        confirmedLayout->setContentsMargins(0, 0, 0, 0);
+        confirmedLayout->addWidget(confirmedIcon);
+        confirmedLayout->addWidget(confirmedLbl);
+        confirmedLayout->addStretch(1);
+        QWidget* unconfirmedRow = new QWidget(walletBox);
+        QHBoxLayout* unconfirmedLayout = new QHBoxLayout(unconfirmedRow);
+        unconfirmedLayout->setContentsMargins(0, 0, 0, 0);
+        unconfirmedLayout->addWidget(unconfirmedIcon);
+        unconfirmedLayout->addWidget(unconfirmedLbl);
+        unconfirmedLayout->addStretch(1);
+        stakingStatusIcon = new QLabel(walletBox);
+        stakingStatusLbl = new QLabel("Staking inactive (locked)", walletBox);
+        QWidget* stakingRow = new QWidget(walletBox);
+        QHBoxLayout* stakingLayout = new QHBoxLayout(stakingRow);
+        stakingLayout->setContentsMargins(0, 0, 0, 0);
+        stakingLayout->addWidget(stakingStatusIcon);
+        stakingLayout->addWidget(stakingStatusLbl);
+        stakingLayout->addStretch(1);
+        miningStatusIcon = new QLabel(walletBox);
+        miningStatusLbl = new QLabel("Mining idle", walletBox);
+        QWidget* miningRow = new QWidget(walletBox);
+        QHBoxLayout* miningLayout = new QHBoxLayout(miningRow);
+        miningLayout->setContentsMargins(0, 0, 0, 0);
+        miningLayout->addWidget(miningStatusIcon);
+        miningLayout->addWidget(miningStatusLbl);
+        miningLayout->addStretch(1);
+        wf->addRow("Confirmed", confirmedRow);
+        wf->addRow("Unconfirmed", unconfirmedRow);
+        wf->addRow("Staking", stakingRow);
+        wf->addRow("Mining", miningRow);
         walletBox->setLayout(wf);
 
         v->addWidget(nodeBox);
@@ -1268,8 +1352,8 @@ private:
         QFormLayout* f = new QFormLayout();
 
         destEdit = new QLineEdit(w);
-        copyFromBook = new QPushButton(themedIcon("wallet.svg"), "Use selected address", w);
-        scanQrBtn = new QPushButton(themedIcon("network.svg"), "Scan QR", w);
+        copyFromBook = new QPushButton(themedIcon("address-book.svg"), "Use selected address", w);
+        scanQrBtn = new QPushButton(themedIcon("qr.svg"), "Scan QR", w);
         connect(scanQrBtn, &QPushButton::clicked, this, &MainWindow::scanQrForDestination);
         amountEdit = new QDoubleSpinBox(w);
         amountEdit->setRange(0.00000001, 21000000.0);
@@ -1302,7 +1386,7 @@ private:
 
         QWidget* destRow = new QWidget(w);
         QHBoxLayout* destLayout = new QHBoxLayout(destRow);
-        destLayout->setContentsMargins(0,0,0,0);
+        destLayout->setContentsMargins(0, 0, 0, 0);
         destLayout->addWidget(destEdit);
         destLayout->addWidget(scanQrBtn);
         f->addRow("Destination address", destRow);
@@ -1353,8 +1437,8 @@ private:
         addressBookTable->setEditTriggers(QAbstractItemView::NoEditTriggers);
 
         QHBoxLayout* actions = new QHBoxLayout();
-        addAddressBtn = new QPushButton(themedIcon("wallet.svg"), "Add", w);
-        removeAddressBtn = new QPushButton(themedIcon("network-disconnected.svg"), "Remove", w);
+        addAddressBtn = new QPushButton(themedIcon("address-book.svg"), "Add", w);
+        removeAddressBtn = new QPushButton(themedIcon("warning.svg"), "Remove", w);
         copyAddressBtn = new QPushButton(themedIcon("receive.svg"), "Copy", w);
         actions->addWidget(addAddressBtn);
         actions->addWidget(removeAddressBtn);
@@ -1405,8 +1489,8 @@ private:
         QWidget* w = new QWidget(this);
         QVBoxLayout* v = new QVBoxLayout(w);
         QHBoxLayout* controls = new QHBoxLayout();
-        startMiningBtn = new QPushButton(themedIcon("mining.svg"), "Start mining", w);
-        stopMiningBtn = new QPushButton(themedIcon("network-disconnected.svg"), "Stop", w);
+        startMiningBtn = new QPushButton(themedIcon("hash.svg"), "Start mining", w);
+        stopMiningBtn = new QPushButton(themedIcon("warning.svg"), "Stop", w);
         cpuThreads = new QSpinBox(w);
         cpuThreads->setRange(1, std::thread::hardware_concurrency() == 0 ? 8 : static_cast<int>(std::thread::hardware_concurrency()));
         gpuToggle = new QCheckBox("Enable GPU (if available)", w);
@@ -1462,12 +1546,12 @@ private:
         QFormLayout* f = new QFormLayout();
 
         dataDirEdit = new QLineEdit(w);
-        browseDirBtn = new QPushButton(themedIcon("network.svg"), "Browse", w);
+        browseDirBtn = new QPushButton(themedIcon("disk.svg"), "Browse", w);
         connect(browseDirBtn, &QPushButton::clicked, this, &MainWindow::selectDataDir);
 
         QWidget* dirWidget = new QWidget(w);
         QHBoxLayout* dirLayout = new QHBoxLayout(dirWidget);
-        dirLayout->setContentsMargins(0,0,0,0);
+        dirLayout->setContentsMargins(0, 0, 0, 0);
         dirLayout->addWidget(dataDirEdit);
         dirLayout->addWidget(browseDirBtn);
 
@@ -1488,8 +1572,8 @@ private:
         themeBox->addItems({"System", "Dark", "Light"});
         connect(themeBox, &QComboBox::currentTextChanged, this, &MainWindow::applyTheme);
 
-        encryptBtn = new QPushButton(themedIcon("settings.svg"), "Encrypt wallet", w);
-        unlockBtn = new QPushButton(themedIcon("wallet.svg"), "Unlock wallet", w);
+        encryptBtn = new QPushButton(themedIcon("security.svg"), "Encrypt wallet", w);
+        unlockBtn = new QPushButton(themedIcon("key.svg"), "Unlock wallet", w);
         connect(encryptBtn, &QPushButton::clicked, this, &MainWindow::encryptWallet);
         connect(unlockBtn, &QPushButton::clicked, this, &MainWindow::unlockWallet);
 
@@ -1583,6 +1667,8 @@ private slots:
 
     void updateNodeStatus(int height, double syncProgress, int peers, double networkHashrate)
     {
+        // Treat 99.9% as effectively synced to prevent icon flapping near completion.
+        constexpr double kSyncDoneThreshold = 0.999;
         heightLbl->setText(QString::number(height));
         peersLbl->setText(QString::number(peers));
         syncLbl->setText(QString::number(syncProgress * 100.0, 'f', 2) + "%");
@@ -1594,7 +1680,8 @@ private slots:
         networkLbl->setText(statusText);
         networkConnected = peers > 0;
         if (networkStatusIcon) {
-            const QString statusIconName = networkConnected ? QStringLiteral("network-connected.svg") : QStringLiteral("network-disconnected.svg");
+            const QString statusIconName = !networkConnected ? QStringLiteral("warning.svg")
+                                           : (syncProgress >= kSyncDoneThreshold ? QStringLiteral("synced.svg") : QStringLiteral("sync.svg"));
             networkStatusIcon->setPixmap(themedIcon(statusIconName).pixmap(18, 18));
         }
         QString rpcMsg = node->lastError().isEmpty() ? QString("RPC: online") : QString("RPC issue: %1").arg(node->lastError());
@@ -1605,6 +1692,9 @@ private slots:
                 rpcErrorShown = true;
                 QMessageBox::critical(this, "Networking", QString("Node RPC issue detected: %1").arg(node->lastError()));
             }
+            if (networkStatusIcon) {
+                networkStatusIcon->setPixmap(themedIcon("error.svg").pixmap(18, 18));
+            }
         } else {
             rpcErrorShown = false;
         }
@@ -1612,7 +1702,15 @@ private slots:
 
     void updateHashrate(double rate)
     {
+        lastHashrate = rate;
         hashrateLbl->setText(QString::number(rate, 'f', 2) + " H/s");
+        if (miningStatusLbl) {
+            miningStatusLbl->setText(rate > 0.0 ? "Mining active" : "Mining idle");
+        }
+        if (miningStatusIcon) {
+            const QString name = rate > 0.0 ? QStringLiteral("hash.svg") : QStringLiteral("mining.svg");
+            miningStatusIcon->setPixmap(themedIcon(name).pixmap(18, 18));
+        }
     }
 
     void refreshTransactions()
@@ -1790,11 +1888,15 @@ private slots:
 
     void startMining()
     {
+        if (miningStatusLbl) miningStatusLbl->setText("Mining starting…");
+        if (miningStatusIcon) miningStatusIcon->setPixmap(themedIcon("hash.svg").pixmap(18, 18));
         miner->start(cpuThreads->value(), gpuToggle->isChecked());
     }
 
     void stopMining()
     {
+        if (miningStatusLbl) miningStatusLbl->setText("Mining idle");
+        if (miningStatusIcon) miningStatusIcon->setPixmap(themedIcon("mining.svg").pixmap(18, 18));
         miner->stop();
     }
 
@@ -2040,6 +2142,13 @@ private slots:
         if (wallet->isEncrypted()) {
             unlockBtn->setText(wallet->isLocked() ? "Unlock wallet" : "Wallet unlocked");
         }
+        if (stakingStatusLbl) {
+            stakingStatusLbl->setText(wallet->isLocked() ? "Staking inactive (locked)" : "Staking active");
+        }
+        if (stakingStatusIcon) {
+            const QString name = wallet->isLocked() ? QStringLiteral("stake-inactive.svg") : QStringLiteral("stake-active.svg");
+            stakingStatusIcon->setPixmap(themedIcon(name).pixmap(18, 18));
+        }
     }
 
     void showEulaDialog()
@@ -2078,6 +2187,13 @@ private:
     QLabel* confirmedLbl{nullptr};
     QLabel* unconfirmedLbl{nullptr};
     QLabel* hashrateLbl{nullptr};
+    QLabel* confirmedIcon{nullptr};
+    QLabel* unconfirmedIcon{nullptr};
+    QLabel* stakingStatusIcon{nullptr};
+    QLabel* stakingStatusLbl{nullptr};
+    QLabel* miningStatusIcon{nullptr};
+    QLabel* miningStatusLbl{nullptr};
+    double lastHashrate{0.0};
 
     SidechainView* sidechainView{nullptr};
     QWidget* sidechainTab{nullptr};
