@@ -38,7 +38,7 @@ bn_ptr bn_from_bytes(const uint8_t* data, size_t len)
 
 std::vector<uint8_t> to_xonly(const PubKey& pub)
 {
-    if (pub.size() != XONLY_PUBKEY_SIZE + 1) return {};
+    if (pub.size() != XONLY_PUBKEY_SIZE + 1) throw std::runtime_error("unexpected pubkey size");
     return std::vector<uint8_t>(pub.begin() + 1, pub.begin() + 1 + XONLY_PUBKEY_SIZE);
 }
 

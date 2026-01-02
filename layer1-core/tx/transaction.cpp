@@ -53,6 +53,8 @@ static std::vector<uint8_t> ReadVarBytes(const std::vector<uint8_t>& data, size_
     return out;
 }
 
+static const std::vector<uint8_t> EMPTY_SCRIPT;
+
 std::vector<uint8_t> Serialize(const Transaction& tx)
 {
     std::vector<uint8_t> out;
@@ -114,11 +116,10 @@ std::array<uint8_t, 32> ComputeInputDigest(const Transaction& tx, size_t inputIn
     std::vector<uint8_t> ser;
     WriteUint32(ser, tx.version);
     WriteUint32(ser, static_cast<uint32_t>(tx.vin.size()));
-    static const std::vector<uint8_t> emptyScript;
     for (const auto& in : tx.vin) {
         ser.insert(ser.end(), in.prevout.hash.begin(), in.prevout.hash.end());
         WriteUint32(ser, in.prevout.index);
-        WriteVarBytes(ser, emptyScript);
+        WriteVarBytes(ser, EMPTY_SCRIPT);
         WriteUint32(ser, in.sequence);
     }
     WriteUint32(ser, static_cast<uint32_t>(tx.vout.size()));
