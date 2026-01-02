@@ -1,5 +1,0 @@
-if(EXISTS "/home/runner/work/BlockChainDrachma/BlockChainDrachma/_codeql_build_dir/nft_precompile_test[1]_tests.cmake")
-  include("/home/runner/work/BlockChainDrachma/BlockChainDrachma/_codeql_build_dir/nft_precompile_test[1]_tests.cmake")
-else()
-  add_test(nft_precompile_test_NOT_BUILT nft_precompile_test_NOT_BUILT)
-endif()
