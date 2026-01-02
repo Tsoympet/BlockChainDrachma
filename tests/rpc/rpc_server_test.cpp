@@ -58,12 +58,13 @@ static std::string ConstThenReturnHex(int32_t imm)
 {
     // OpCode::ConstI32 (1) + OpCode::ReturnTop (5)
     std::vector<uint8_t> code = {
-        0x01,
+        static_cast<uint8_t>(sidechain::wasm::OpCode::ConstI32),
         static_cast<uint8_t>(imm & 0xff),
         static_cast<uint8_t>((imm >> 8) & 0xff),
         static_cast<uint8_t>((imm >> 16) & 0xff),
         static_cast<uint8_t>((imm >> 24) & 0xff),
-        0x05, 0x00, 0x00, 0x00, 0x00};
+        static_cast<uint8_t>(sidechain::wasm::OpCode::ReturnTop),
+        0x00, 0x00, 0x00, 0x00};
     return Hex(code);
 }
 
