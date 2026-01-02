@@ -9,5 +9,4 @@ This refresh aligns the audit notes with the current codebase and calls out the 
 
 ## Remaining Gaps / Risks
 - **RPC storage and parsing remain prototype-grade:** `ReadBlock` scans length-prefixed block files linearly and the JSON-RPC parser relies on regex without size limits or checksums. Malformed or oversized payloads can exhaust IO/CPU and bypass integrity checks; replace with indexed storage plus a bounded JSON parser. 【F:layer2-services/rpc/rpcserver.cpp†L323-L377】
-- **Multisig change handling is asymmetric:** Change from multisig spends is sent to the first signer’s single-key script instead of recreating an m-of-n output, reducing signing requirements for change. Extend change construction to emit the same multisig policy. 【F:layer2-services/wallet/wallet.cpp†L328-L359】
 - **GUI assets still sparse:** `layer3-app/assets/` documents expected icons/legal bundles, but release-ready icons/translations remain minimal. Populate these before shipping installers. 【F:layer3-app/assets/README.md†L1-L13】

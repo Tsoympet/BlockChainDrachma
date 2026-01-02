@@ -169,6 +169,8 @@ std::vector<uint8_t> WalletBackend::SignDigest(const PrivKey& key, const Transac
     std::array<uint8_t, 32> aux{};
     unsigned int aux_len = 0;
     HMAC(EVP_sha256(), key.data(), key.size(), digest.data(), digest.size(), aux.data(), &aux_len);
+    if (aux_len != aux.size())
+        throw std::runtime_error("failed to derive deterministic aux for schnorr");
     if (!schnorr_sign_with_aux(key.data(), digest.data(), aux.data(), sig.data()))
         throw std::runtime_error("schnorr sign failed");
     return std::vector<uint8_t>(sig.begin(), sig.end());
@@ -331,6 +333,7 @@ Transaction WalletBackend::CreateMultisigSpend(const std::vector<TxOut>& outputs
     Transaction tx;
     tx.vout = outputs;
     uint64_t inTotal = 0;
+    std::optional<TxOut> changeTemplate;
     for (const auto& c : coins) {
         TxIn in;
         in.prevout = c;
@@ -338,13 +341,17 @@ Transaction WalletBackend::CreateMultisigSpend(const std::vector<TxOut>& outputs
         tx.vin.push_back(in);
         auto maybe = m_lookup ? m_lookup(c) : std::optional<TxOut>{};
         if (!maybe) throw std::runtime_error("missing utxo");
+        if (!changeTemplate) {
+            changeTemplate = *maybe;
+        } else if (changeTemplate->scriptPubKey != maybe->scriptPubKey) {
+            throw std::runtime_error("mixed multisig scripts in change selection");
+        }
         inTotal += maybe->value;
     }
     if (inTotal < fee) throw std::runtime_error("fee too high");
     if (inTotal > fee) {
-        auto changeScript = to_xonly(derive_pubkey(keys.front()));
-        if (changeScript.size() != 32) throw std::runtime_error("failed to derive change pubkey");
-        TxOut change{inTotal - fee, changeScript};
+        if (!changeTemplate) throw std::runtime_error("missing change template");
+        TxOut change{inTotal - fee, changeTemplate->scriptPubKey};
         tx.vout.push_back(change);
     }
 

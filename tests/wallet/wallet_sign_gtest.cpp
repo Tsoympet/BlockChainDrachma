@@ -37,7 +37,7 @@ TEST(Wallet, SignsEachInputUniquely)
     auto tx = backend.CreateSpend(outputs, id, 1'000'000);
 
     ASSERT_EQ(tx.vin.size(), 2u);
-    ASSERT_EQ(tx.vin[0].scriptSig.size(), tx.vin[1].scriptSig.size());
+    EXPECT_EQ(tx.vin[0].scriptSig.size(), tx.vin[1].scriptSig.size());
     EXPECT_EQ(tx.vin[0].scriptSig.size(), 64u);
     EXPECT_NE(tx.vin[0].scriptSig, tx.vin[1].scriptSig);
     ASSERT_EQ(tx.vout.size(), 2u);
