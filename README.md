@@ -179,6 +179,12 @@ The Layer 3 desktop wallet is testnet-ready. Representative views are available 
 - **Dashboard and sync status:** launch `./build/layer3-app/drachma-wallet --connect 127.0.0.1:9333` and use the built-in “Demo Mode” under **Help → Demo Screens** to generate on-demand previews.
 - **Send flow with custom fee selection:** the same demo menu exports a markdown report (`docs/ui_snapshots.md`) describing the send dialog, fee slider, and QR rendering for sharing without embedding binary images in the repository.
 
+## Internal UI Icon System
+
+- Location: `/assets/ui-icons/` (with light/dark variants) supplies the unified icon set consumed by the Qt wallet. Icons are loaded at runtime; nothing is hardcoded or embedded in binaries.
+- Coverage: wallet & funds (wallet/receive/send/balance/address-book/qr), transactions (tx-in/out/pending/confirmed/failed/mempool/history), assets (asset-tln/asset-drm/asset-obl), staking (staking/active/inactive/rewards/lock/unlock/validator), mining (mining/hash/block/difficulty), network (network/peers/sync/synced/warning/error/info/shield), and system (settings/security/key/backup/restore/disk/cpu/memory/log).
+- Core vs asset vs UI icons: **core icons** (e.g., splash/app logo) brand the application, **asset icons** represent specific tokens (DRM/OBL/TLN) where appropriate, while **UI icons** are neutral controls and status glyphs reused across menus, tabs, dialogs, and balance/staking/mining/network indicators.
+
 ---
 
 ## Mainnet Launch
