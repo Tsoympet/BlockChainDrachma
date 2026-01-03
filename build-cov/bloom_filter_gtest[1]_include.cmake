@@ -1,0 +1,5 @@
+if(EXISTS "/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/bloom_filter_gtest[1]_tests.cmake")
+  include("/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/bloom_filter_gtest[1]_tests.cmake")
+else()
+  add_test(bloom_filter_gtest_NOT_BUILT bloom_filter_gtest_NOT_BUILT)
+endif()

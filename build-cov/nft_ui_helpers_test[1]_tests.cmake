@@ -1,0 +1,7 @@
+add_test([=[NftUiHelpers.HeadersExcludeTln]=]  /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/nft_ui_helpers_test [==[--gtest_filter=NftUiHelpers.HeadersExcludeTln]==] --gtest_also_run_disabled_tests)
+set_tests_properties([=[NftUiHelpers.HeadersExcludeTln]=]  PROPERTIES WORKING_DIRECTORY /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov SKIP_REGULAR_EXPRESSION [==[\[  SKIPPED \]]==])
+add_test([=[NftUiHelpers.ResolvesCategoryIcon]=]  /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/nft_ui_helpers_test [==[--gtest_filter=NftUiHelpers.ResolvesCategoryIcon]==] --gtest_also_run_disabled_tests)
+set_tests_properties([=[NftUiHelpers.ResolvesCategoryIcon]=]  PROPERTIES WORKING_DIRECTORY /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov SKIP_REGULAR_EXPRESSION [==[\[  SKIPPED \]]==])
+add_test([=[NftUiHelpers.FallsBackWhenIconMissing]=]  /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/nft_ui_helpers_test [==[--gtest_filter=NftUiHelpers.FallsBackWhenIconMissing]==] --gtest_also_run_disabled_tests)
+set_tests_properties([=[NftUiHelpers.FallsBackWhenIconMissing]=]  PROPERTIES WORKING_DIRECTORY /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov SKIP_REGULAR_EXPRESSION [==[\[  SKIPPED \]]==])
+set(  nft_ui_helpers_test_TESTS NftUiHelpers.HeadersExcludeTln NftUiHelpers.ResolvesCategoryIcon NftUiHelpers.FallsBackWhenIconMissing)

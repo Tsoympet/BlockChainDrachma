@@ -1,0 +1,1 @@
+/usr/bin/c++ --coverage -Wl,--dependency-file=CMakeFiles/block_validation_tests.dir/link.d CMakeFiles/block_validation_tests.dir/tests/validation/block_validation_tests.cpp.o -o block_validation_tests  libdrachma_layer1.a /usr/lib/x86_64-linux-gnu/libcrypto.so _deps/leveldb-build/libleveldb.a

@@ -1,0 +1,1 @@
+/usr/bin/c++ --coverage -Wl,--dependency-file=CMakeFiles/sidechain_wasm_execution_test.dir/link.d CMakeFiles/sidechain_wasm_execution_test.dir/tests/sidechain/wasm_execution_test.cpp.o -o sidechain_wasm_execution_test  libdrachma_sidechain_wasm.a libdrachma_layer1.a lib/libgtest_main.a /usr/lib/x86_64-linux-gnu/libcrypto.so _deps/leveldb-build/libleveldb.a lib/libgtest.a

@@ -1,0 +1,1 @@
+/usr/bin/c++ --coverage -Wl,--dependency-file=CMakeFiles/regtest_mode_test.dir/link.d CMakeFiles/regtest_mode_test.dir/tests/integration/regtest_mode_test.cpp.o -o regtest_mode_test  lib/libgtest_main.a lib/libgtest.a

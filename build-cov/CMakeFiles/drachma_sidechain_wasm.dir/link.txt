@@ -1,0 +1,2 @@
+/usr/bin/ar qc libdrachma_sidechain_wasm.a CMakeFiles/drachma_sidechain_wasm.dir/sidechain/wasm/runtime/engine.cpp.o CMakeFiles/drachma_sidechain_wasm.dir/sidechain/wasm/gas/model.cpp.o CMakeFiles/drachma_sidechain_wasm.dir/sidechain/wasm/validator/validator.cpp.o CMakeFiles/drachma_sidechain_wasm.dir/sidechain/state/state_store.cpp.o CMakeFiles/drachma_sidechain_wasm.dir/sidechain/rpc/wasm_rpc.cpp.o
+/usr/bin/ranlib libdrachma_sidechain_wasm.a

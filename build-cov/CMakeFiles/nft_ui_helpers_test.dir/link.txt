@@ -1,0 +1,1 @@
+/usr/bin/c++ --coverage -Wl,--dependency-file=CMakeFiles/nft_ui_helpers_test.dir/link.d CMakeFiles/nft_ui_helpers_test.dir/tests/sidechain/nft_ui_helpers_test.cpp.o -o nft_ui_helpers_test  lib/libgtest_main.a lib/libgtest.a

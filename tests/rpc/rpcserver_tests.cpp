@@ -395,3 +395,25 @@ TEST(RPCFailurePaths, ExceptionsPropagateWithoutStateMutation)
         "{\"method\":\"transfer_nft\",\"params\":\"token=rollback;from=alice;to=bob;asset=0;gas=50\"}");
     EXPECT_NE(missingAfterFailure.find("token missing"), std::string::npos);
 }
+
+TEST(RPCFailurePaths, ArgumentErrorsReturnExplicitCodes)
+{
+    RpcTestHarness env(19650);
+    env.Start(true, true);
+
+    auto malformed = RpcCallResponse(env.io, env.rpc_port, "%%%");
+    EXPECT_EQ(malformed.result(), http::status::bad_request);
+    EXPECT_EQ(malformed.body(), "{\"error\":\"unknown method\"}");
+
+    auto wrongType = RpcCallResponse(env.io, env.rpc_port,
+        "{\"method\":\"call_contract\",\"params\":\"module=bad;asset=abc;gas=1;code=00\"}");
+    EXPECT_EQ(wrongType.result(), http::status::internal_server_error);
+    EXPECT_NE(wrongType.body().find("\"error\":\""), std::string::npos);
+
+    auto unauthorized = RpcCallResponse(env.io, env.rpc_port,
+        "{\"method\":\"getbalance\",\"params\":null}", false);
+    EXPECT_EQ(unauthorized.result(), http::status::unauthorized);
+    EXPECT_EQ(unauthorized.body(), "{\"error\":\"auth required\"}");
+
+    EXPECT_TRUE(env.pool.Snapshot().empty());
+}

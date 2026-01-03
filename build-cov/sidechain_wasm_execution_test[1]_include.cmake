@@ -1,0 +1,5 @@
+if(EXISTS "/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/sidechain_wasm_execution_test[1]_tests.cmake")
+  include("/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/sidechain_wasm_execution_test[1]_tests.cmake")
+else()
+  add_test(sidechain_wasm_execution_test_NOT_BUILT sidechain_wasm_execution_test_NOT_BUILT)
+endif()

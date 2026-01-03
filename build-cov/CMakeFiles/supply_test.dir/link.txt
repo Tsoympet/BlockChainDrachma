@@ -1,0 +1,1 @@
+/usr/bin/c++ --coverage -Wl,--dependency-file=CMakeFiles/supply_test.dir/link.d CMakeFiles/supply_test.dir/tests/consensus/supply_test.cpp.o -o supply_test  libdrachma_layer1.a /usr/lib/x86_64-linux-gnu/libcrypto.so _deps/leveldb-build/libleveldb.a

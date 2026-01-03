@@ -1,0 +1,1 @@
+/usr/bin/c++ --coverage -Wl,--dependency-file=CMakeFiles/asset_policy_test.dir/link.d CMakeFiles/asset_policy_test.dir/tests/consensus/asset_policy_test.cpp.o -o asset_policy_test  libdrachma_layer1.a /usr/lib/x86_64-linux-gnu/libcrypto.so _deps/leveldb-build/libleveldb.a

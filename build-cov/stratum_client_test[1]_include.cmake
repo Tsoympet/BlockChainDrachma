@@ -1,0 +1,5 @@
+if(EXISTS "/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/stratum_client_test[1]_tests.cmake")
+  include("/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/stratum_client_test[1]_tests.cmake")
+else()
+  add_test(stratum_client_test_NOT_BUILT stratum_client_test_NOT_BUILT)
+endif()

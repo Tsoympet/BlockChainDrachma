@@ -1,0 +1,1 @@
+/usr/bin/c++ --coverage -Wl,--dependency-file=CMakeFiles/schnorr_test.dir/link.d CMakeFiles/schnorr_test.dir/tests/crypto/schnorr_test.cpp.o -o schnorr_test  libdrachma_layer1.a /usr/lib/x86_64-linux-gnu/libcrypto.so _deps/leveldb-build/libleveldb.a

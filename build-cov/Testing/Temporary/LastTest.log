@@ -1,0 +1,2405 @@
+Start testing: Jan 03 15:19 UTC
+----------------------------------------------------------
+1/95 Testing: Schnorr.ValidVectorPasses
+1/95 Test: Schnorr.ValidVectorPasses
+Command: "/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/schnorr_vectors_test" "--gtest_filter=Schnorr.ValidVectorPasses" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov
+"Schnorr.ValidVectorPasses" start time: Jan 03 15:19 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = Schnorr.ValidVectorPasses
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from Schnorr
+[ RUN      ] Schnorr.ValidVectorPasses
+[       OK ] Schnorr.ValidVectorPasses (2 ms)
+[----------] 1 test from Schnorr (2 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (2 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"Schnorr.ValidVectorPasses" end time: Jan 03 15:19 UTC
+"Schnorr.ValidVectorPasses" time elapsed: 00:00:00
+----------------------------------------------------------
+
+2/95 Testing: Schnorr.RejectsRandomData
+2/95 Test: Schnorr.RejectsRandomData
+Command: "/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/schnorr_vectors_test" "--gtest_filter=Schnorr.RejectsRandomData" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov
+"Schnorr.RejectsRandomData" start time: Jan 03 15:19 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = Schnorr.RejectsRandomData
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from Schnorr
+[ RUN      ] Schnorr.RejectsRandomData
+[       OK ] Schnorr.RejectsRandomData (2 ms)
+[----------] 1 test from Schnorr (2 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (2 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"Schnorr.RejectsRandomData" end time: Jan 03 15:19 UTC
+"Schnorr.RejectsRandomData" time elapsed: 00:00:00
+----------------------------------------------------------
+
+3/95 Testing: Schnorr.EdgeCaseKeysAndScalarsAreRejected
+3/95 Test: Schnorr.EdgeCaseKeysAndScalarsAreRejected
+Command: "/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/schnorr_vectors_test" "--gtest_filter=Schnorr.EdgeCaseKeysAndScalarsAreRejected" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov
+"Schnorr.EdgeCaseKeysAndScalarsAreRejected" start time: Jan 03 15:19 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = Schnorr.EdgeCaseKeysAndScalarsAreRejected
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from Schnorr
+[ RUN      ] Schnorr.EdgeCaseKeysAndScalarsAreRejected
+[       OK ] Schnorr.EdgeCaseKeysAndScalarsAreRejected (0 ms)
+[----------] 1 test from Schnorr (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"Schnorr.EdgeCaseKeysAndScalarsAreRejected" end time: Jan 03 15:19 UTC
+"Schnorr.EdgeCaseKeysAndScalarsAreRejected" time elapsed: 00:00:00
+----------------------------------------------------------
+
+4/95 Testing: Schnorr.TaggedHashMisuseChangesDigestDeterministically
+4/95 Test: Schnorr.TaggedHashMisuseChangesDigestDeterministically
+Command: "/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/schnorr_vectors_test" "--gtest_filter=Schnorr.TaggedHashMisuseChangesDigestDeterministically" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov
+"Schnorr.TaggedHashMisuseChangesDigestDeterministically" start time: Jan 03 15:19 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = Schnorr.TaggedHashMisuseChangesDigestDeterministically
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from Schnorr
+[ RUN      ] Schnorr.TaggedHashMisuseChangesDigestDeterministically
+[       OK ] Schnorr.TaggedHashMisuseChangesDigestDeterministically (3 ms)
+[----------] 1 test from Schnorr (3 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (3 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"Schnorr.TaggedHashMisuseChangesDigestDeterministically" end time: Jan 03 15:19 UTC
+"Schnorr.TaggedHashMisuseChangesDigestDeterministically" time elapsed: 00:00:00
+----------------------------------------------------------
+
+5/95 Testing: SchnorrInvariants.InvalidSignatureInputsAreRejected
+5/95 Test: SchnorrInvariants.InvalidSignatureInputsAreRejected
+Command: "/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/schnorr_vectors_test" "--gtest_filter=SchnorrInvariants.InvalidSignatureInputsAreRejected" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov
+"SchnorrInvariants.InvalidSignatureInputsAreRejected" start time: Jan 03 15:19 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = SchnorrInvariants.InvalidSignatureInputsAreRejected
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from SchnorrInvariants
+[ RUN      ] SchnorrInvariants.InvalidSignatureInputsAreRejected
+[       OK ] SchnorrInvariants.InvalidSignatureInputsAreRejected (4 ms)
+[----------] 1 test from SchnorrInvariants (4 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (4 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"SchnorrInvariants.InvalidSignatureInputsAreRejected" end time: Jan 03 15:19 UTC
+"SchnorrInvariants.InvalidSignatureInputsAreRejected" time elapsed: 00:00:00
+----------------------------------------------------------
+
+6/95 Testing: SchnorrInvariants.RejectsMalformedPublicKeys
+6/95 Test: SchnorrInvariants.RejectsMalformedPublicKeys
+Command: "/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/schnorr_vectors_test" "--gtest_filter=SchnorrInvariants.RejectsMalformedPublicKeys" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov
+"SchnorrInvariants.RejectsMalformedPublicKeys" start time: Jan 03 15:19 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = SchnorrInvariants.RejectsMalformedPublicKeys
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from SchnorrInvariants
+[ RUN      ] SchnorrInvariants.RejectsMalformedPublicKeys
+[       OK ] SchnorrInvariants.RejectsMalformedPublicKeys (0 ms)
+[----------] 1 test from SchnorrInvariants (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"SchnorrInvariants.RejectsMalformedPublicKeys" end time: Jan 03 15:19 UTC
+"SchnorrInvariants.RejectsMalformedPublicKeys" time elapsed: 00:00:00
+----------------------------------------------------------
+
+7/95 Testing: SchnorrInvariants.ScalarBoundariesAreEnforced
+7/95 Test: SchnorrInvariants.ScalarBoundariesAreEnforced
+Command: "/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/schnorr_vectors_test" "--gtest_filter=SchnorrInvariants.ScalarBoundariesAreEnforced" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov
+"SchnorrInvariants.ScalarBoundariesAreEnforced" start time: Jan 03 15:19 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = SchnorrInvariants.ScalarBoundariesAreEnforced
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from SchnorrInvariants
+[ RUN      ] SchnorrInvariants.ScalarBoundariesAreEnforced
+[       OK ] SchnorrInvariants.ScalarBoundariesAreEnforced (3 ms)
+[----------] 1 test from SchnorrInvariants (3 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (3 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"SchnorrInvariants.ScalarBoundariesAreEnforced" end time: Jan 03 15:19 UTC
+"SchnorrInvariants.ScalarBoundariesAreEnforced" time elapsed: 00:00:00
+----------------------------------------------------------
+
+8/95 Testing: SchnorrInvariants.TaggedHashMismatchInvalidatesSignature
+8/95 Test: SchnorrInvariants.TaggedHashMismatchInvalidatesSignature
+Command: "/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/schnorr_vectors_test" "--gtest_filter=SchnorrInvariants.TaggedHashMismatchInvalidatesSignature" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov
+"SchnorrInvariants.TaggedHashMismatchInvalidatesSignature" start time: Jan 03 15:19 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = SchnorrInvariants.TaggedHashMismatchInvalidatesSignature
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from SchnorrInvariants
+[ RUN      ] SchnorrInvariants.TaggedHashMismatchInvalidatesSignature
+[       OK ] SchnorrInvariants.TaggedHashMismatchInvalidatesSignature (6 ms)
+[----------] 1 test from SchnorrInvariants (6 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (6 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"SchnorrInvariants.TaggedHashMismatchInvalidatesSignature" end time: Jan 03 15:19 UTC
+"SchnorrInvariants.TaggedHashMismatchInvalidatesSignature" time elapsed: 00:00:00
+----------------------------------------------------------
+
+9/95 Testing: SchnorrGuards.RejectsBitFlipAndWrongMessage
+9/95 Test: SchnorrGuards.RejectsBitFlipAndWrongMessage
+Command: "/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/schnorr_vectors_test" "--gtest_filter=SchnorrGuards.RejectsBitFlipAndWrongMessage" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov
+"SchnorrGuards.RejectsBitFlipAndWrongMessage" start time: Jan 03 15:19 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = SchnorrGuards.RejectsBitFlipAndWrongMessage
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from SchnorrGuards
+[ RUN      ] SchnorrGuards.RejectsBitFlipAndWrongMessage
+[       OK ] SchnorrGuards.RejectsBitFlipAndWrongMessage (5 ms)
+[----------] 1 test from SchnorrGuards (5 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (5 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"SchnorrGuards.RejectsBitFlipAndWrongMessage" end time: Jan 03 15:19 UTC
+"SchnorrGuards.RejectsBitFlipAndWrongMessage" time elapsed: 00:00:00
+----------------------------------------------------------
+
+10/95 Testing: SchnorrGuards.RejectsMalformedPublicKeysAndScalarEdges
+10/95 Test: SchnorrGuards.RejectsMalformedPublicKeysAndScalarEdges
+Command: "/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/schnorr_vectors_test" "--gtest_filter=SchnorrGuards.RejectsMalformedPublicKeysAndScalarEdges" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov
+"SchnorrGuards.RejectsMalformedPublicKeysAndScalarEdges" start time: Jan 03 15:19 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = SchnorrGuards.RejectsMalformedPublicKeysAndScalarEdges
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from SchnorrGuards
+[ RUN      ] SchnorrGuards.RejectsMalformedPublicKeysAndScalarEdges
+[       OK ] SchnorrGuards.RejectsMalformedPublicKeysAndScalarEdges (3 ms)
+[----------] 1 test from SchnorrGuards (3 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (3 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"SchnorrGuards.RejectsMalformedPublicKeysAndScalarEdges" end time: Jan 03 15:19 UTC
+"SchnorrGuards.RejectsMalformedPublicKeysAndScalarEdges" time elapsed: 00:00:00
+----------------------------------------------------------
+
+11/95 Testing: Difficulty.ClampsExtremeTimespans
+11/95 Test: Difficulty.ClampsExtremeTimespans
+Command: "/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/difficulty_gtest" "--gtest_filter=Difficulty.ClampsExtremeTimespans" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov
+"Difficulty.ClampsExtremeTimespans" start time: Jan 03 15:19 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = Difficulty.ClampsExtremeTimespans
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from Difficulty
+[ RUN      ] Difficulty.ClampsExtremeTimespans
+[       OK ] Difficulty.ClampsExtremeTimespans (0 ms)
+[----------] 1 test from Difficulty (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"Difficulty.ClampsExtremeTimespans" end time: Jan 03 15:19 UTC
+"Difficulty.ClampsExtremeTimespans" time elapsed: 00:00:00
+----------------------------------------------------------
+
+12/95 Testing: Difficulty.RejectsOverflowTargets
+12/95 Test: Difficulty.RejectsOverflowTargets
+Command: "/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/difficulty_gtest" "--gtest_filter=Difficulty.RejectsOverflowTargets" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov
+"Difficulty.RejectsOverflowTargets" start time: Jan 03 15:19 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = Difficulty.RejectsOverflowTargets
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from Difficulty
+[ RUN      ] Difficulty.RejectsOverflowTargets
+[       OK ] Difficulty.RejectsOverflowTargets (0 ms)
+[----------] 1 test from Difficulty (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"Difficulty.RejectsOverflowTargets" end time: Jan 03 15:19 UTC
+"Difficulty.RejectsOverflowTargets" time elapsed: 00:00:00
+----------------------------------------------------------
+
+13/95 Testing: Difficulty.AppliesMinDifficultyForStaleBlocks
+13/95 Test: Difficulty.AppliesMinDifficultyForStaleBlocks
+Command: "/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/difficulty_gtest" "--gtest_filter=Difficulty.AppliesMinDifficultyForStaleBlocks" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov
+"Difficulty.AppliesMinDifficultyForStaleBlocks" start time: Jan 03 15:19 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = Difficulty.AppliesMinDifficultyForStaleBlocks
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from Difficulty
+[ RUN      ] Difficulty.AppliesMinDifficultyForStaleBlocks
+[       OK ] Difficulty.AppliesMinDifficultyForStaleBlocks (0 ms)
+[----------] 1 test from Difficulty (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"Difficulty.AppliesMinDifficultyForStaleBlocks" end time: Jan 03 15:19 UTC
+"Difficulty.AppliesMinDifficultyForStaleBlocks" time elapsed: 00:00:00
+----------------------------------------------------------
+
+14/95 Testing: Difficulty.ThrowsWhenTargetTimespanZero
+14/95 Test: Difficulty.ThrowsWhenTargetTimespanZero
+Command: "/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/difficulty_gtest" "--gtest_filter=Difficulty.ThrowsWhenTargetTimespanZero" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov
+"Difficulty.ThrowsWhenTargetTimespanZero" start time: Jan 03 15:19 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = Difficulty.ThrowsWhenTargetTimespanZero
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from Difficulty
+[ RUN      ] Difficulty.ThrowsWhenTargetTimespanZero
+[       OK ] Difficulty.ThrowsWhenTargetTimespanZero (0 ms)
+[----------] 1 test from Difficulty (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"Difficulty.ThrowsWhenTargetTimespanZero" end time: Jan 03 15:19 UTC
+"Difficulty.ThrowsWhenTargetTimespanZero" time elapsed: 00:00:00
+----------------------------------------------------------
+
+15/95 Testing: Difficulty.RetargetsClampToPowLimitAndAreDeterministic
+15/95 Test: Difficulty.RetargetsClampToPowLimitAndAreDeterministic
+Command: "/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/difficulty_gtest" "--gtest_filter=Difficulty.RetargetsClampToPowLimitAndAreDeterministic" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov
+"Difficulty.RetargetsClampToPowLimitAndAreDeterministic" start time: Jan 03 15:19 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = Difficulty.RetargetsClampToPowLimitAndAreDeterministic
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from Difficulty
+[ RUN      ] Difficulty.RetargetsClampToPowLimitAndAreDeterministic
+[       OK ] Difficulty.RetargetsClampToPowLimitAndAreDeterministic (0 ms)
+[----------] 1 test from Difficulty (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"Difficulty.RetargetsClampToPowLimitAndAreDeterministic" end time: Jan 03 15:19 UTC
+"Difficulty.RetargetsClampToPowLimitAndAreDeterministic" time elapsed: 00:00:00
+----------------------------------------------------------
+
+16/95 Testing: Difficulty.NegativeTimespansClampToMinimumInterval
+16/95 Test: Difficulty.NegativeTimespansClampToMinimumInterval
+Command: "/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/difficulty_gtest" "--gtest_filter=Difficulty.NegativeTimespansClampToMinimumInterval" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov
+"Difficulty.NegativeTimespansClampToMinimumInterval" start time: Jan 03 15:19 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = Difficulty.NegativeTimespansClampToMinimumInterval
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from Difficulty
+[ RUN      ] Difficulty.NegativeTimespansClampToMinimumInterval
+[       OK ] Difficulty.NegativeTimespansClampToMinimumInterval (0 ms)
+[----------] 1 test from Difficulty (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"Difficulty.NegativeTimespansClampToMinimumInterval" end time: Jan 03 15:19 UTC
+"Difficulty.NegativeTimespansClampToMinimumInterval" time elapsed: 00:00:00
+----------------------------------------------------------
+
+17/95 Testing: PoW.ProofOfWorkBoundaries
+17/95 Test: PoW.ProofOfWorkBoundaries
+Command: "/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/pow_check_gtest" "--gtest_filter=PoW.ProofOfWorkBoundaries" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov
+"PoW.ProofOfWorkBoundaries" start time: Jan 03 15:19 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = PoW.ProofOfWorkBoundaries
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from PoW
+[ RUN      ] PoW.ProofOfWorkBoundaries
+[       OK ] PoW.ProofOfWorkBoundaries (0 ms)
+[----------] 1 test from PoW (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"PoW.ProofOfWorkBoundaries" end time: Jan 03 15:19 UTC
+"PoW.ProofOfWorkBoundaries" time elapsed: 00:00:00
+----------------------------------------------------------
+
+18/95 Testing: PoW.DifficultyClampsTimespan
+18/95 Test: PoW.DifficultyClampsTimespan
+Command: "/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/pow_check_gtest" "--gtest_filter=PoW.DifficultyClampsTimespan" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov
+"PoW.DifficultyClampsTimespan" start time: Jan 03 15:19 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = PoW.DifficultyClampsTimespan
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from PoW
+[ RUN      ] PoW.DifficultyClampsTimespan
+[       OK ] PoW.DifficultyClampsTimespan (0 ms)
+[----------] 1 test from PoW (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"PoW.DifficultyClampsTimespan" end time: Jan 03 15:19 UTC
+"PoW.DifficultyClampsTimespan" time elapsed: 00:00:00
+----------------------------------------------------------
+
+19/95 Testing: PoW.WorkIncreasesWithDifficulty
+19/95 Test: PoW.WorkIncreasesWithDifficulty
+Command: "/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/pow_check_gtest" "--gtest_filter=PoW.WorkIncreasesWithDifficulty" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov
+"PoW.WorkIncreasesWithDifficulty" start time: Jan 03 15:19 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = PoW.WorkIncreasesWithDifficulty
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from PoW
+[ RUN      ] PoW.WorkIncreasesWithDifficulty
+[       OK ] PoW.WorkIncreasesWithDifficulty (0 ms)
+[----------] 1 test from PoW (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"PoW.WorkIncreasesWithDifficulty" end time: Jan 03 15:19 UTC
+"PoW.WorkIncreasesWithDifficulty" time elapsed: 00:00:00
+----------------------------------------------------------
+
+20/95 Testing: PoW.Sha256dRejectsNullInputs
+20/95 Test: PoW.Sha256dRejectsNullInputs
+Command: "/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/pow_check_gtest" "--gtest_filter=PoW.Sha256dRejectsNullInputs" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov
+"PoW.Sha256dRejectsNullInputs" start time: Jan 03 15:19 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = PoW.Sha256dRejectsNullInputs
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from PoW
+[ RUN      ] PoW.Sha256dRejectsNullInputs
+[       OK ] PoW.Sha256dRejectsNullInputs (0 ms)
+[----------] 1 test from PoW (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"PoW.Sha256dRejectsNullInputs" end time: Jan 03 15:19 UTC
+"PoW.Sha256dRejectsNullInputs" time elapsed: 00:00:00
+----------------------------------------------------------
+
+21/95 Testing: PoW.CheckPowDisallowsEqualTarget
+21/95 Test: PoW.CheckPowDisallowsEqualTarget
+Command: "/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/pow_check_gtest" "--gtest_filter=PoW.CheckPowDisallowsEqualTarget" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov
+"PoW.CheckPowDisallowsEqualTarget" start time: Jan 03 15:19 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = PoW.CheckPowDisallowsEqualTarget
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from PoW
+[ RUN      ] PoW.CheckPowDisallowsEqualTarget
+[       OK ] PoW.CheckPowDisallowsEqualTarget (0 ms)
+[----------] 1 test from PoW (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"PoW.CheckPowDisallowsEqualTarget" end time: Jan 03 15:19 UTC
+"PoW.CheckPowDisallowsEqualTarget" time elapsed: 00:00:00
+----------------------------------------------------------
+
+22/95 Testing: PoW.Sha256DeterministicAndRejectsNullData
+22/95 Test: PoW.Sha256DeterministicAndRejectsNullData
+Command: "/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/pow_check_gtest" "--gtest_filter=PoW.Sha256DeterministicAndRejectsNullData" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov
+"PoW.Sha256DeterministicAndRejectsNullData" start time: Jan 03 15:19 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = PoW.Sha256DeterministicAndRejectsNullData
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from PoW
+[ RUN      ] PoW.Sha256DeterministicAndRejectsNullData
+[       OK ] PoW.Sha256DeterministicAndRejectsNullData (0 ms)
+[----------] 1 test from PoW (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"PoW.Sha256DeterministicAndRejectsNullData" end time: Jan 03 15:19 UTC
+"PoW.Sha256DeterministicAndRejectsNullData" time elapsed: 00:00:00
+----------------------------------------------------------
+
+23/95 Testing: PoW.Sha256dBoundarySizesAreDeterministic
+23/95 Test: PoW.Sha256dBoundarySizesAreDeterministic
+Command: "/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/pow_check_gtest" "--gtest_filter=PoW.Sha256dBoundarySizesAreDeterministic" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov
+"PoW.Sha256dBoundarySizesAreDeterministic" start time: Jan 03 15:19 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = PoW.Sha256dBoundarySizesAreDeterministic
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from PoW
+[ RUN      ] PoW.Sha256dBoundarySizesAreDeterministic
+[       OK ] PoW.Sha256dBoundarySizesAreDeterministic (0 ms)
+[----------] 1 test from PoW (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"PoW.Sha256dBoundarySizesAreDeterministic" end time: Jan 03 15:19 UTC
+"PoW.Sha256dBoundarySizesAreDeterministic" time elapsed: 00:00:00
+----------------------------------------------------------
+
+24/95 Testing: MempoolStress.EvictsLowestFeeWhenFull
+24/95 Test: MempoolStress.EvictsLowestFeeWhenFull
+Command: "/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/mempool_stress_test" "--gtest_filter=MempoolStress.EvictsLowestFeeWhenFull" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov
+"MempoolStress.EvictsLowestFeeWhenFull" start time: Jan 03 15:19 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = MempoolStress.EvictsLowestFeeWhenFull
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from MempoolStress
+[ RUN      ] MempoolStress.EvictsLowestFeeWhenFull
+[       OK ] MempoolStress.EvictsLowestFeeWhenFull (0 ms)
+[----------] 1 test from MempoolStress (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"MempoolStress.EvictsLowestFeeWhenFull" end time: Jan 03 15:19 UTC
+"MempoolStress.EvictsLowestFeeWhenFull" time elapsed: 00:00:00
+----------------------------------------------------------
+
+25/95 Testing: MempoolStress.FeeRateEstimateTracksPercentile
+25/95 Test: MempoolStress.FeeRateEstimateTracksPercentile
+Command: "/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/mempool_stress_test" "--gtest_filter=MempoolStress.FeeRateEstimateTracksPercentile" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov
+"MempoolStress.FeeRateEstimateTracksPercentile" start time: Jan 03 15:19 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = MempoolStress.FeeRateEstimateTracksPercentile
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from MempoolStress
+[ RUN      ] MempoolStress.FeeRateEstimateTracksPercentile
+[       OK ] MempoolStress.FeeRateEstimateTracksPercentile (0 ms)
+[----------] 1 test from MempoolStress (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"MempoolStress.FeeRateEstimateTracksPercentile" end time: Jan 03 15:19 UTC
+"MempoolStress.FeeRateEstimateTracksPercentile" time elapsed: 00:00:00
+----------------------------------------------------------
+
+26/95 Testing: Wallet.SignsEachInputUniquely
+26/95 Test: Wallet.SignsEachInputUniquely
+Command: "/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/wallet_sign_gtest" "--gtest_filter=Wallet.SignsEachInputUniquely" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov
+"Wallet.SignsEachInputUniquely" start time: Jan 03 15:19 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = Wallet.SignsEachInputUniquely
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from Wallet
+[ RUN      ] Wallet.SignsEachInputUniquely
+[       OK ] Wallet.SignsEachInputUniquely (3 ms)
+[----------] 1 test from Wallet (3 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (3 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"Wallet.SignsEachInputUniquely" end time: Jan 03 15:19 UTC
+"Wallet.SignsEachInputUniquely" time elapsed: 00:00:00
+----------------------------------------------------------
+
+27/95 Testing: Wallet.DeterministicSignaturesForSameInput
+27/95 Test: Wallet.DeterministicSignaturesForSameInput
+Command: "/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/wallet_sign_gtest" "--gtest_filter=Wallet.DeterministicSignaturesForSameInput" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov
+"Wallet.DeterministicSignaturesForSameInput" start time: Jan 03 15:19 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = Wallet.DeterministicSignaturesForSameInput
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from Wallet
+[ RUN      ] Wallet.DeterministicSignaturesForSameInput
+[       OK ] Wallet.DeterministicSignaturesForSameInput (4 ms)
+[----------] 1 test from Wallet (4 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (4 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"Wallet.DeterministicSignaturesForSameInput" end time: Jan 03 15:19 UTC
+"Wallet.DeterministicSignaturesForSameInput" time elapsed: 00:00:00
+----------------------------------------------------------
+
+28/95 Testing: Wallet.ScriptInterpreterAcceptsWalletSigs
+28/95 Test: Wallet.ScriptInterpreterAcceptsWalletSigs
+Command: "/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/wallet_sign_gtest" "--gtest_filter=Wallet.ScriptInterpreterAcceptsWalletSigs" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov
+"Wallet.ScriptInterpreterAcceptsWalletSigs" start time: Jan 03 15:19 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = Wallet.ScriptInterpreterAcceptsWalletSigs
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from Wallet
+[ RUN      ] Wallet.ScriptInterpreterAcceptsWalletSigs
+[       OK ] Wallet.ScriptInterpreterAcceptsWalletSigs (4 ms)
+[----------] 1 test from Wallet (4 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (4 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"Wallet.ScriptInterpreterAcceptsWalletSigs" end time: Jan 03 15:19 UTC
+"Wallet.ScriptInterpreterAcceptsWalletSigs" time elapsed: 00:00:00
+----------------------------------------------------------
+
+29/95 Testing: Wallet.ThrowsOnMissingKeyOrFunds
+29/95 Test: Wallet.ThrowsOnMissingKeyOrFunds
+Command: "/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/wallet_sign_gtest" "--gtest_filter=Wallet.ThrowsOnMissingKeyOrFunds" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov
+"Wallet.ThrowsOnMissingKeyOrFunds" start time: Jan 03 15:19 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = Wallet.ThrowsOnMissingKeyOrFunds
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from Wallet
+[ RUN      ] Wallet.ThrowsOnMissingKeyOrFunds
+[       OK ] Wallet.ThrowsOnMissingKeyOrFunds (1 ms)
+[----------] 1 test from Wallet (1 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (1 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"Wallet.ThrowsOnMissingKeyOrFunds" end time: Jan 03 15:19 UTC
+"Wallet.ThrowsOnMissingKeyOrFunds" time elapsed: 00:00:00
+----------------------------------------------------------
+
+30/95 Testing: Wallet.RejectsMixedAssetOutputs
+30/95 Test: Wallet.RejectsMixedAssetOutputs
+Command: "/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/wallet_sign_gtest" "--gtest_filter=Wallet.RejectsMixedAssetOutputs" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov
+"Wallet.RejectsMixedAssetOutputs" start time: Jan 03 15:19 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = Wallet.RejectsMixedAssetOutputs
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from Wallet
+[ RUN      ] Wallet.RejectsMixedAssetOutputs
+[       OK ] Wallet.RejectsMixedAssetOutputs (0 ms)
+[----------] 1 test from Wallet (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"Wallet.RejectsMixedAssetOutputs" end time: Jan 03 15:19 UTC
+"Wallet.RejectsMixedAssetOutputs" time elapsed: 00:00:00
+----------------------------------------------------------
+
+31/95 Testing: Wallet.InsufficientFundsAndAssetIsolation
+31/95 Test: Wallet.InsufficientFundsAndAssetIsolation
+Command: "/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/wallet_sign_gtest" "--gtest_filter=Wallet.InsufficientFundsAndAssetIsolation" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov
+"Wallet.InsufficientFundsAndAssetIsolation" start time: Jan 03 15:19 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = Wallet.InsufficientFundsAndAssetIsolation
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from Wallet
+[ RUN      ] Wallet.InsufficientFundsAndAssetIsolation
+[       OK ] Wallet.InsufficientFundsAndAssetIsolation (0 ms)
+[----------] 1 test from Wallet (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"Wallet.InsufficientFundsAndAssetIsolation" end time: Jan 03 15:19 UTC
+"Wallet.InsufficientFundsAndAssetIsolation" time elapsed: 00:00:00
+----------------------------------------------------------
+
+32/95 Testing: Wallet.HdSeedRequiredBeforeDerive
+32/95 Test: Wallet.HdSeedRequiredBeforeDerive
+Command: "/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/wallet_sign_gtest" "--gtest_filter=Wallet.HdSeedRequiredBeforeDerive" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov
+"Wallet.HdSeedRequiredBeforeDerive" start time: Jan 03 15:19 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = Wallet.HdSeedRequiredBeforeDerive
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from Wallet
+[ RUN      ] Wallet.HdSeedRequiredBeforeDerive
+[       OK ] Wallet.HdSeedRequiredBeforeDerive (4 ms)
+[----------] 1 test from Wallet (4 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (4 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"Wallet.HdSeedRequiredBeforeDerive" end time: Jan 03 15:19 UTC
+"Wallet.HdSeedRequiredBeforeDerive" time elapsed: 00:00:00
+----------------------------------------------------------
+
+33/95 Testing: Wallet.MultisigSpendFailsWithoutInputs
+33/95 Test: Wallet.MultisigSpendFailsWithoutInputs
+Command: "/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/wallet_sign_gtest" "--gtest_filter=Wallet.MultisigSpendFailsWithoutInputs" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov
+"Wallet.MultisigSpendFailsWithoutInputs" start time: Jan 03 15:19 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = Wallet.MultisigSpendFailsWithoutInputs
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from Wallet
+[ RUN      ] Wallet.MultisigSpendFailsWithoutInputs
+[       OK ] Wallet.MultisigSpendFailsWithoutInputs (0 ms)
+[----------] 1 test from Wallet (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"Wallet.MultisigSpendFailsWithoutInputs" end time: Jan 03 15:19 UTC
+"Wallet.MultisigSpendFailsWithoutInputs" time elapsed: 00:00:00
+----------------------------------------------------------
+
+34/95 Testing: Keystore.EncryptsAndRejectsBadPassphrase
+34/95 Test: Keystore.EncryptsAndRejectsBadPassphrase
+Command: "/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/wallet_sign_gtest" "--gtest_filter=Keystore.EncryptsAndRejectsBadPassphrase" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov
+"Keystore.EncryptsAndRejectsBadPassphrase" start time: Jan 03 15:19 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = Keystore.EncryptsAndRejectsBadPassphrase
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from Keystore
+[ RUN      ] Keystore.EncryptsAndRejectsBadPassphrase
+[       OK ] Keystore.EncryptsAndRejectsBadPassphrase (93 ms)
+[----------] 1 test from Keystore (93 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (93 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.10 sec
+----------------------------------------------------------
+Test Passed.
+"Keystore.EncryptsAndRejectsBadPassphrase" end time: Jan 03 15:19 UTC
+"Keystore.EncryptsAndRejectsBadPassphrase" time elapsed: 00:00:00
+----------------------------------------------------------
+
+35/95 Testing: Keystore.MissingFileThrows
+35/95 Test: Keystore.MissingFileThrows
+Command: "/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/wallet_sign_gtest" "--gtest_filter=Keystore.MissingFileThrows" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov
+"Keystore.MissingFileThrows" start time: Jan 03 15:19 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = Keystore.MissingFileThrows
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from Keystore
+[ RUN      ] Keystore.MissingFileThrows
+[       OK ] Keystore.MissingFileThrows (0 ms)
+[----------] 1 test from Keystore (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"Keystore.MissingFileThrows" end time: Jan 03 15:19 UTC
+"Keystore.MissingFileThrows" time elapsed: 00:00:00
+----------------------------------------------------------
+
+36/95 Testing: P2PDoS.ExcessTrafficTriggersBan
+36/95 Test: P2PDoS.ExcessTrafficTriggersBan
+Command: "/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/p2p_dos_sim_test" "--gtest_filter=P2PDoS.ExcessTrafficTriggersBan" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov
+"P2PDoS.ExcessTrafficTriggersBan" start time: Jan 03 15:19 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = P2PDoS.ExcessTrafficTriggersBan
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from P2PDoS
+[ RUN      ] P2PDoS.ExcessTrafficTriggersBan
+[       OK ] P2PDoS.ExcessTrafficTriggersBan (1510 ms)
+[----------] 1 test from P2PDoS (1510 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (1510 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   1.52 sec
+----------------------------------------------------------
+Test Passed.
+"P2PDoS.ExcessTrafficTriggersBan" end time: Jan 03 15:19 UTC
+"P2PDoS.ExcessTrafficTriggersBan" time elapsed: 00:00:01
+----------------------------------------------------------
+
+37/95 Testing: P2P.MultinodeBroadcastAndInventory
+37/95 Test: P2P.MultinodeBroadcastAndInventory
+Command: "/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/p2p_multinode_gtest" "--gtest_filter=P2P.MultinodeBroadcastAndInventory" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov
+"P2P.MultinodeBroadcastAndInventory" start time: Jan 03 15:19 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = P2P.MultinodeBroadcastAndInventory
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from P2P
+[ RUN      ] P2P.MultinodeBroadcastAndInventory
+[       OK ] P2P.MultinodeBroadcastAndInventory (527 ms)
+[----------] 1 test from P2P (527 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (527 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.53 sec
+----------------------------------------------------------
+Test Passed.
+"P2P.MultinodeBroadcastAndInventory" end time: Jan 03 15:19 UTC
+"P2P.MultinodeBroadcastAndInventory" time elapsed: 00:00:00
+----------------------------------------------------------
+
+38/95 Testing: P2P.BloomFilterMatch
+38/95 Test: P2P.BloomFilterMatch
+Command: "/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/bloom_filter_gtest" "--gtest_filter=P2P.BloomFilterMatch" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov
+"P2P.BloomFilterMatch" start time: Jan 03 15:19 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = P2P.BloomFilterMatch
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from P2P
+[ RUN      ] P2P.BloomFilterMatch
+[       OK ] P2P.BloomFilterMatch (0 ms)
+[----------] 1 test from P2P (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"P2P.BloomFilterMatch" end time: Jan 03 15:19 UTC
+"P2P.BloomFilterMatch" time elapsed: 00:00:00
+----------------------------------------------------------
+
+39/95 Testing: TxIndex.UsesCacheWhenDbAbsent
+39/95 Test: TxIndex.UsesCacheWhenDbAbsent
+Command: "/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/rpc_server_test" "--gtest_filter=TxIndex.UsesCacheWhenDbAbsent" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov
+"TxIndex.UsesCacheWhenDbAbsent" start time: Jan 03 15:19 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = TxIndex.UsesCacheWhenDbAbsent
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from TxIndex
+[ RUN      ] TxIndex.UsesCacheWhenDbAbsent
+[       OK ] TxIndex.UsesCacheWhenDbAbsent (7 ms)
+[----------] 1 test from TxIndex (7 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (7 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Passed.
+"TxIndex.UsesCacheWhenDbAbsent" end time: Jan 03 15:19 UTC
+"TxIndex.UsesCacheWhenDbAbsent" time elapsed: 00:00:00
+----------------------------------------------------------
+
+40/95 Testing: TxIndex.ReopensEmptyAndTracksNewBlocks
+40/95 Test: TxIndex.ReopensEmptyAndTracksNewBlocks
+Command: "/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/rpc_server_test" "--gtest_filter=TxIndex.ReopensEmptyAndTracksNewBlocks" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov
+"TxIndex.ReopensEmptyAndTracksNewBlocks" start time: Jan 03 15:19 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = TxIndex.ReopensEmptyAndTracksNewBlocks
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from TxIndex
+[ RUN      ] TxIndex.ReopensEmptyAndTracksNewBlocks
+[       OK ] TxIndex.ReopensEmptyAndTracksNewBlocks (6 ms)
+[----------] 1 test from TxIndex (6 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (6 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Passed.
+"TxIndex.ReopensEmptyAndTracksNewBlocks" end time: Jan 03 15:19 UTC
+"TxIndex.ReopensEmptyAndTracksNewBlocks" time elapsed: 00:00:00
+----------------------------------------------------------
+
+41/95 Testing: RPC.EndpointsRespond
+41/95 Test: RPC.EndpointsRespond
+Command: "/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/rpc_server_test" "--gtest_filter=RPC.EndpointsRespond" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov
+"RPC.EndpointsRespond" start time: Jan 03 15:19 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = RPC.EndpointsRespond
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from RPC
+[ RUN      ] RPC.EndpointsRespond
+[       OK ] RPC.EndpointsRespond (71 ms)
+[----------] 1 test from RPC (71 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (71 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.08 sec
+----------------------------------------------------------
+Test Passed.
+"RPC.EndpointsRespond" end time: Jan 03 15:19 UTC
+"RPC.EndpointsRespond" time elapsed: 00:00:00
+----------------------------------------------------------
+
+42/95 Testing: RPCFailurePaths.AuthAndRateLimitEnforced
+42/95 Test: RPCFailurePaths.AuthAndRateLimitEnforced
+Command: "/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/rpc_server_test" "--gtest_filter=RPCFailurePaths.AuthAndRateLimitEnforced" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov
+"RPCFailurePaths.AuthAndRateLimitEnforced" start time: Jan 03 15:19 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = RPCFailurePaths.AuthAndRateLimitEnforced
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from RPCFailurePaths
+[ RUN      ] RPCFailurePaths.AuthAndRateLimitEnforced
+[       OK ] RPCFailurePaths.AuthAndRateLimitEnforced (170 ms)
+[----------] 1 test from RPCFailurePaths (170 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (170 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.18 sec
+----------------------------------------------------------
+Test Passed.
+"RPCFailurePaths.AuthAndRateLimitEnforced" end time: Jan 03 15:19 UTC
+"RPCFailurePaths.AuthAndRateLimitEnforced" time elapsed: 00:00:00
+----------------------------------------------------------
+
+43/95 Testing: RPCFailurePaths.UnknownMethodsWhenSubsystemsDisabled
+43/95 Test: RPCFailurePaths.UnknownMethodsWhenSubsystemsDisabled
+Command: "/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/rpc_server_test" "--gtest_filter=RPCFailurePaths.UnknownMethodsWhenSubsystemsDisabled" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov
+"RPCFailurePaths.UnknownMethodsWhenSubsystemsDisabled" start time: Jan 03 15:19 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = RPCFailurePaths.UnknownMethodsWhenSubsystemsDisabled
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from RPCFailurePaths
+[ RUN      ] RPCFailurePaths.UnknownMethodsWhenSubsystemsDisabled
+[       OK ] RPCFailurePaths.UnknownMethodsWhenSubsystemsDisabled (103 ms)
+[----------] 1 test from RPCFailurePaths (103 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (103 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.12 sec
+----------------------------------------------------------
+Test Passed.
+"RPCFailurePaths.UnknownMethodsWhenSubsystemsDisabled" end time: Jan 03 15:19 UTC
+"RPCFailurePaths.UnknownMethodsWhenSubsystemsDisabled" time elapsed: 00:00:00
+----------------------------------------------------------
+
+44/95 Testing: RPCFailurePaths.ExceptionsPropagateWithoutStateMutation
+44/95 Test: RPCFailurePaths.ExceptionsPropagateWithoutStateMutation
+Command: "/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/rpc_server_test" "--gtest_filter=RPCFailurePaths.ExceptionsPropagateWithoutStateMutation" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov
+"RPCFailurePaths.ExceptionsPropagateWithoutStateMutation" start time: Jan 03 15:19 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = RPCFailurePaths.ExceptionsPropagateWithoutStateMutation
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from RPCFailurePaths
+[ RUN      ] RPCFailurePaths.ExceptionsPropagateWithoutStateMutation
+[       OK ] RPCFailurePaths.ExceptionsPropagateWithoutStateMutation (56 ms)
+[----------] 1 test from RPCFailurePaths (56 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (56 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.07 sec
+----------------------------------------------------------
+Test Passed.
+"RPCFailurePaths.ExceptionsPropagateWithoutStateMutation" end time: Jan 03 15:19 UTC
+"RPCFailurePaths.ExceptionsPropagateWithoutStateMutation" time elapsed: 00:00:00
+----------------------------------------------------------
+
+45/95 Testing: RPCFailurePaths.ArgumentErrorsReturnExplicitCodes
+45/95 Test: RPCFailurePaths.ArgumentErrorsReturnExplicitCodes
+Command: "/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/rpc_server_test" "--gtest_filter=RPCFailurePaths.ArgumentErrorsReturnExplicitCodes" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov
+"RPCFailurePaths.ArgumentErrorsReturnExplicitCodes" start time: Jan 03 15:19 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = RPCFailurePaths.ArgumentErrorsReturnExplicitCodes
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from RPCFailurePaths
+[ RUN      ] RPCFailurePaths.ArgumentErrorsReturnExplicitCodes
+[       OK ] RPCFailurePaths.ArgumentErrorsReturnExplicitCodes (53 ms)
+[----------] 1 test from RPCFailurePaths (53 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (53 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.07 sec
+----------------------------------------------------------
+Test Passed.
+"RPCFailurePaths.ArgumentErrorsReturnExplicitCodes" end time: Jan 03 15:19 UTC
+"RPCFailurePaths.ArgumentErrorsReturnExplicitCodes" time elapsed: 00:00:00
+----------------------------------------------------------
+
+46/95 Testing: RPCAssetValidation.RejectsTlnWhereForbiddenAndMixedAssets
+46/95 Test: RPCAssetValidation.RejectsTlnWhereForbiddenAndMixedAssets
+Command: "/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/rpc_server_test" "--gtest_filter=RPCAssetValidation.RejectsTlnWhereForbiddenAndMixedAssets" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov
+"RPCAssetValidation.RejectsTlnWhereForbiddenAndMixedAssets" start time: Jan 03 15:19 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = RPCAssetValidation.RejectsTlnWhereForbiddenAndMixedAssets
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from RPCAssetValidation
+[ RUN      ] RPCAssetValidation.RejectsTlnWhereForbiddenAndMixedAssets
+[       OK ] RPCAssetValidation.RejectsTlnWhereForbiddenAndMixedAssets (56 ms)
+[----------] 1 test from RPCAssetValidation (56 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (56 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.07 sec
+----------------------------------------------------------
+Test Passed.
+"RPCAssetValidation.RejectsTlnWhereForbiddenAndMixedAssets" end time: Jan 03 15:19 UTC
+"RPCAssetValidation.RejectsTlnWhereForbiddenAndMixedAssets" time elapsed: 00:00:00
+----------------------------------------------------------
+
+47/95 Testing: Integration.RegtestHarness
+47/95 Test: Integration.RegtestHarness
+Command: "/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/regtest_mode_test" "--gtest_filter=Integration.RegtestHarness" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov
+"Integration.RegtestHarness" start time: Jan 03 15:19 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = Integration.RegtestHarness
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from Integration
+[ RUN      ] Integration.RegtestHarness
+[       OK ] Integration.RegtestHarness (0 ms)
+[----------] 1 test from Integration (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"Integration.RegtestHarness" end time: Jan 03 15:19 UTC
+"Integration.RegtestHarness" time elapsed: 00:00:00
+----------------------------------------------------------
+
+48/95 Testing: Integration.PrivateRegtestChainProgression
+48/95 Test: Integration.PrivateRegtestChainProgression
+Command: "/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/regtest_private_chain_test" "--gtest_filter=Integration.PrivateRegtestChainProgression" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov
+"Integration.PrivateRegtestChainProgression" start time: Jan 03 15:19 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = Integration.PrivateRegtestChainProgression
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from Integration
+[ RUN      ] Integration.PrivateRegtestChainProgression
+[       OK ] Integration.PrivateRegtestChainProgression (0 ms)
+[----------] 1 test from Integration (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"Integration.PrivateRegtestChainProgression" end time: Jan 03 15:19 UTC
+"Integration.PrivateRegtestChainProgression" time elapsed: 00:00:00
+----------------------------------------------------------
+
+49/95 Testing: BridgeFlow.InitiateClaimRefund
+49/95 Test: BridgeFlow.InitiateClaimRefund
+Command: "/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/crosschain_bridge_gtest" "--gtest_filter=BridgeFlow.InitiateClaimRefund" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov
+"BridgeFlow.InitiateClaimRefund" start time: Jan 03 15:19 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = BridgeFlow.InitiateClaimRefund
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from BridgeFlow
+[ RUN      ] BridgeFlow.InitiateClaimRefund
+[       OK ] BridgeFlow.InitiateClaimRefund (6 ms)
+[----------] 1 test from BridgeFlow (6 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (6 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"BridgeFlow.InitiateClaimRefund" end time: Jan 03 15:19 UTC
+"BridgeFlow.InitiateClaimRefund" time elapsed: 00:00:00
+----------------------------------------------------------
+
+50/95 Testing: BridgeFlow.DetectsInboundLock
+50/95 Test: BridgeFlow.DetectsInboundLock
+Command: "/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/crosschain_bridge_gtest" "--gtest_filter=BridgeFlow.DetectsInboundLock" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov
+"BridgeFlow.DetectsInboundLock" start time: Jan 03 15:19 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = BridgeFlow.DetectsInboundLock
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from BridgeFlow
+[ RUN      ] BridgeFlow.DetectsInboundLock
+[       OK ] BridgeFlow.DetectsInboundLock (3 ms)
+[----------] 1 test from BridgeFlow (3 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (3 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"BridgeFlow.DetectsInboundLock" end time: Jan 03 15:19 UTC
+"BridgeFlow.DetectsInboundLock" time elapsed: 00:00:00
+----------------------------------------------------------
+
+51/95 Testing: RelayerFlow.HandlesEmptyEndpoint
+51/95 Test: RelayerFlow.HandlesEmptyEndpoint
+Command: "/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/crosschain_bridge_gtest" "--gtest_filter=RelayerFlow.HandlesEmptyEndpoint" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov
+"RelayerFlow.HandlesEmptyEndpoint" start time: Jan 03 15:19 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = RelayerFlow.HandlesEmptyEndpoint
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from RelayerFlow
+[ RUN      ] RelayerFlow.HandlesEmptyEndpoint
+[       OK ] RelayerFlow.HandlesEmptyEndpoint (2 ms)
+[----------] 1 test from RelayerFlow (2 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (2 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"RelayerFlow.HandlesEmptyEndpoint" end time: Jan 03 15:19 UTC
+"RelayerFlow.HandlesEmptyEndpoint" time elapsed: 00:00:00
+----------------------------------------------------------
+
+52/95 Testing: RelayerFlow.InvalidProofResponseIsIgnored
+52/95 Test: RelayerFlow.InvalidProofResponseIsIgnored
+Command: "/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/crosschain_bridge_gtest" "--gtest_filter=RelayerFlow.InvalidProofResponseIsIgnored" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov
+"RelayerFlow.InvalidProofResponseIsIgnored" start time: Jan 03 15:19 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = RelayerFlow.InvalidProofResponseIsIgnored
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from RelayerFlow
+[ RUN      ] RelayerFlow.InvalidProofResponseIsIgnored
+Relayer tick error: shutdown: Transport endpoint is not connected [system:107 at /usr/include/boost/asio/detail/reactive_socket_service.hpp:231 in function 'shutdown']
+[       OK ] RelayerFlow.InvalidProofResponseIsIgnored (2003 ms)
+[----------] 1 test from RelayerFlow (2003 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (2003 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   2.01 sec
+----------------------------------------------------------
+Test Passed.
+"RelayerFlow.InvalidProofResponseIsIgnored" end time: Jan 03 15:19 UTC
+"RelayerFlow.InvalidProofResponseIsIgnored" time elapsed: 00:00:02
+----------------------------------------------------------
+
+53/95 Testing: EvmExecute.DisabledInFavorOfWasm
+53/95 Test: EvmExecute.DisabledInFavorOfWasm
+Command: "/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/sidechain_evm_test" "--gtest_filter=EvmExecute.DisabledInFavorOfWasm" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov
+"EvmExecute.DisabledInFavorOfWasm" start time: Jan 03 15:19 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = EvmExecute.DisabledInFavorOfWasm
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from EvmExecute
+[ RUN      ] EvmExecute.DisabledInFavorOfWasm
+[       OK ] EvmExecute.DisabledInFavorOfWasm (0 ms)
+[----------] 1 test from EvmExecute (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"EvmExecute.DisabledInFavorOfWasm" end time: Jan 03 15:19 UTC
+"EvmExecute.DisabledInFavorOfWasm" time elapsed: 00:00:00
+----------------------------------------------------------
+
+54/95 Testing: NftPrecompileTest.MintAndOwnerLookup
+54/95 Test: NftPrecompileTest.MintAndOwnerLookup
+Command: "/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/nft_precompile_test" "--gtest_filter=NftPrecompileTest.MintAndOwnerLookup" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov
+"NftPrecompileTest.MintAndOwnerLookup" start time: Jan 03 15:19 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = NftPrecompileTest.MintAndOwnerLookup
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from NftPrecompileTest
+[ RUN      ] NftPrecompileTest.MintAndOwnerLookup
+[       OK ] NftPrecompileTest.MintAndOwnerLookup (3 ms)
+[----------] 1 test from NftPrecompileTest (3 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (3 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"NftPrecompileTest.MintAndOwnerLookup" end time: Jan 03 15:19 UTC
+"NftPrecompileTest.MintAndOwnerLookup" time elapsed: 00:00:00
+----------------------------------------------------------
+
+55/95 Testing: NftPrecompileTest.TransferUpdatesOwner
+55/95 Test: NftPrecompileTest.TransferUpdatesOwner
+Command: "/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/nft_precompile_test" "--gtest_filter=NftPrecompileTest.TransferUpdatesOwner" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov
+"NftPrecompileTest.TransferUpdatesOwner" start time: Jan 03 15:19 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = NftPrecompileTest.TransferUpdatesOwner
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from NftPrecompileTest
+[ RUN      ] NftPrecompileTest.TransferUpdatesOwner
+[       OK ] NftPrecompileTest.TransferUpdatesOwner (3 ms)
+[----------] 1 test from NftPrecompileTest (3 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (3 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"NftPrecompileTest.TransferUpdatesOwner" end time: Jan 03 15:19 UTC
+"NftPrecompileTest.TransferUpdatesOwner" time elapsed: 00:00:00
+----------------------------------------------------------
+
+56/95 Testing: NftPrecompileTest.MintFailsForExistingToken
+56/95 Test: NftPrecompileTest.MintFailsForExistingToken
+Command: "/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/nft_precompile_test" "--gtest_filter=NftPrecompileTest.MintFailsForExistingToken" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov
+"NftPrecompileTest.MintFailsForExistingToken" start time: Jan 03 15:19 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = NftPrecompileTest.MintFailsForExistingToken
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from NftPrecompileTest
+[ RUN      ] NftPrecompileTest.MintFailsForExistingToken
+[       OK ] NftPrecompileTest.MintFailsForExistingToken (3 ms)
+[----------] 1 test from NftPrecompileTest (3 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (3 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"NftPrecompileTest.MintFailsForExistingToken" end time: Jan 03 15:19 UTC
+"NftPrecompileTest.MintFailsForExistingToken" time elapsed: 00:00:00
+----------------------------------------------------------
+
+57/95 Testing: NftPrecompileTest.TokenUriAndApprovals
+57/95 Test: NftPrecompileTest.TokenUriAndApprovals
+Command: "/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/nft_precompile_test" "--gtest_filter=NftPrecompileTest.TokenUriAndApprovals" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov
+"NftPrecompileTest.TokenUriAndApprovals" start time: Jan 03 15:19 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = NftPrecompileTest.TokenUriAndApprovals
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from NftPrecompileTest
+[ RUN      ] NftPrecompileTest.TokenUriAndApprovals
+[       OK ] NftPrecompileTest.TokenUriAndApprovals (4 ms)
+[----------] 1 test from NftPrecompileTest (4 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (4 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"NftPrecompileTest.TokenUriAndApprovals" end time: Jan 03 15:19 UTC
+"NftPrecompileTest.TokenUriAndApprovals" time elapsed: 00:00:00
+----------------------------------------------------------
+
+58/95 Testing: NftPrecompileTest.BurnAuthorizationAndMetadataImmutability
+58/95 Test: NftPrecompileTest.BurnAuthorizationAndMetadataImmutability
+Command: "/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/nft_precompile_test" "--gtest_filter=NftPrecompileTest.BurnAuthorizationAndMetadataImmutability" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov
+"NftPrecompileTest.BurnAuthorizationAndMetadataImmutability" start time: Jan 03 15:19 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = NftPrecompileTest.BurnAuthorizationAndMetadataImmutability
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from NftPrecompileTest
+[ RUN      ] NftPrecompileTest.BurnAuthorizationAndMetadataImmutability
+[       OK ] NftPrecompileTest.BurnAuthorizationAndMetadataImmutability (3 ms)
+[----------] 1 test from NftPrecompileTest (3 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (3 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"NftPrecompileTest.BurnAuthorizationAndMetadataImmutability" end time: Jan 03 15:19 UTC
+"NftPrecompileTest.BurnAuthorizationAndMetadataImmutability" time elapsed: 00:00:00
+----------------------------------------------------------
+
+59/95 Testing: NftMarketplace.RoyaltySettlementSplitsPayment
+59/95 Test: NftMarketplace.RoyaltySettlementSplitsPayment
+Command: "/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/nft_market_test" "--gtest_filter=NftMarketplace.RoyaltySettlementSplitsPayment" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov
+"NftMarketplace.RoyaltySettlementSplitsPayment" start time: Jan 03 15:19 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = NftMarketplace.RoyaltySettlementSplitsPayment
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from NftMarketplace
+[ RUN      ] NftMarketplace.RoyaltySettlementSplitsPayment
+[       OK ] NftMarketplace.RoyaltySettlementSplitsPayment (1 ms)
+[----------] 1 test from NftMarketplace (1 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (1 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"NftMarketplace.RoyaltySettlementSplitsPayment" end time: Jan 03 15:19 UTC
+"NftMarketplace.RoyaltySettlementSplitsPayment" time elapsed: 00:00:00
+----------------------------------------------------------
+
+60/95 Testing: NftMarketplace.RoyaltyImmutabilityAndReuse
+60/95 Test: NftMarketplace.RoyaltyImmutabilityAndReuse
+Command: "/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/nft_market_test" "--gtest_filter=NftMarketplace.RoyaltyImmutabilityAndReuse" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov
+"NftMarketplace.RoyaltyImmutabilityAndReuse" start time: Jan 03 15:19 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = NftMarketplace.RoyaltyImmutabilityAndReuse
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from NftMarketplace
+[ RUN      ] NftMarketplace.RoyaltyImmutabilityAndReuse
+[       OK ] NftMarketplace.RoyaltyImmutabilityAndReuse (0 ms)
+[----------] 1 test from NftMarketplace (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"NftMarketplace.RoyaltyImmutabilityAndReuse" end time: Jan 03 15:19 UTC
+"NftMarketplace.RoyaltyImmutabilityAndReuse" time elapsed: 00:00:00
+----------------------------------------------------------
+
+61/95 Testing: NftMarketplace.IgnoresAssetIdsForNftExecution
+61/95 Test: NftMarketplace.IgnoresAssetIdsForNftExecution
+Command: "/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/nft_market_test" "--gtest_filter=NftMarketplace.IgnoresAssetIdsForNftExecution" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov
+"NftMarketplace.IgnoresAssetIdsForNftExecution" start time: Jan 03 15:19 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = NftMarketplace.IgnoresAssetIdsForNftExecution
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from NftMarketplace
+[ RUN      ] NftMarketplace.IgnoresAssetIdsForNftExecution
+[       OK ] NftMarketplace.IgnoresAssetIdsForNftExecution (0 ms)
+[----------] 1 test from NftMarketplace (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"NftMarketplace.IgnoresAssetIdsForNftExecution" end time: Jan 03 15:19 UTC
+"NftMarketplace.IgnoresAssetIdsForNftExecution" time elapsed: 00:00:00
+----------------------------------------------------------
+
+62/95 Testing: NftMarketplace.RejectsTlnPaymentAndPreservesSupply
+62/95 Test: NftMarketplace.RejectsTlnPaymentAndPreservesSupply
+Command: "/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/nft_market_test" "--gtest_filter=NftMarketplace.RejectsTlnPaymentAndPreservesSupply" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov
+"NftMarketplace.RejectsTlnPaymentAndPreservesSupply" start time: Jan 03 15:19 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = NftMarketplace.RejectsTlnPaymentAndPreservesSupply
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from NftMarketplace
+[ RUN      ] NftMarketplace.RejectsTlnPaymentAndPreservesSupply
+[       OK ] NftMarketplace.RejectsTlnPaymentAndPreservesSupply (0 ms)
+[----------] 1 test from NftMarketplace (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"NftMarketplace.RejectsTlnPaymentAndPreservesSupply" end time: Jan 03 15:19 UTC
+"NftMarketplace.RejectsTlnPaymentAndPreservesSupply" time elapsed: 00:00:00
+----------------------------------------------------------
+
+63/95 Testing: NftMarketplace.RejectsInvalidMetadataPaths
+63/95 Test: NftMarketplace.RejectsInvalidMetadataPaths
+Command: "/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/nft_market_test" "--gtest_filter=NftMarketplace.RejectsInvalidMetadataPaths" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov
+"NftMarketplace.RejectsInvalidMetadataPaths" start time: Jan 03 15:19 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = NftMarketplace.RejectsInvalidMetadataPaths
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from NftMarketplace
+[ RUN      ] NftMarketplace.RejectsInvalidMetadataPaths
+[       OK ] NftMarketplace.RejectsInvalidMetadataPaths (0 ms)
+[----------] 1 test from NftMarketplace (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"NftMarketplace.RejectsInvalidMetadataPaths" end time: Jan 03 15:19 UTC
+"NftMarketplace.RejectsInvalidMetadataPaths" time elapsed: 00:00:00
+----------------------------------------------------------
+
+64/95 Testing: NftMarketplace.EnforcesRoyaltyBoundsAndGasFloor
+64/95 Test: NftMarketplace.EnforcesRoyaltyBoundsAndGasFloor
+Command: "/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/nft_market_test" "--gtest_filter=NftMarketplace.EnforcesRoyaltyBoundsAndGasFloor" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov
+"NftMarketplace.EnforcesRoyaltyBoundsAndGasFloor" start time: Jan 03 15:19 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = NftMarketplace.EnforcesRoyaltyBoundsAndGasFloor
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from NftMarketplace
+[ RUN      ] NftMarketplace.EnforcesRoyaltyBoundsAndGasFloor
+[       OK ] NftMarketplace.EnforcesRoyaltyBoundsAndGasFloor (0 ms)
+[----------] 1 test from NftMarketplace (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"NftMarketplace.EnforcesRoyaltyBoundsAndGasFloor" end time: Jan 03 15:19 UTC
+"NftMarketplace.EnforcesRoyaltyBoundsAndGasFloor" time elapsed: 00:00:00
+----------------------------------------------------------
+
+65/95 Testing: NftUiHelpers.HeadersExcludeTln
+65/95 Test: NftUiHelpers.HeadersExcludeTln
+Command: "/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/nft_ui_helpers_test" "--gtest_filter=NftUiHelpers.HeadersExcludeTln" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov
+"NftUiHelpers.HeadersExcludeTln" start time: Jan 03 15:19 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = NftUiHelpers.HeadersExcludeTln
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from NftUiHelpers
+[ RUN      ] NftUiHelpers.HeadersExcludeTln
+[       OK ] NftUiHelpers.HeadersExcludeTln (0 ms)
+[----------] 1 test from NftUiHelpers (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"NftUiHelpers.HeadersExcludeTln" end time: Jan 03 15:19 UTC
+"NftUiHelpers.HeadersExcludeTln" time elapsed: 00:00:00
+----------------------------------------------------------
+
+66/95 Testing: NftUiHelpers.ResolvesCategoryIcon
+66/95 Test: NftUiHelpers.ResolvesCategoryIcon
+Command: "/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/nft_ui_helpers_test" "--gtest_filter=NftUiHelpers.ResolvesCategoryIcon" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov
+"NftUiHelpers.ResolvesCategoryIcon" start time: Jan 03 15:19 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = NftUiHelpers.ResolvesCategoryIcon
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from NftUiHelpers
+[ RUN      ] NftUiHelpers.ResolvesCategoryIcon
+[       OK ] NftUiHelpers.ResolvesCategoryIcon (0 ms)
+[----------] 1 test from NftUiHelpers (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"NftUiHelpers.ResolvesCategoryIcon" end time: Jan 03 15:19 UTC
+"NftUiHelpers.ResolvesCategoryIcon" time elapsed: 00:00:00
+----------------------------------------------------------
+
+67/95 Testing: NftUiHelpers.FallsBackWhenIconMissing
+67/95 Test: NftUiHelpers.FallsBackWhenIconMissing
+Command: "/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/nft_ui_helpers_test" "--gtest_filter=NftUiHelpers.FallsBackWhenIconMissing" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov
+"NftUiHelpers.FallsBackWhenIconMissing" start time: Jan 03 15:19 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = NftUiHelpers.FallsBackWhenIconMissing
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from NftUiHelpers
+[ RUN      ] NftUiHelpers.FallsBackWhenIconMissing
+[       OK ] NftUiHelpers.FallsBackWhenIconMissing (0 ms)
+[----------] 1 test from NftUiHelpers (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"NftUiHelpers.FallsBackWhenIconMissing" end time: Jan 03 15:19 UTC
+"NftUiHelpers.FallsBackWhenIconMissing" time elapsed: 00:00:00
+----------------------------------------------------------
+
+68/95 Testing: PegBridge.FullPegCycle
+68/95 Test: PegBridge.FullPegCycle
+Command: "/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/peg_bridge_test" "--gtest_filter=PegBridge.FullPegCycle" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov
+"PegBridge.FullPegCycle" start time: Jan 03 15:19 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = PegBridge.FullPegCycle
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from PegBridge
+[ RUN      ] PegBridge.FullPegCycle
+[       OK ] PegBridge.FullPegCycle (0 ms)
+[----------] 1 test from PegBridge (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (1 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"PegBridge.FullPegCycle" end time: Jan 03 15:19 UTC
+"PegBridge.FullPegCycle" time elapsed: 00:00:00
+----------------------------------------------------------
+
+69/95 Testing: PegBridge.ExpiredProofFails
+69/95 Test: PegBridge.ExpiredProofFails
+Command: "/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/peg_bridge_test" "--gtest_filter=PegBridge.ExpiredProofFails" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov
+"PegBridge.ExpiredProofFails" start time: Jan 03 15:19 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = PegBridge.ExpiredProofFails
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from PegBridge
+[ RUN      ] PegBridge.ExpiredProofFails
+[       OK ] PegBridge.ExpiredProofFails (0 ms)
+[----------] 1 test from PegBridge (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"PegBridge.ExpiredProofFails" end time: Jan 03 15:19 UTC
+"PegBridge.ExpiredProofFails" time elapsed: 00:00:00
+----------------------------------------------------------
+
+70/95 Testing: WasmAssetLaw.RejectsMismatchedAsset
+70/95 Test: WasmAssetLaw.RejectsMismatchedAsset
+Command: "/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/sidechain_wasm_execution_test" "--gtest_filter=WasmAssetLaw.RejectsMismatchedAsset" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov
+"WasmAssetLaw.RejectsMismatchedAsset" start time: Jan 03 15:19 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = WasmAssetLaw.RejectsMismatchedAsset
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from WasmAssetLaw
+[ RUN      ] WasmAssetLaw.RejectsMismatchedAsset
+[       OK ] WasmAssetLaw.RejectsMismatchedAsset (0 ms)
+[----------] 1 test from WasmAssetLaw (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"WasmAssetLaw.RejectsMismatchedAsset" end time: Jan 03 15:19 UTC
+"WasmAssetLaw.RejectsMismatchedAsset" time elapsed: 00:00:00
+----------------------------------------------------------
+
+71/95 Testing: WasmAssetLaw.NftAssetAgnostic
+71/95 Test: WasmAssetLaw.NftAssetAgnostic
+Command: "/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/sidechain_wasm_execution_test" "--gtest_filter=WasmAssetLaw.NftAssetAgnostic" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov
+"WasmAssetLaw.NftAssetAgnostic" start time: Jan 03 15:19 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = WasmAssetLaw.NftAssetAgnostic
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from WasmAssetLaw
+[ RUN      ] WasmAssetLaw.NftAssetAgnostic
+[       OK ] WasmAssetLaw.NftAssetAgnostic (0 ms)
+[----------] 1 test from WasmAssetLaw (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (1 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"WasmAssetLaw.NftAssetAgnostic" end time: Jan 03 15:19 UTC
+"WasmAssetLaw.NftAssetAgnostic" time elapsed: 00:00:00
+----------------------------------------------------------
+
+72/95 Testing: WasmRpcServiceTest.RejectsInvalidContractCall
+72/95 Test: WasmRpcServiceTest.RejectsInvalidContractCall
+Command: "/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/sidechain_wasm_execution_test" "--gtest_filter=WasmRpcServiceTest.RejectsInvalidContractCall" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov
+"WasmRpcServiceTest.RejectsInvalidContractCall" start time: Jan 03 15:19 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = WasmRpcServiceTest.RejectsInvalidContractCall
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from WasmRpcServiceTest
+[ RUN      ] WasmRpcServiceTest.RejectsInvalidContractCall
+[       OK ] WasmRpcServiceTest.RejectsInvalidContractCall (0 ms)
+[----------] 1 test from WasmRpcServiceTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"WasmRpcServiceTest.RejectsInvalidContractCall" end time: Jan 03 15:19 UTC
+"WasmRpcServiceTest.RejectsInvalidContractCall" time elapsed: 00:00:00
+----------------------------------------------------------
+
+73/95 Testing: WasmDeterminism.RepeatableGasAndOutput
+73/95 Test: WasmDeterminism.RepeatableGasAndOutput
+Command: "/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/sidechain_wasm_execution_test" "--gtest_filter=WasmDeterminism.RepeatableGasAndOutput" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov
+"WasmDeterminism.RepeatableGasAndOutput" start time: Jan 03 15:19 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = WasmDeterminism.RepeatableGasAndOutput
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from WasmDeterminism
+[ RUN      ] WasmDeterminism.RepeatableGasAndOutput
+[       OK ] WasmDeterminism.RepeatableGasAndOutput (0 ms)
+[----------] 1 test from WasmDeterminism (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"WasmDeterminism.RepeatableGasAndOutput" end time: Jan 03 15:19 UTC
+"WasmDeterminism.RepeatableGasAndOutput" time elapsed: 00:00:00
+----------------------------------------------------------
+
+74/95 Testing: WasmSafety.StackLimitEnforced
+74/95 Test: WasmSafety.StackLimitEnforced
+Command: "/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/sidechain_wasm_execution_test" "--gtest_filter=WasmSafety.StackLimitEnforced" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov
+"WasmSafety.StackLimitEnforced" start time: Jan 03 15:19 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = WasmSafety.StackLimitEnforced
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from WasmSafety
+[ RUN      ] WasmSafety.StackLimitEnforced
+[       OK ] WasmSafety.StackLimitEnforced (0 ms)
+[----------] 1 test from WasmSafety (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"WasmSafety.StackLimitEnforced" end time: Jan 03 15:19 UTC
+"WasmSafety.StackLimitEnforced" time elapsed: 00:00:00
+----------------------------------------------------------
+
+75/95 Testing: WasmSafety.GasExhaustionAndUnknownOpcode
+75/95 Test: WasmSafety.GasExhaustionAndUnknownOpcode
+Command: "/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/sidechain_wasm_execution_test" "--gtest_filter=WasmSafety.GasExhaustionAndUnknownOpcode" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov
+"WasmSafety.GasExhaustionAndUnknownOpcode" start time: Jan 03 15:19 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = WasmSafety.GasExhaustionAndUnknownOpcode
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from WasmSafety
+[ RUN      ] WasmSafety.GasExhaustionAndUnknownOpcode
+[       OK ] WasmSafety.GasExhaustionAndUnknownOpcode (0 ms)
+[----------] 1 test from WasmSafety (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"WasmSafety.GasExhaustionAndUnknownOpcode" end time: Jan 03 15:19 UTC
+"WasmSafety.GasExhaustionAndUnknownOpcode" time elapsed: 00:00:00
+----------------------------------------------------------
+
+76/95 Testing: WasmState.MintCreatesOnlyCoreEntry
+76/95 Test: WasmState.MintCreatesOnlyCoreEntry
+Command: "/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/sidechain_wasm_execution_test" "--gtest_filter=WasmState.MintCreatesOnlyCoreEntry" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov
+"WasmState.MintCreatesOnlyCoreEntry" start time: Jan 03 15:19 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = WasmState.MintCreatesOnlyCoreEntry
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from WasmState
+[ RUN      ] WasmState.MintCreatesOnlyCoreEntry
+[       OK ] WasmState.MintCreatesOnlyCoreEntry (0 ms)
+[----------] 1 test from WasmState (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"WasmState.MintCreatesOnlyCoreEntry" end time: Jan 03 15:19 UTC
+"WasmState.MintCreatesOnlyCoreEntry" time elapsed: 00:00:00
+----------------------------------------------------------
+
+77/95 Testing: WasmIsolation.Layer1UntouchedByNftLifecycle
+77/95 Test: WasmIsolation.Layer1UntouchedByNftLifecycle
+Command: "/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/sidechain_wasm_execution_test" "--gtest_filter=WasmIsolation.Layer1UntouchedByNftLifecycle" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov
+"WasmIsolation.Layer1UntouchedByNftLifecycle" start time: Jan 03 15:19 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = WasmIsolation.Layer1UntouchedByNftLifecycle
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from WasmIsolation
+[ RUN      ] WasmIsolation.Layer1UntouchedByNftLifecycle
+[       OK ] WasmIsolation.Layer1UntouchedByNftLifecycle (8 ms)
+[----------] 1 test from WasmIsolation (8 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (8 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"WasmIsolation.Layer1UntouchedByNftLifecycle" end time: Jan 03 15:19 UTC
+"WasmIsolation.Layer1UntouchedByNftLifecycle" time elapsed: 00:00:00
+----------------------------------------------------------
+
+78/95 Testing: WasmCheckpoint.RejectsInvalidAnchors
+78/95 Test: WasmCheckpoint.RejectsInvalidAnchors
+Command: "/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/sidechain_wasm_execution_test" "--gtest_filter=WasmCheckpoint.RejectsInvalidAnchors" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov
+"WasmCheckpoint.RejectsInvalidAnchors" start time: Jan 03 15:19 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = WasmCheckpoint.RejectsInvalidAnchors
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from WasmCheckpoint
+[ RUN      ] WasmCheckpoint.RejectsInvalidAnchors
+[       OK ] WasmCheckpoint.RejectsInvalidAnchors (0 ms)
+[----------] 1 test from WasmCheckpoint (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"WasmCheckpoint.RejectsInvalidAnchors" end time: Jan 03 15:19 UTC
+"WasmCheckpoint.RejectsInvalidAnchors" time elapsed: 00:00:00
+----------------------------------------------------------
+
+79/95 Testing: WasmStateStore.DeterministicRoots
+79/95 Test: WasmStateStore.DeterministicRoots
+Command: "/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/sidechain_wasm_execution_test" "--gtest_filter=WasmStateStore.DeterministicRoots" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov
+"WasmStateStore.DeterministicRoots" start time: Jan 03 15:19 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = WasmStateStore.DeterministicRoots
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from WasmStateStore
+[ RUN      ] WasmStateStore.DeterministicRoots
+[       OK ] WasmStateStore.DeterministicRoots (0 ms)
+[----------] 1 test from WasmStateStore (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"WasmStateStore.DeterministicRoots" end time: Jan 03 15:19 UTC
+"WasmStateStore.DeterministicRoots" time elapsed: 00:00:00
+----------------------------------------------------------
+
+80/95 Testing: StratumClient.RejectsRemoteWithoutAllowFlag
+80/95 Test: StratumClient.RejectsRemoteWithoutAllowFlag
+Command: "/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/stratum_client_test" "--gtest_filter=StratumClient.RejectsRemoteWithoutAllowFlag" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov
+"StratumClient.RejectsRemoteWithoutAllowFlag" start time: Jan 03 15:19 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = StratumClient.RejectsRemoteWithoutAllowFlag
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from StratumClient
+[ RUN      ] StratumClient.RejectsRemoteWithoutAllowFlag
+[       OK ] StratumClient.RejectsRemoteWithoutAllowFlag (0 ms)
+[----------] 1 test from StratumClient (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"StratumClient.RejectsRemoteWithoutAllowFlag" end time: Jan 03 15:19 UTC
+"StratumClient.RejectsRemoteWithoutAllowFlag" time elapsed: 00:00:00
+----------------------------------------------------------
+
+81/95 Testing: StratumClient.LocalhostAllowedWithoutNetworkDial
+81/95 Test: StratumClient.LocalhostAllowedWithoutNetworkDial
+Command: "/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/stratum_client_test" "--gtest_filter=StratumClient.LocalhostAllowedWithoutNetworkDial" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov
+"StratumClient.LocalhostAllowedWithoutNetworkDial" start time: Jan 03 15:19 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = StratumClient.LocalhostAllowedWithoutNetworkDial
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from StratumClient
+[ RUN      ] StratumClient.LocalhostAllowedWithoutNetworkDial
+[       OK ] StratumClient.LocalhostAllowedWithoutNetworkDial (0 ms)
+[----------] 1 test from StratumClient (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"StratumClient.LocalhostAllowedWithoutNetworkDial" end time: Jan 03 15:19 UTC
+"StratumClient.LocalhostAllowedWithoutNetworkDial" time elapsed: 00:00:00
+----------------------------------------------------------
+
+82/95 Testing: schnorr_test
+82/95 Test: schnorr_test
+Command: "/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/schnorr_test"
+Directory: /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov
+"schnorr_test" start time: Jan 03 15:19 UTC
+Output:
+----------------------------------------------------------
+Schnorr verification OK
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"schnorr_test" end time: Jan 03 15:19 UTC
+"schnorr_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+83/95 Testing: merkle_test
+83/95 Test: merkle_test
+Command: "/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/merkle_test"
+Directory: /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov
+"merkle_test" start time: Jan 03 15:19 UTC
+Output:
+----------------------------------------------------------
+Merkle test OK
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"merkle_test" end time: Jan 03 15:19 UTC
+"merkle_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+84/95 Testing: supply_test
+84/95 Test: supply_test
+Command: "/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/supply_test"
+Directory: /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov
+"supply_test" start time: Jan 03 15:19 UTC
+Output:
+----------------------------------------------------------
+Supply test OK
+<end of output>
+Test time =   0.05 sec
+----------------------------------------------------------
+Test Passed.
+"supply_test" end time: Jan 03 15:19 UTC
+"supply_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+85/95 Testing: asset_policy_test
+85/95 Test: asset_policy_test
+Command: "/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/asset_policy_test"
+Directory: /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov
+"asset_policy_test" start time: Jan 03 15:19 UTC
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"asset_policy_test" end time: Jan 03 15:19 UTC
+"asset_policy_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+86/95 Testing: retarget_test
+86/95 Test: retarget_test
+Command: "/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/retarget_test"
+Directory: /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov
+"retarget_test" start time: Jan 03 15:19 UTC
+Output:
+----------------------------------------------------------
+Retarget test OK
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"retarget_test" end time: Jan 03 15:19 UTC
+"retarget_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+87/95 Testing: difficulty_adjust_test
+87/95 Test: difficulty_adjust_test
+Command: "/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/difficulty_adjust_test"
+Directory: /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov
+"difficulty_adjust_test" start time: Jan 03 15:19 UTC
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"difficulty_adjust_test" end time: Jan 03 15:19 UTC
+"difficulty_adjust_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+88/95 Testing: validation_tests
+88/95 Test: validation_tests
+Command: "/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/validation_tests"
+Directory: /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov
+"validation_tests" start time: Jan 03 15:19 UTC
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"validation_tests" end time: Jan 03 15:19 UTC
+"validation_tests" time elapsed: 00:00:00
+----------------------------------------------------------
+
+89/95 Testing: fork_resolution_test
+89/95 Test: fork_resolution_test
+Command: "/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/fork_resolution_test"
+Directory: /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov
+"fork_resolution_test" start time: Jan 03 15:19 UTC
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"fork_resolution_test" end time: Jan 03 15:19 UTC
+"fork_resolution_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+90/95 Testing: chainstate_tests
+90/95 Test: chainstate_tests
+Command: "/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/chainstate_tests"
+Directory: /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov
+"chainstate_tests" start time: Jan 03 15:19 UTC
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.03 sec
+----------------------------------------------------------
+Test Passed.
+"chainstate_tests" end time: Jan 03 15:19 UTC
+"chainstate_tests" time elapsed: 00:00:00
+----------------------------------------------------------
+
+91/95 Testing: mempool_tests
+91/95 Test: mempool_tests
+Command: "/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/mempool_tests"
+Directory: /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov
+"mempool_tests" start time: Jan 03 15:19 UTC
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"mempool_tests" end time: Jan 03 15:19 UTC
+"mempool_tests" time elapsed: 00:00:00
+----------------------------------------------------------
+
+92/95 Testing: block_validation_tests
+92/95 Test: block_validation_tests
+Command: "/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/block_validation_tests"
+Directory: /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov
+"block_validation_tests" start time: Jan 03 15:19 UTC
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"block_validation_tests" end time: Jan 03 15:19 UTC
+"block_validation_tests" time elapsed: 00:00:00
+----------------------------------------------------------
+
+93/95 Testing: p2p_integration_test
+93/95 Test: p2p_integration_test
+Command: "/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/p2p_integration_test"
+Directory: /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov
+"p2p_integration_test" start time: Jan 03 15:19 UTC
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   2.02 sec
+----------------------------------------------------------
+Test Passed.
+"p2p_integration_test" end time: Jan 03 15:19 UTC
+"p2p_integration_test" time elapsed: 00:00:02
+----------------------------------------------------------
+
+94/95 Testing: anti_dos_tests
+94/95 Test: anti_dos_tests
+Command: "/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/anti_dos_tests"
+Directory: /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov
+"anti_dos_tests" start time: Jan 03 15:19 UTC
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   1.10 sec
+----------------------------------------------------------
+Test Passed.
+"anti_dos_tests" end time: Jan 03 15:19 UTC
+"anti_dos_tests" time elapsed: 00:00:01
+----------------------------------------------------------
+
+95/95 Testing: attacks_sim
+95/95 Test: attacks_sim
+Command: "/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/attacks_sim"
+Directory: /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov
+"attacks_sim" start time: Jan 03 15:19 UTC
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"attacks_sim" end time: Jan 03 15:19 UTC
+"attacks_sim" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Jan 03 15:19 UTC

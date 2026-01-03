@@ -1,0 +1,1 @@
+/usr/bin/c++ --coverage -Wl,--dependency-file=CMakeFiles/chainstate_tests.dir/link.d CMakeFiles/chainstate_tests.dir/tests/chainstate/chainstate_tests.cpp.o -o chainstate_tests  libdrachma_layer1.a /usr/lib/x86_64-linux-gnu/libcrypto.so _deps/leveldb-build/libleveldb.a

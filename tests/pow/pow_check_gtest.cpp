@@ -2,6 +2,7 @@
 #include "../../layer1-core/pow/difficulty.h"
 #include "../../layer1-core/pow/sha256d.h"
 #include "../../layer1-core/consensus/params.h"
+#include <vector>
 
 TEST(PoW, ProofOfWorkBoundaries)
 {
@@ -80,4 +81,25 @@ TEST(PoW, Sha256DeterministicAndRejectsNullData)
 
     // sha256d should early-return when given a null output pointer.
     EXPECT_NO_THROW(sha256d(nullptr, msg, sizeof(msg)));
+}
+
+TEST(PoW, Sha256dBoundarySizesAreDeterministic)
+{
+    Hash256 empty1 = SHA256d(nullptr, 0);
+    Hash256 empty2 = SHA256d(nullptr, 0);
+    EXPECT_EQ(empty1, empty2);
+
+    const uint8_t single[1] = {0x01};
+    auto single1 = SHA256d(single, sizeof(single));
+    auto single2 = SHA256d(single, sizeof(single));
+    EXPECT_EQ(single1, single2);
+
+    std::vector<uint8_t> large(1024, 0xAB);
+    auto bulk1 = SHA256d(large.data(), large.size());
+    auto bulk2 = SHA256d(large.data(), large.size());
+    EXPECT_EQ(bulk1, bulk2);
+
+    Hash256 defensive{};
+    sha256d(defensive.data(), nullptr, large.size());
+    EXPECT_EQ(defensive, empty1);
 }
