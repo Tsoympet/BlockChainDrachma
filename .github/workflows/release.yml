@@ -46,9 +46,13 @@ jobs:
       - name: Package artifacts
         run: |
           mkdir -p dist/ubuntu
-          cp build/layer1-core/drachmad dist/ubuntu/ || true
-          cp build/layer1-core/drachma-cli dist/ubuntu/ || true
-          cp build/drachma_cpu_miner dist/ubuntu/ || true
+          for bin in build/layer1-core/drachmad build/layer1-core/drachma-cli build/drachma_cpu_miner; do
+            if [ -f "${bin}" ]; then
+              cp "${bin}" dist/ubuntu/
+            else
+              echo "Warning: ${bin} was not produced by the build; skipping." >&2
+            fi
+          done
           if [ -z "$(find dist/ubuntu -maxdepth 1 -type f -print -quit)" ]; then
             echo "No binaries were packaged from the build output." >&2
             exit 1
