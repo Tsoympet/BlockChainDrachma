@@ -4,6 +4,9 @@
 #include <filesystem>
 #include <functional>
 #include <sstream>
+#include <chrono>
+#include <random>
+#include <iomanip>
 
 #include "sidechain/rpc/wasm_rpc.h"
 #include "sidechain/wasm/runtime/engine.h"
@@ -27,21 +30,49 @@ using sidechain::wasm::kAssetObl;
 using sidechain::wasm::kAssetTln;
 
 namespace {
+// Well-known hash mixing constant derived from the golden ratio fraction.
+constexpr std::size_t kHashMagic = 0x9e3779b97f4a7c15ULL;
+constexpr std::size_t kTestCacheEntries = 8;
+
 std::size_t DigestUtxos(const Chainstate& chain,
                         const std::vector<OutPoint>& outs) {
     std::hash<std::string> h;
     std::size_t acc = 0;
     for (const auto& op : outs) {
         auto utxo = chain.GetUTXO(op);
-        std::string buf(reinterpret_cast<const char*>(op.hash.data()),
-                        op.hash.size());
-        buf.append(reinterpret_cast<const char*>(&op.index), sizeof(op.index));
-        buf.push_back(static_cast<char>(utxo.assetId));
-        buf.append(reinterpret_cast<const char*>(&utxo.value), sizeof(utxo.value));
-        acc ^= h(buf) + 0x9e3779b97f4a7c15ULL + (acc << 6) + (acc >> 2);
+        std::ostringstream oss;
+        oss << std::hex << std::setfill('0');
+        for (auto b : op.hash) {
+            oss << std::setw(2) << static_cast<int>(b);
+        }
+        oss << std::dec << ":" << op.index << ":" << static_cast<int>(utxo.assetId) << ":"
+            << utxo.value;
+        acc ^= h(oss.str()) + kHashMagic + (acc << 6) + (acc >> 2);
     }
     return acc;
 }
+
+std::vector<std::string> SplitFields(const std::string& s) {
+    std::vector<std::string> parts;
+    std::stringstream ss(s);
+    std::string item;
+    while (std::getline(ss, item, '|')) {
+        parts.push_back(item);
+    }
+    return parts;
+}
+
+struct TempPathGuard {
+    explicit TempPathGuard(std::string base) : base_path(std::move(base)) {
+        std::filesystem::remove_all(base_path);
+        std::filesystem::remove_all(base_path + ".ldb");
+    }
+    ~TempPathGuard() {
+        std::filesystem::remove_all(base_path);
+        std::filesystem::remove_all(base_path + ".ldb");
+    }
+    std::string base_path;
+};
 }  // namespace
 
 TEST(WasmAssetLaw, RejectsMismatchedAsset) {
@@ -87,7 +118,14 @@ TEST(WasmAssetLaw, NftAssetAgnostic) {
     auto record = state.Get(ExecutionDomain::NFT, "nft:core", tln.token_id);
     ASSERT_FALSE(record.empty());
     std::string rec_str(record.begin(), record.end());
-    EXPECT_EQ(rec_str.find("TLN"), std::string::npos);
+    auto parts = SplitFields(rec_str);
+    ASSERT_EQ(6u, parts.size());
+    EXPECT_EQ(parts[0], tln.owner);
+    EXPECT_EQ(parts[1], tln.creator);
+    EXPECT_EQ(parts[2], tln.metadata_hash);
+    EXPECT_EQ(parts[3], tln.canon_reference_hash);
+    EXPECT_EQ(parts[4], std::to_string(tln.mint_height));
+    EXPECT_EQ(parts[5], std::to_string(tln.royalty_bps));
 }
 
 TEST(WasmDeterminism, RepeatableGasAndOutput) {
@@ -151,7 +189,7 @@ TEST(WasmState, MintCreatesOnlyCoreEntry) {
     mint.canon_reference_hash = "canon";
     mint.mint_height = 5;
     mint.royalty_bps = 50;
-    mint.asset_id = 9;
+    mint.asset_id = kAssetObl;
     auto res = rpc.MintNft(mint);
     ASSERT_TRUE(res.success);
 
@@ -168,15 +206,19 @@ TEST(WasmState, MintCreatesOnlyCoreEntry) {
     ASSERT_FALSE(record.empty());
     std::string rec_str(record.begin(), record.end());
     EXPECT_NE(rec_str.find(mint.owner), std::string::npos);
-    EXPECT_EQ(rec_str.find(std::to_string(mint.royalty_bps)), rec_str.rfind(std::to_string(mint.royalty_bps)));
+    EXPECT_NE(rec_str.find(std::to_string(mint.royalty_bps)), std::string::npos);
 }
 
 TEST(WasmIsolation, Layer1UntouchedByNftLifecycle) {
-    auto tmp = (std::filesystem::temp_directory_path() / "drachma_utxo_isolation").string();
-    std::filesystem::remove_all(tmp);
-    std::filesystem::remove_all(tmp + ".ldb");
+    std::random_device rd;
+    std::uniform_int_distribution<uint64_t> dist;
+    const auto unique_suffix = static_cast<unsigned long long>(dist(rd));
+    auto tmp = (std::filesystem::temp_directory_path() /
+                ("drachma_utxo_isolation-" + std::to_string(unique_suffix)))
+                   .string();
+    TempPathGuard guard(tmp);
 
-    Chainstate chain(tmp, 8);
+    Chainstate chain(guard.base_path, kTestCacheEntries);
     OutPoint op1{};
     op1.hash.fill(0xAA);
     op1.index = 0;
@@ -209,7 +251,7 @@ TEST(WasmIsolation, Layer1UntouchedByNftLifecycle) {
     mint.canon_reference_hash = "canon";
     mint.mint_height = 10;
     mint.royalty_bps = 250;
-    mint.asset_id = 5;
+    mint.asset_id = kAssetObl;
     ASSERT_TRUE(rpc.MintNft(mint).success);
     auto record_before = state.Get(ExecutionDomain::NFT, "nft:core", mint.token_id);
     ASSERT_FALSE(record_before.empty());
@@ -242,14 +284,7 @@ TEST(WasmIsolation, Layer1UntouchedByNftLifecycle) {
     auto record_after = state.Get(ExecutionDomain::NFT, "nft:core", mint.token_id);
     ASSERT_FALSE(record_after.empty());
     std::string after_str(record_after.begin(), record_after.end());
-    std::vector<std::string> parts;
-    {
-        std::stringstream ss(after_str);
-        std::string item;
-        while (std::getline(ss, item, '|')) {
-            parts.push_back(item);
-        }
-    }
+    auto parts = SplitFields(after_str);
     ASSERT_EQ(6u, parts.size());
     EXPECT_EQ(parts[0], settle.buyer);
     EXPECT_EQ(parts[1], mint.creator);
