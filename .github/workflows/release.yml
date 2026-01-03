@@ -29,6 +29,7 @@ jobs:
     name: Build and package (ubuntu-latest)
     runs-on: ubuntu-latest
     env:
+      BUILD_DIR: build
       VERSION: ${{ github.event_name == 'workflow_dispatch' && inputs.version_tag || github.ref_name }}
     steps:
       - name: Checkout
@@ -38,17 +39,17 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y cmake ninja-build libssl-dev libboost-all-dev libleveldb-dev
 
       - name: Configure
-        run: cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE="${BUILD_TYPE}" -DDRACHMA_BUILD_GUI=OFF -DDRACHMA_BUILD_TESTS=OFF
+        run: cmake -S . -B "${BUILD_DIR}" -G Ninja -DCMAKE_BUILD_TYPE="${BUILD_TYPE}" -DDRACHMA_BUILD_GUI=OFF -DDRACHMA_BUILD_TESTS=OFF
 
       - name: Build
-        run: cmake --build build --parallel
+        run: cmake --build "${BUILD_DIR}" --parallel
 
       - name: Package artifacts
         run: |
           mkdir -p dist/ubuntu
           TARGETS=(drachmad drachma-cli drachma_cpu_miner)
           for name in "${TARGETS[@]}"; do
-            bin_path=$(find build -maxdepth 3 -type f -name "${name}" -print -quit)
+            bin_path=$(find "${BUILD_DIR}" -maxdepth 3 -type f -name "${name}" -print -quit)
             if [ -n "${bin_path}" ]; then
               cp "${bin_path}" dist/ubuntu/
             else
@@ -126,7 +127,7 @@ PY
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: ${{ github.event_name == 'push' && github.ref_name || inputs.version_tag }}
+          tag_name: ${{ env.VERSION }}
           name: Drachma ${{ env.VERSION }}
           body_path: release_notes.md
           files: dist/*
