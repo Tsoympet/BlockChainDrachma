@@ -85,7 +85,8 @@ int main()
     policy::FeePolicy tightPolicy(1, 10, 5);
     mempool::Mempool tight(tightPolicy);
     Transaction big = MakeTx(30);
-    big.vin[0].scriptSig.assign(20, 0xaa);
+    const uint8_t kPadByte = 0xaa; // padding to exceed tightPolicy byte limit
+    big.vin[0].scriptSig.assign(20, kPadByte);
     assert(!tight.Accept(big, 1000));
     assert(tight.Snapshot().empty());
     assert(tight.EstimateFeeRate(10) == tightPolicy.MinFeeRate());

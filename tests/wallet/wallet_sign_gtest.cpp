@@ -183,7 +183,8 @@ TEST(Wallet, MultisigSpendFailsWithoutInputs)
     auto priv = MakeKey(13);
     backend.ImportKey(priv);
 
-    std::vector<TxOut> outputs{TxOut{1'000, std::vector<uint8_t>(32, 0xAA)}};
+    constexpr uint8_t kScriptByte = 0xAA;
+    std::vector<TxOut> outputs{TxOut{1'000, std::vector<uint8_t>(32, kScriptByte)}};
     outputs[0].assetId = static_cast<uint8_t>(AssetId::DRACHMA);
     std::vector<OutPoint> coins{OutPoint{}};
     std::vector<PrivKey> keys{priv};

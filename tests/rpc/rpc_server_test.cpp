@@ -115,11 +115,14 @@ TEST(TxIndex, ReopensEmptyAndTracksNewBlocks)
     std::filesystem::path tmp = std::filesystem::temp_directory_path() / "txindex_reindex";
     std::filesystem::remove_all(tmp);
 
+    const uint8_t missingSeed = 0x0a;
+    const uint8_t blockSeed = 0x0b;
+
     {
         txindex::TxIndex disk;
         disk.Open(tmp.string());
         uint256 missing{};
-        missing.fill(0x0a);
+        missing.fill(missingSeed);
         uint32_t heightOut{0};
         EXPECT_FALSE(disk.Lookup(missing, heightOut));
         disk.Add(missing, 9);
@@ -131,13 +134,13 @@ TEST(TxIndex, ReopensEmptyAndTracksNewBlocks)
     reopened.Open(tmp.string());
     uint32_t out{0};
     uint256 missing{};
-    missing.fill(0x0a);
+    missing.fill(missingSeed);
     EXPECT_TRUE(reopened.Lookup(missing, out));
     EXPECT_EQ(out, 9u);
     EXPECT_EQ(reopened.BlockCount(), 0u);
 
     uint256 block{};
-    block.fill(0x0b);
+    block.fill(blockSeed);
     EXPECT_FALSE(reopened.LookupBlock(block, out));
     reopened.AddBlock(block, 3);
     EXPECT_EQ(reopened.BlockCount(), 1u);
