@@ -80,8 +80,11 @@ void Write(Level level, const std::string& msg)
 #endif
     std::string line = Now() + " [" + ToString(level) + "] (" + std::to_string(pid) + ":" + std::to_string(std::hash<std::thread::id>{}(std::this_thread::get_id())) + ") " + msg + "\n";
     std::cerr << line;
-    if (g_file.is_open())
+    if (g_file.is_open()) {
         g_file << line;
+        if (level >= Level::WARN)
+            g_file.flush();
+    }
 }
 
 void Debug(const std::string& msg) { Write(Level::DEBUG, msg); }
