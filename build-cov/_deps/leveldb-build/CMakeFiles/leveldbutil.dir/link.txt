@@ -1,0 +1,1 @@
+/usr/bin/c++  -fno-exceptions -fno-rtti -Wl,--dependency-file=CMakeFiles/leveldbutil.dir/link.d CMakeFiles/leveldbutil.dir/db/leveldbutil.cc.o -o leveldbutil  libleveldb.a

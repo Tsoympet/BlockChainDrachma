@@ -1,0 +1,1 @@
+/usr/bin/c++ --coverage -Wl,--dependency-file=CMakeFiles/drachma_cli.dir/link.d "CMakeFiles/drachma_cli.dir/layer1-core/drachma_cli.cpp.o" -o layer1-core/drachma-cli  /usr/lib/x86_64-linux-gnu/libboost_system.so.1.83.0

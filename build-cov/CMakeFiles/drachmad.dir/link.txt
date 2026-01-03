@@ -1,0 +1,1 @@
+/usr/bin/c++ --coverage -Wl,--dependency-file=CMakeFiles/drachmad.dir/link.d "CMakeFiles/drachmad.dir/layer1-core/drachmad.cpp.o" -o layer1-core/drachmad  libdrachma_layer2.a /usr/lib/x86_64-linux-gnu/libboost_system.so.1.83.0 libdrachma_sidechain_wasm.a libdrachma_layer1.a /usr/lib/x86_64-linux-gnu/libcrypto.so _deps/leveldb-build/libleveldb.a

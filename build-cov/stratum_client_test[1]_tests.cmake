@@ -1,0 +1,5 @@
+add_test([=[StratumClient.RejectsRemoteWithoutAllowFlag]=]  /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/stratum_client_test [==[--gtest_filter=StratumClient.RejectsRemoteWithoutAllowFlag]==] --gtest_also_run_disabled_tests)
+set_tests_properties([=[StratumClient.RejectsRemoteWithoutAllowFlag]=]  PROPERTIES WORKING_DIRECTORY /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov SKIP_REGULAR_EXPRESSION [==[\[  SKIPPED \]]==])
+add_test([=[StratumClient.LocalhostAllowedWithoutNetworkDial]=]  /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/stratum_client_test [==[--gtest_filter=StratumClient.LocalhostAllowedWithoutNetworkDial]==] --gtest_also_run_disabled_tests)
+set_tests_properties([=[StratumClient.LocalhostAllowedWithoutNetworkDial]=]  PROPERTIES WORKING_DIRECTORY /home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov SKIP_REGULAR_EXPRESSION [==[\[  SKIPPED \]]==])
+set(  stratum_client_test_TESTS StratumClient.RejectsRemoteWithoutAllowFlag StratumClient.LocalhostAllowedWithoutNetworkDial)

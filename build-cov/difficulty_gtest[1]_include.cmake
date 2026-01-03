@@ -1,0 +1,5 @@
+if(EXISTS "/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/difficulty_gtest[1]_tests.cmake")
+  include("/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/difficulty_gtest[1]_tests.cmake")
+else()
+  add_test(difficulty_gtest_NOT_BUILT difficulty_gtest_NOT_BUILT)
+endif()

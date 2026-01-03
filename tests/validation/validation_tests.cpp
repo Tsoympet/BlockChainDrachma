@@ -1,5 +1,6 @@
 #include "../../layer1-core/validation/validation.h"
 #include "../../layer1-core/consensus/params.h"
+#include "../../layer1-core/merkle/merkle.h"
 #include <cassert>
 #include <cstdint>
 #include <unordered_map>
@@ -339,6 +340,98 @@ int main()
             txs, params, params.nPoSActivationHeight, countingLookup, true, params.nGenesisBits, 2000);
         assert(!ok);
         assert(lookups == 1); // second access hits validation cache
+    }
+
+    // Rate limiter should short-circuit header validation before any heavy work.
+    {
+        BlockHeader h{};
+        h.bits = params.nGenesisBits;
+        h.time = 2201;
+        ValidationRateLimiter limiter(1, 1);
+        BlockValidationOptions opts;
+        opts.medianTimePast = 2200;
+        opts.now = 2201;
+        opts.limiter = &limiter;
+        opts.limiterWeight = 5; // exceeds capacity
+        assert(!ValidateBlockHeader(h, params, opts));
+    }
+
+    // Invalid difficulty must be rejected and must not mutate caller state.
+    {
+        Block block{};
+        block.header.bits = 0x01020304; // far tighter than any constructed header hash
+        block.header.time = 2300;
+        block.header.version = 1;
+        block.transactions.push_back(MakeCoinbase(
+            consensus::GetBlockSubsidy(13, params, static_cast<uint8_t>(AssetId::TALANTON))));
+        block.header.merkleRoot = ComputeMerkleRoot(block.transactions);
+        BlockValidationOptions opts;
+        opts.medianTimePast = block.header.time - 1;
+        opts.now = block.header.time;
+        assert(!ValidateBlock(block, params, 13, {}, opts));
+    }
+
+    // Wrong prev hash on coinbase causes block-level rejection.
+    {
+        Block block{};
+        block.header.bits = params.nGenesisBits;
+        block.header.time = 2310;
+        block.header.version = 1;
+        block.transactions.push_back(MakeCoinbase(
+            consensus::GetBlockSubsidy(14, params, static_cast<uint8_t>(AssetId::TALANTON))));
+        block.transactions[0].vin[0].prevout.hash.fill(0x42);
+        block.transactions[0].vin[0].prevout.index = 0;
+        block.header.merkleRoot = ComputeMerkleRoot(block.transactions);
+        BlockValidationOptions opts;
+        opts.medianTimePast = block.header.time - 1;
+        opts.now = block.header.time;
+        assert(!ValidateBlock(block, params, 14, {}, opts));
+    }
+
+    // Duplicate transactions that spend the same prevout must fail and leave the UTXO state untouched.
+    {
+        Transaction cb = MakeCoinbase(consensus::GetBlockSubsidy(15, params, static_cast<uint8_t>(AssetId::TALANTON)));
+        Transaction spend;
+        spend.vout.push_back(MakeTxOut(20));
+        spend.vin.resize(1);
+        spend.vin[0].prevout = MakeOutPoint(0xAC, 7);
+        spend.vin[0].scriptSig = {0x01};
+        spend.vin[0].assetId = static_cast<uint8_t>(AssetId::DRACHMA);
+        Transaction duplicate = spend;
+        std::vector<Transaction> txs{cb, spend, duplicate};
+        UTXOSet utxos;
+        utxos[spend.vin[0].prevout] = MakeTxOut(25, spend.vin[0].assetId);
+        const size_t before = utxos.size();
+        auto lookup = [&utxos](const OutPoint& op) -> std::optional<TxOut> {
+            auto it = utxos.find(op);
+            if (it == utxos.end()) return std::nullopt;
+            return it->second;
+        };
+        assert(!ValidateTransactions(txs, params, 15, lookup));
+        assert(utxos.size() == before);
+    }
+
+    // Overspending transaction ordering should be rejected without mutating cached lookups.
+    {
+        Transaction cb = MakeCoinbase(consensus::GetBlockSubsidy(16, params, static_cast<uint8_t>(AssetId::TALANTON)));
+        Transaction spend;
+        spend.vout.push_back(MakeTxOut(30));
+        spend.vout.push_back(MakeTxOut(15));
+        spend.vin.resize(1);
+        spend.vin[0].prevout = MakeOutPoint(0xAD, 0);
+        spend.vin[0].scriptSig = {0x01};
+        spend.vin[0].assetId = static_cast<uint8_t>(AssetId::DRACHMA);
+        std::vector<Transaction> txs{cb, spend};
+        UTXOSet utxos;
+        utxos[spend.vin[0].prevout] = MakeTxOut(35, spend.vin[0].assetId);
+        const size_t before = utxos.size();
+        auto counting = [&utxos](const OutPoint& op) -> std::optional<TxOut> {
+            auto it = utxos.find(op);
+            if (it == utxos.end()) return std::nullopt;
+            return it->second;
+        };
+        assert(!ValidateTransactions(txs, params, 16, counting));
+        assert(utxos.size() == before);
     }
 
     return 0;

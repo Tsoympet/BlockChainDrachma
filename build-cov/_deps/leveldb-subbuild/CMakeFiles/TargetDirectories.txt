@@ -1,0 +1,3 @@
+/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/_deps/leveldb-subbuild/CMakeFiles/leveldb-populate.dir
+/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/_deps/leveldb-subbuild/CMakeFiles/edit_cache.dir
+/home/runner/work/BlockChainDrachma/BlockChainDrachma/build-cov/_deps/leveldb-subbuild/CMakeFiles/rebuild_cache.dir
