@@ -10,6 +10,21 @@ option(DRACHMA_BUILD_GUI "Build the Qt desktop wallet" OFF)
 option(DRACHMA_COVERAGE "Enable coverage instrumentation" OFF)
 option(DRACHMA_ENABLE_OPENCL "Enable OpenCL miner" OFF)
 
+# Compiler optimization flags for Release builds
+if(CMAKE_BUILD_TYPE STREQUAL "Release" AND NOT DRACHMA_COVERAGE)
+    if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
+        # -O3: Maximum optimization level
+        # -march=native: Optimize for build machine (use -march=x86-64 for portable builds)
+        # -ffast-math: Allow aggressive floating point optimizations
+        add_compile_options(-O3 -march=native -ffast-math)
+        # Consider enabling LTO for production builds (commented out by default)
+        # set(CMAKE_INTERPROCEDURAL_OPTIMIZATION ON)
+    elseif(MSVC)
+        add_compile_options(/O2 /GL)
+        set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /LTCG")
+    endif()
+endif()
+
 find_package(OpenSSL REQUIRED)
 find_package(Boost REQUIRED COMPONENTS system)
 find_package(CUDAToolkit QUIET)
