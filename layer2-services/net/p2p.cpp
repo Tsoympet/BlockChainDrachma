@@ -8,6 +8,7 @@
 #include <mutex>
 #include <optional>
 #include <random>
+#include <unordered_set>
 
 #include "../../layer1-core/pow/sha256d.h"
 
@@ -15,12 +16,11 @@ namespace net {
 
 using boost::asio::ip::tcp;
 
-static std::string PadCommand(const std::string& cmd)
+// Safely pads command to 12 bytes with null termination
+static void PadCommand(const std::string& cmd, std::array<char, 12>& out)
 {
-    std::array<char, 12> buf{};
-    std::memset(buf.data(), 0, buf.size());
-    std::memcpy(buf.data(), cmd.data(), std::min(cmd.size(), buf.size()));
-    return std::string(buf.data(), buf.size());
+    std::memset(out.data(), 0, out.size());
+    std::memcpy(out.data(), cmd.data(), std::min(cmd.size(), out.size()));
 }
 
 static constexpr size_t k_max_payload = 4 * 1024 * 1024; // 4 MiB safety cap
@@ -29,15 +29,16 @@ bool BloomFilter::Match(const uint256& h) const
 {
     if (full || bits.empty()) return true;
     const size_t bitCount = bits.size() * 8;
-    auto hashToInt = [&h](uint32_t seed) {
-        uint32_t out = seed;
-        for (auto b : h) {
-            out = out * 0x01000193 ^ b;
-        }
-        return out;
-    };
+    
+    // Compute base hash once instead of in lambda for each iteration
+    uint32_t baseHash = tweak;
+    for (auto b : h) {
+        baseHash = baseHash * 0x01000193 ^ b;
+    }
+    
     for (uint32_t i = 0; i < nHashFuncs; ++i) {
-        uint32_t hv = hashToInt(i * 0xfba4c795 + tweak);
+        // Combine base hash with iteration-specific seed
+        uint32_t hv = baseHash ^ (i * 0xfba4c795);
         size_t bit = hv % bitCount;
         size_t byteIdx = bit / 8;
         uint8_t mask = 1u << (bit % 8);
@@ -213,25 +214,26 @@ void P2PNetwork::ConnectSeeds()
 {
     if (m_stopped) return;
     std::vector<std::string> seeds;
+    std::unordered_set<std::string> connectedAddrs;
     {
         std::lock_guard<std::mutex> g(m_mutex);
         seeds.assign(m_seedAddrs.begin(), m_seedAddrs.end());
+        // Build hash set of connected addresses for O(1) lookup
+        for (const auto& kv : m_peers) {
+            if (kv.second) {
+                connectedAddrs.insert(kv.second->info.id);
+            }
+        }
     }
     for (const auto& addr : seeds) {
+        // Skip if already connected
+        if (connectedAddrs.count(addr)) continue;
+        
         auto colon = addr.find(':');
         if (colon == std::string::npos) continue;
         auto host = addr.substr(0, colon);
         auto port = addr.substr(colon + 1);
-        {
-            std::lock_guard<std::mutex> g(m_mutex);
-            bool alreadyConnected = std::any_of(m_peers.begin(), m_peers.end(), [&](const auto& kv) {
-                if (!kv.second) return false;
-                if (kv.second->info.address != host) return false;
-                auto pos = kv.second->info.id.rfind(':');
-                return pos != std::string::npos && kv.second->info.id.substr(pos + 1) == port;
-            });
-            if (alreadyConnected) continue;
-        }
+        
         auto peer = std::make_shared<PeerState>(m_io, PeerInfo{"", host, false});
         auto resolver = std::make_shared<tcp::resolver>(m_io);
         resolver->async_resolve(host, port, [this, peer, resolver](const boost::system::error_code& ec, tcp::resolver::results_type res) {
@@ -311,11 +313,12 @@ void P2PNetwork::WriteLoop(const std::shared_ptr<PeerState>& peer)
         if (peer->outbound.empty()) return;
         msg = peer->outbound.front();
     }
-    std::string cmdPadded = PadCommand(msg.command);
     uint32_t len = static_cast<uint32_t>(msg.payload.size());
     std::array<uint8_t, 24> header{};
     std::memcpy(header.data(), &k_message_magic, sizeof(uint32_t));
-    std::memcpy(header.data() + 4, cmdPadded.data(), 12);
+    std::array<char, 12> cmdBuf;
+    PadCommand(msg.command, cmdBuf);
+    std::memcpy(header.data() + 4, cmdBuf.data(), cmdBuf.size());
     std::memcpy(header.data() + 16, &len, sizeof(len));
     uint8_t checksumFull[32]{};
     sha256d(checksumFull, msg.payload.empty() ? nullptr : msg.payload.data(), msg.payload.size());
@@ -508,15 +511,14 @@ void P2PNetwork::HandleBuiltin(const std::shared_ptr<PeerState>& peer, const Mes
         if (msg.payload.size() >= 32) {
             uint256 h{};
             std::copy(msg.payload.begin(), msg.payload.begin() + 32, h.begin());
-            // set bits
+            // set bits - optimized to compute base hash once
             const size_t bitCount = peer->filter.bits.size() * 8;
-            auto hashToInt = [&h](uint32_t seed) {
-                uint32_t out = seed;
-                for (auto b : h) out = out * 0x01000193 ^ b;
-                return out;
-            };
+            uint32_t baseHash = peer->filter.tweak;
+            for (auto b : h) {
+                baseHash = baseHash * 0x01000193 ^ b;
+            }
             for (uint32_t i = 0; i < peer->filter.nHashFuncs; ++i) {
-                uint32_t hv = hashToInt(i * 0xfba4c795 + peer->filter.tweak);
+                uint32_t hv = baseHash ^ (i * 0xfba4c795);
                 size_t bit = hv % bitCount;
                 peer->filter.bits[bit / 8] |= (1u << (bit % 8));
             }
