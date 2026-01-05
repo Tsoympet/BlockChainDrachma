@@ -22,8 +22,14 @@ enum class OpCode {
     Nop,
     ConstI32,
     AddI32,
+    SubI32,
+    MulI32,
+    DivI32,
     Load,
     Store,
+    EqI32,
+    LtI32,
+    GtI32,
     ReturnTop,
 };
 

@@ -139,20 +139,32 @@ uint64_t Mempool::EstimateFeeRate(size_t percentile) const
 {
     std::lock_guard<std::mutex> g(m_mutex);
     if (m_entries.empty()) return m_policy.MinFeeRate();
-    std::vector<uint64_t> feeRates;
-    feeRates.reserve(m_entries.size());
-    for (const auto& kv : m_entries) feeRates.push_back(kv.second.feeRate);
-    std::sort(feeRates.begin(), feeRates.end());
+    
     percentile = std::clamp(percentile, static_cast<size_t>(1), static_cast<size_t>(99));
-    const double rank = (percentile / 100.0) * static_cast<double>(feeRates.size());
-    size_t idx = 0;
-    if (rank <= 1.0) {
-        idx = 0;
-    } else {
-        idx = static_cast<size_t>(std::ceil(rank)) - 1;
+    
+    // m_byFeeRate is already sorted ascending, work directly with it
+    const size_t totalSize = m_byFeeRate.size();
+    if (totalSize == 0) return m_policy.MinFeeRate();
+    
+    // Calculate position with interpolation
+    const double pos = (percentile / 100.0) * (totalSize - 1);
+    const size_t lowerIdx = static_cast<size_t>(pos);
+    
+    if (lowerIdx >= totalSize - 1) {
+        // Return the highest fee rate
+        return m_byFeeRate.rbegin()->first;
     }
-    if (idx >= feeRates.size()) idx = feeRates.size() - 1;
-    return feeRates[idx];
+    
+    // Get iterators to lower and upper elements using std::next
+    auto lowerIt = std::next(m_byFeeRate.begin(), lowerIdx);
+    auto upperIt = std::next(lowerIt);
+    
+    // Linear interpolation between two closest values
+    const double fraction = pos - lowerIdx;
+    const uint64_t lower = lowerIt->first;
+    const uint64_t upper = upperIt->first;
+    
+    return static_cast<uint64_t>(lower + fraction * (upper - lower));
 }
 
 void Mempool::SetValidationContext(const consensus::Params& params, int height, UTXOLookup lookup)

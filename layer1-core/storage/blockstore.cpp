@@ -9,6 +9,11 @@
 class BlockStore {
 public:
     explicit BlockStore(const std::string& path): path(path) { LoadIndex(); }
+    
+    ~BlockStore() {
+        std::lock_guard<std::mutex> l(mu);
+        FlushIndex();
+    }
 
     void WriteBlock(uint32_t height, const Block& block)
     {
@@ -18,6 +23,7 @@ public:
         auto pos = out.tellp();
 
         std::vector<uint8_t> buffer;
+        buffer.reserve(sizeof(BlockHeader) + sizeof(uint32_t) + 4096);
         buffer.insert(buffer.end(), reinterpret_cast<const uint8_t*>(&block.header), reinterpret_cast<const uint8_t*>(&block.header) + sizeof(BlockHeader));
         uint32_t txCount = static_cast<uint32_t>(block.transactions.size());
         buffer.insert(buffer.end(), reinterpret_cast<uint8_t*>(&txCount), reinterpret_cast<uint8_t*>(&txCount) + sizeof(txCount));
@@ -32,7 +38,19 @@ public:
         out.write(reinterpret_cast<const char*>(&totalSize), sizeof(totalSize));
         out.write(reinterpret_cast<const char*>(buffer.data()), buffer.size());
         index[height] = static_cast<uint64_t>(pos);
-        FlushIndex();
+        ++dirtyCount;
+        if (dirtyCount >= kFlushThreshold) {
+            FlushIndex();
+            dirtyCount = 0;
+        }
+    }
+    
+    void Sync() {
+        std::lock_guard<std::mutex> l(mu);
+        if (dirtyCount > 0) {
+            FlushIndex();
+            dirtyCount = 0;
+        }
     }
 
     Block ReadBlock(uint32_t height)
@@ -73,6 +91,8 @@ private:
     std::string path;
     std::unordered_map<uint32_t, uint64_t> index;
     std::mutex mu;
+    size_t dirtyCount{0};
+    static constexpr size_t kFlushThreshold = 100;
 
     void LoadIndex()
     {

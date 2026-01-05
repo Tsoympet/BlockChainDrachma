@@ -109,6 +109,130 @@ ExecutionResult ExecutionEngine::Execute(const ExecutionRequest& request,
                     }
                     break;
                 }
+                case OpCode::SubI32: {
+                    int64_t a = 0, b = 0;
+                    if (!PopTwo(stack, a, b, result)) {
+                        halted = true;
+                        break;
+                    }
+                    int64_t diff = 0;
+#if defined(__GNUC__)
+                    if (__builtin_sub_overflow(a, b, &diff)) {
+                        result.error = "arithmetic overflow";
+                        halted = true;
+                        break;
+                    }
+#else
+                    const bool overflow = (b < 0 && a > std::numeric_limits<int64_t>::max() + b) ||
+                                          (b > 0 && a < std::numeric_limits<int64_t>::min() + b);
+                    if (overflow) {
+                        result.error = "arithmetic overflow";
+                        halted = true;
+                        break;
+                    }
+                    diff = a - b;
+#endif
+                    if (!Push(stack, diff, result, gas_meter)) {
+                        halted = true;
+                    }
+                    break;
+                }
+                case OpCode::MulI32: {
+                    int64_t a = 0, b = 0;
+                    if (!PopTwo(stack, a, b, result)) {
+                        halted = true;
+                        break;
+                    }
+                    int64_t prod = 0;
+#if defined(__GNUC__)
+                    if (__builtin_mul_overflow(a, b, &prod)) {
+                        result.error = "arithmetic overflow";
+                        halted = true;
+                        break;
+                    }
+#else
+                    // Check for overflow: special cases first
+                    if (a == std::numeric_limits<int64_t>::min() && b == -1) {
+                        result.error = "arithmetic overflow";
+                        halted = true;
+                        break;
+                    }
+                    if (b == std::numeric_limits<int64_t>::min() && a == -1) {
+                        result.error = "arithmetic overflow";
+                        halted = true;
+                        break;
+                    }
+                    // For general case: |a| * |b| must not overflow
+                    if (b != 0) {
+                        const uint64_t absA = safe_abs(a);
+                        const uint64_t absB = safe_abs(b);
+                        if (absA > static_cast<uint64_t>(std::numeric_limits<int64_t>::max()) / absB) {
+                            result.error = "arithmetic overflow";
+                            halted = true;
+                            break;
+                        }
+                    }
+                    prod = a * b;
+#endif
+                    if (!Push(stack, prod, result, gas_meter)) {
+                        halted = true;
+                    }
+                    break;
+                }
+                case OpCode::DivI32: {
+                    int64_t a = 0, b = 0;
+                    if (!PopTwo(stack, a, b, result)) {
+                        halted = true;
+                        break;
+                    }
+                    if (b == 0) {
+                        result.error = "division by zero";
+                        halted = true;
+                        break;
+                    }
+                    if (a == std::numeric_limits<int64_t>::min() && b == -1) {
+                        result.error = "arithmetic overflow";
+                        halted = true;
+                        break;
+                    }
+                    if (!Push(stack, a / b, result, gas_meter)) {
+                        halted = true;
+                    }
+                    break;
+                }
+                case OpCode::EqI32: {
+                    int64_t a = 0, b = 0;
+                    if (!PopTwo(stack, a, b, result)) {
+                        halted = true;
+                        break;
+                    }
+                    if (!Push(stack, (a == b) ? 1 : 0, result, gas_meter)) {
+                        halted = true;
+                    }
+                    break;
+                }
+                case OpCode::LtI32: {
+                    int64_t a = 0, b = 0;
+                    if (!PopTwo(stack, a, b, result)) {
+                        halted = true;
+                        break;
+                    }
+                    if (!Push(stack, (a < b) ? 1 : 0, result, gas_meter)) {
+                        halted = true;
+                    }
+                    break;
+                }
+                case OpCode::GtI32: {
+                    int64_t a = 0, b = 0;
+                    if (!PopTwo(stack, a, b, result)) {
+                        halted = true;
+                        break;
+                    }
+                    if (!Push(stack, (a > b) ? 1 : 0, result, gas_meter)) {
+                        halted = true;
+                    }
+                    break;
+                }
                 case OpCode::Load: {
                     const auto stored = state.Get(request.domain, request.module_id,
                                                   std::to_string(instr.immediate));
