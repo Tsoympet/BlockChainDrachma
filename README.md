@@ -39,8 +39,16 @@ Always verify signatures and checksums before running binaries.
 ## Downloads & Installation
 
 - **Latest downloads:** [GitHub Releases](https://github.com/Tsoympet/BlockChainDrachma/releases) (tar.gz/AppImage for Linux, `.zip`/`.exe` for Windows, `.dmg` for macOS).
-- **Build from source:** See [`docs/building.md`](docs/building.md) for platform-specific setup and Qt deployment tips.
-- **One-line installers:** `scripts/install-linux.sh`, `scripts/install-macos.sh`, and `scripts/install-windows.ps1` mirror Bitcoin Core’s install flow and drop `drachmad`, `drachma-cli`, and optional `drachma-qt` into your PATH.
+- **Install from source:** Use the convenient Makefile (similar to Bitcoin Core):
+  ```bash
+  git clone https://github.com/Tsoympet/BlockChainDrachma.git
+  cd BlockChainDrachma
+  make
+  sudo make install
+  ```
+  See [`INSTALL.md`](INSTALL.md) for detailed installation instructions.
+- **One-line installers:** `./scripts/install-linux.sh`, `./scripts/install-macos.sh`, and `.\scripts\install-windows.ps1` automate the build and installation process.
+- **Build from source (advanced):** See [`docs/building.md`](docs/building.md) for platform-specific setup, CMake options, and Qt deployment tips.
 - **Docker quickstart:**
   ```bash
   docker-compose up -d
@@ -52,6 +60,23 @@ Always verify signatures and checksums before running binaries.
 
 ## Quick Start / Getting Started
 
+**Option 1: Simple Installation (Recommended)**
+```bash
+# Clone the repository
+git clone https://github.com/Tsoympet/BlockChainDrachma.git
+cd BlockChainDrachma
+
+# Build and install (Linux/macOS)
+make
+sudo make install
+
+# Or use the installation script
+./scripts/install-linux.sh    # Linux
+./scripts/install-macos.sh     # macOS
+.\scripts\install-windows.ps1  # Windows (PowerShell)
+```
+
+**Option 2: Manual Build**
 1. **Install prerequisites:** CMake (>=3.18), a C++17 toolchain, OpenSSL, Boost, and system dependencies for your OS. For GPU miners install **CUDA** or **OpenCL** SDKs and matching drivers.
 2. **Clone and configure the build:**
    ```bash
@@ -61,14 +86,20 @@ Always verify signatures and checksums before running binaries.
    ```
 3. **Compile:**
    ```bash
-   cmake --build build --parallel --target drachmad drachma_cli
+   cmake --build build --parallel
    ```
-4. **(Optional) Run tests:**
+4. **Install (optional):**
    ```bash
+   sudo cmake --build build --target install
+   ```
+5. **Run tests:**
+   ```bash
+   make test
+   # or
    ctest --test-dir build
    ```
 
-> Tip: See [`docs/building.md`](docs/building.md) and [`docs/mining-guide.md`](docs/mining-guide.md) for platform-specific details, GPU tuning, Docker usage, and troubleshooting.
+> Tip: See [`INSTALL.md`](INSTALL.md) for detailed installation options, [`docs/building.md`](docs/building.md) for platform-specific details, and [`docs/mining-guide.md`](docs/mining-guide.md) for GPU tuning and troubleshooting.
 
 ---
 
