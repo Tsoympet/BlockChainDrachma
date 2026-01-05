@@ -139,20 +139,34 @@ uint64_t Mempool::EstimateFeeRate(size_t percentile) const
 {
     std::lock_guard<std::mutex> g(m_mutex);
     if (m_entries.empty()) return m_policy.MinFeeRate();
+    
+    // m_byFeeRate is a multimap sorted by fee rate (ascending)
+    // Collect all fee rates to handle duplicates correctly
     std::vector<uint64_t> feeRates;
-    feeRates.reserve(m_entries.size());
-    for (const auto& kv : m_entries) feeRates.push_back(kv.second.feeRate);
-    std::sort(feeRates.begin(), feeRates.end());
-    percentile = std::clamp(percentile, static_cast<size_t>(1), static_cast<size_t>(99));
-    const double rank = (percentile / 100.0) * static_cast<double>(feeRates.size());
-    size_t idx = 0;
-    if (rank <= 1.0) {
-        idx = 0;
-    } else {
-        idx = static_cast<size_t>(std::ceil(rank)) - 1;
+    feeRates.reserve(m_byFeeRate.size());
+    for (const auto& entry : m_byFeeRate) {
+        feeRates.push_back(entry.first);
     }
-    if (idx >= feeRates.size()) idx = feeRates.size() - 1;
-    return feeRates[idx];
+    
+    // Sort to ensure proper ordering
+    std::sort(feeRates.begin(), feeRates.end());
+    
+    percentile = std::clamp(percentile, static_cast<size_t>(1), static_cast<size_t>(99));
+    
+    // Use linear interpolation for percentile calculation
+    const double pos = (percentile / 100.0) * (feeRates.size() - 1);
+    const size_t idx = static_cast<size_t>(pos);
+    
+    if (idx >= feeRates.size() - 1) {
+        return feeRates.back();
+    }
+    
+    // Linear interpolation between two closest values
+    const double fraction = pos - idx;
+    const uint64_t lower = feeRates[idx];
+    const uint64_t upper = feeRates[idx + 1];
+    
+    return static_cast<uint64_t>(lower + fraction * (upper - lower));
 }
 
 void Mempool::SetValidationContext(const consensus::Params& params, int height, UTXOLookup lookup)

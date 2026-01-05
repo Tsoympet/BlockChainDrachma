@@ -305,10 +305,22 @@ void RPCServer::AttachBridgeHandlers(crosschain::BridgeManager& bridge)
 
         auto secret = ParseHex(secretHex);
         std::array<uint8_t, 32> secretHash{};
-        SHA256_CTX ctx;
-        SHA256_Init(&ctx);
-        SHA256_Update(&ctx, secret.data(), secret.size());
-        SHA256_Final(secretHash.data(), &ctx);
+        EVP_MD_CTX* ctx = EVP_MD_CTX_new();
+        if (!ctx) throw std::runtime_error("EVP_MD_CTX_new failed");
+        if (EVP_DigestInit_ex(ctx, EVP_sha256(), nullptr) != 1) {
+            EVP_MD_CTX_free(ctx);
+            throw std::runtime_error("EVP_DigestInit_ex failed");
+        }
+        if (EVP_DigestUpdate(ctx, secret.data(), secret.size()) != 1) {
+            EVP_MD_CTX_free(ctx);
+            throw std::runtime_error("EVP_DigestUpdate failed");
+        }
+        unsigned int hashLen = 32;
+        if (EVP_DigestFinal_ex(ctx, secretHash.data(), &hashLen) != 1) {
+            EVP_MD_CTX_free(ctx);
+            throw std::runtime_error("EVP_DigestFinal_ex failed");
+        }
+        EVP_MD_CTX_free(ctx);
 
         std::array<uint8_t, 32> priv{};
         auto privVec = ParseHex(privHex);

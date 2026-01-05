@@ -1,8 +1,87 @@
 #include "validation.h"
+#include "../chainstate/coins.h"
+#include <unordered_set>
+#include <stdexcept>
 
 namespace validation {
 
-// (κρατιέται ξεχωριστά για καθαρό linking / future extension)
-// Το logic βρίσκεται ήδη στο validation.cpp → ConnectBlock
+// ConnectBlock applies a validated block to the UTXO set and checks that
+// all inputs are available and signed correctly.
+bool ConnectBlock(const Block& block, 
+                  chainstate::CoinsDB& coinsdb,
+                  const consensus::Params& params,
+                  int height,
+                  const UTXOLookup& fallbackLookup)
+{
+    // First, validate the block structure and PoW
+    BlockValidationOptions opts;
+    opts.medianTimePast = 1; // Caller must provide proper MTP
+    if (!ValidateBlock(block, params, height, fallbackLookup, opts)) {
+        return false;
+    }
 
+    // Track all inputs spent in this block to detect double-spends within block
+    std::unordered_set<OutPoint, struct OutPointHasher, struct OutPointEq> spentInBlock;
+    
+    struct OutPointHasher {
+        std::size_t operator()(const OutPoint& o) const noexcept {
+            size_t h = 0;
+            for (auto b : o.hash) h = (h * 131) ^ b;
+            h ^= static_cast<size_t>(o.index + 0x9e3779b97f4a7c15ULL + (h << 6) + (h >> 2));
+            return h;
+        }
+    };
+    
+    struct OutPointEq {
+        bool operator()(const OutPoint& a, const OutPoint& b) const noexcept {
+            return a.index == b.index && a.hash == b.hash;
+        }
+    };
+
+    // Process all transactions
+    for (size_t txIdx = 0; txIdx < block.transactions.size(); ++txIdx) {
+        const auto& tx = block.transactions[txIdx];
+        
+        // Skip coinbase (first tx)
+        bool isCoinbase = (txIdx == 0 && tx.vin.size() == 1 && 
+                           tx.vin[0].prevout.index == std::numeric_limits<uint32_t>::max());
+        
+        if (!isCoinbase) {
+            // Verify all inputs exist and aren't double-spent
+            for (const auto& input : tx.vin) {
+                // Check for intra-block double spend
+                if (spentInBlock.count(input.prevout)) {
+                    return false; // Double spend within this block
+                }
+                spentInBlock.insert(input.prevout);
+                
+                // Verify UTXO exists (either in db or fallback)
+                std::optional<TxOut> utxo = coinsdb.GetUTXO(input.prevout);
+                if (!utxo && fallbackLookup) {
+                    utxo = fallbackLookup(input.prevout);
+                }
+                if (!utxo) {
+                    return false; // Missing UTXO
+                }
+            }
+        }
+        
+        // Add new outputs to UTXO set
+        auto txHash = tx.GetHash();
+        for (size_t outIdx = 0; outIdx < tx.vout.size(); ++outIdx) {
+            OutPoint op{txHash, static_cast<uint32_t>(outIdx)};
+            coinsdb.AddUTXO(op, tx.vout[outIdx]);
+        }
+        
+        // Remove spent inputs from UTXO set
+        if (!isCoinbase) {
+            for (const auto& input : tx.vin) {
+                coinsdb.SpendUTXO(input.prevout);
+            }
+        }
+    }
+
+    return true;
 }
+
+} // namespace validation
