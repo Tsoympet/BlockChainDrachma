@@ -5,6 +5,7 @@
 #include <stdexcept>
 #include <vector>
 #include <cstring>
+#include <openssl/sha.h>
 
 class BlockStore {
 public:
@@ -35,8 +36,16 @@ public:
         }
 
         uint32_t totalSize = static_cast<uint32_t>(buffer.size());
+        
+        // Calculate SHA-256 checksum for integrity verification
+        std::array<uint8_t, 32> checksum;
+        SHA256(buffer.data(), buffer.size(), checksum.data());
+        
+        // Write: [size][checksum][data]
         out.write(reinterpret_cast<const char*>(&totalSize), sizeof(totalSize));
+        out.write(reinterpret_cast<const char*>(checksum.data()), checksum.size());
         out.write(reinterpret_cast<const char*>(buffer.data()), buffer.size());
+        
         index[height] = static_cast<uint64_t>(pos);
         ++dirtyCount;
         if (dirtyCount >= kFlushThreshold) {
@@ -62,9 +71,28 @@ public:
         in.seekg(it->second);
         uint32_t size = 0;
         in.read(reinterpret_cast<char*>(&size), sizeof(size));
+        
+        // Validate block size to prevent allocation attacks
+        const uint32_t MAX_BLOCK_SIZE = 100 * 1024 * 1024; // 100MB max
+        if (size == 0 || size > MAX_BLOCK_SIZE) {
+            throw std::runtime_error("invalid block size");
+        }
+        
+        // Read checksum
+        std::array<uint8_t, 32> storedChecksum;
+        in.read(reinterpret_cast<char*>(storedChecksum.data()), storedChecksum.size());
+        
+        // Read block data
         std::vector<uint8_t> data(size);
         in.read(reinterpret_cast<char*>(data.data()), size);
         if (!in) throw std::runtime_error("corrupt blockstore");
+        
+        // Verify checksum for integrity
+        std::array<uint8_t, 32> computedChecksum;
+        SHA256(data.data(), data.size(), computedChecksum.data());
+        if (storedChecksum != computedChecksum) {
+            throw std::runtime_error("block checksum mismatch - data corruption detected");
+        }
 
         Block block{};
         if (size < sizeof(BlockHeader) + sizeof(uint32_t)) throw std::runtime_error("block too small");
@@ -74,11 +102,25 @@ public:
         uint32_t txCount = 0;
         std::memcpy(&txCount, data.data() + offset, sizeof(txCount));
         offset += sizeof(txCount);
+        
+        // Validate transaction count to prevent memory exhaustion
+        const uint32_t MAX_TX_COUNT = 100000;
+        if (txCount > MAX_TX_COUNT) {
+            throw std::runtime_error("transaction count exceeds maximum");
+        }
+        
         for (uint32_t i = 0; i < txCount; ++i) {
             if (offset + sizeof(uint32_t) > data.size()) throw std::runtime_error("truncated transaction size");
             uint32_t txSize = 0;
             std::memcpy(&txSize, data.data() + offset, sizeof(txSize));
             offset += sizeof(txSize);
+            
+            // Validate transaction size
+            const uint32_t MAX_TX_SIZE = 10 * 1024 * 1024; // 10MB max per tx
+            if (txSize == 0 || txSize > MAX_TX_SIZE) {
+                throw std::runtime_error("invalid transaction size");
+            }
+            
             if (offset + txSize > data.size()) throw std::runtime_error("truncated transaction data");
             std::vector<uint8_t> txdata(data.begin() + offset, data.begin() + offset + txSize);
             offset += txSize;
@@ -100,10 +142,20 @@ private:
         if (!in.good()) return;
         uint32_t count = 0;
         in.read(reinterpret_cast<char*>(&count), sizeof(count));
+        
+        // Validate index count to prevent memory exhaustion
+        const uint32_t MAX_INDEX_ENTRIES = 10000000; // 10 million blocks max
+        if (count > MAX_INDEX_ENTRIES) {
+            throw std::runtime_error("index count exceeds maximum");
+        }
+        
         for (uint32_t i = 0; i < count; ++i) {
             uint32_t height; uint64_t off;
             in.read(reinterpret_cast<char*>(&height), sizeof(height));
             in.read(reinterpret_cast<char*>(&off), sizeof(off));
+            if (!in.good()) {
+                throw std::runtime_error("corrupt index file");
+            }
             index[height] = off;
         }
     }

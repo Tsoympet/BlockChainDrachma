@@ -23,16 +23,38 @@ namespace rpc {
 namespace {
 std::unordered_map<std::string, std::string> ParseKeyValues(const std::string& raw)
 {
+    // Maximum allowed key-value pairs: 100
+    const size_t MAX_KV_PAIRS = 100;
+    
+    // Maximum allowed key or value length: 64KB
+    const size_t MAX_KV_LENGTH = 64 * 1024;
+    
+    // Maximum input size: 1MB
+    const size_t MAX_INPUT_SIZE = 1 * 1024 * 1024;
+    
+    if (raw.size() > MAX_INPUT_SIZE) {
+        throw std::runtime_error("Input too large for ParseKeyValues");
+    }
+    
     std::unordered_map<std::string, std::string> kv;
     std::string cleaned = raw;
     cleaned.erase(std::remove(cleaned.begin(), cleaned.end(), '"'), cleaned.end());
     std::stringstream ss(cleaned);
     std::string part;
     while (std::getline(ss, part, ';')) {
+        if (kv.size() >= MAX_KV_PAIRS) {
+            throw std::runtime_error("Too many key-value pairs");
+        }
+        
         auto pos = part.find('=');
         if (pos == std::string::npos) continue;
         auto key = part.substr(0, pos);
         auto value = part.substr(pos + 1);
+        
+        if (key.size() > MAX_KV_LENGTH || value.size() > MAX_KV_LENGTH) {
+            throw std::runtime_error("Key or value too long");
+        }
+        
         if (!key.empty()) kv[key] = value;
     }
     return kv;
@@ -40,16 +62,47 @@ std::unordered_map<std::string, std::string> ParseKeyValues(const std::string& r
 
 std::vector<sidechain::wasm::Instruction> DecodeInstructions(const std::string& hex)
 {
+    // Maximum allowed hex string size: 1MB (500KB of instructions)
+    const size_t MAX_HEX_SIZE = 1 * 1024 * 1024;
+    
+    // Maximum allowed number of instructions: 100,000
+    const size_t MAX_INSTRUCTIONS = 100000;
+    
+    if (hex.size() > MAX_HEX_SIZE) {
+        throw std::runtime_error("Instruction hex string too large");
+    }
+    
     std::vector<sidechain::wasm::Instruction> out;
     auto cleaned = hex;
     cleaned.erase(std::remove(cleaned.begin(), cleaned.end(), '"'), cleaned.end());
     std::vector<uint8_t> bytes;
-    for (size_t i = 0; i + 2 <= cleaned.size(); i += 2) {
-        uint8_t byte = std::stoi(cleaned.substr(i, 2), nullptr, 16);
-        bytes.push_back(byte);
+    
+    // Validate hex string format
+    if (cleaned.size() % 2 != 0) {
+        throw std::runtime_error("Invalid hex string: odd length");
     }
+    
+    for (size_t i = 0; i + 2 <= cleaned.size(); i += 2) {
+        try {
+            uint8_t byte = std::stoi(cleaned.substr(i, 2), nullptr, 16);
+            bytes.push_back(byte);
+        } catch (...) {
+            throw std::runtime_error("Invalid hex character in instruction data");
+        }
+    }
+    
     if (bytes.empty()) return out;
+    
+    // Each instruction is 5 bytes (1 byte opcode + 4 bytes immediate)
+    if (bytes.size() % 5 != 0) {
+        throw std::runtime_error("Invalid instruction data: size not multiple of 5");
+    }
+    
     for (size_t i = 0; i + 5 <= bytes.size(); i += 5) {
+        if (out.size() >= MAX_INSTRUCTIONS) {
+            throw std::runtime_error("Too many instructions");
+        }
+        
         sidechain::wasm::Instruction ins;
         ins.op = static_cast<sidechain::wasm::OpCode>(bytes[i]);
         int32_t imm = 0;
@@ -667,10 +720,28 @@ std::optional<Block> RPCServer::ReadBlock(uint32_t height)
 
 std::vector<uint8_t> RPCServer::ParseHex(const std::string& hex)
 {
+    // Maximum allowed hex string size: 1MB (512KB binary data)
+    const size_t MAX_HEX_SIZE = 1 * 1024 * 1024;
+    
+    if (hex.size() > MAX_HEX_SIZE) {
+        throw std::runtime_error("Hex string too large");
+    }
+    
+    // Validate hex string has even length
+    if (hex.size() % 2 != 0) {
+        throw std::runtime_error("Invalid hex string: odd length");
+    }
+    
     std::vector<uint8_t> out;
+    out.reserve(hex.size() / 2);
+    
     for (size_t i = 0; i + 1 < hex.size(); i += 2) {
-        uint8_t byte = std::stoi(hex.substr(i, 2), nullptr, 16);
-        out.push_back(byte);
+        try {
+            uint8_t byte = std::stoi(hex.substr(i, 2), nullptr, 16);
+            out.push_back(byte);
+        } catch (...) {
+            throw std::runtime_error("Invalid hex character");
+        }
     }
     return out;
 }
@@ -692,6 +763,20 @@ std::string RPCServer::TrimQuotes(std::string in)
 
 std::pair<std::string, std::string> RPCServer::ParseJsonRpc(const std::string& body)
 {
+    // Maximum allowed request body size: 10MB (prevents memory exhaustion attacks)
+    const size_t MAX_REQUEST_SIZE = 10 * 1024 * 1024;
+    
+    // Maximum allowed method name length: 128 bytes
+    const size_t MAX_METHOD_LENGTH = 128;
+    
+    // Maximum allowed params length: 1MB
+    const size_t MAX_PARAMS_LENGTH = 1 * 1024 * 1024;
+    
+    // Validate total request size
+    if (body.size() > MAX_REQUEST_SIZE) {
+        throw std::runtime_error("Request too large");
+    }
+    
     // Simple parser without regex for better performance: {"method":"name","params":"value"}
     // Note: This is a lightweight parser for well-formed RPC requests. For robustness,
     // a full JSON library should be used in production.
@@ -728,6 +813,11 @@ std::pair<std::string, std::string> RPCServer::ParseJsonRpc(const std::string& b
     };
     
     method = findStringValue("\"method\"");
+    
+    // Validate method length
+    if (method.size() > MAX_METHOD_LENGTH) {
+        throw std::runtime_error("Method name too long");
+    }
     
     // Find params - can be string, number, object, or array
     size_t paramsPos = body.find("\"params\"");
@@ -769,6 +859,11 @@ std::pair<std::string, std::string> RPCServer::ParseJsonRpc(const std::string& b
                 }
                 if (end > start) {
                     params = body.substr(start, end - start);
+                    
+                    // Validate params length
+                    if (params.size() > MAX_PARAMS_LENGTH) {
+                        throw std::runtime_error("Params too long");
+                    }
                 }
             }
         }
