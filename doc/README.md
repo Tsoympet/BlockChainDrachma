@@ -72,9 +72,9 @@ Templates and supporting materials for documentation and releases.
 ## Quick Links
 
 - **Main README:** [../README.md](../README.md)
-- **Contributing:** [../CONTRIBUTING.md](../CONTRIBUTING.md)
+- **Contributing:** [CONTRIBUTING.md](CONTRIBUTING.md)
 - **License:** [../LICENSE](../LICENSE)
-- **Changelog:** [../CHANGELOG.md](../CHANGELOG.md)
+- **Changelog:** [CHANGELOG.md](CHANGELOG.md)
 
 ## Getting Help
 
