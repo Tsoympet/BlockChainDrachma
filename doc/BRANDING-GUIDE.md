@@ -143,7 +143,7 @@ Three native assets with distinct visual identities:
 
 **Example**:
 - ✅ "41 million coin supply cap, enforced by consensus rules"
-- ❌ "To the moon! Best investment of 2024!"
+- ❌ "To the moon! Best investment ever!"
 
 ### 3.2 Key Messages
 
@@ -480,7 +480,7 @@ font-family: "JetBrains Mono", "Fira Code", "Source Code Pro",
 **Example Bad Tweets**:
 - "🚀🚀🚀 DRACHMA TO THE MOON! Don't miss out! #crypto #blockchain #altcoin"
 - "DRACHMA is the ONLY true blockchain. All others are scams."
-- "Price prediction: DRACHMA will 100x in 2024!"
+- "Price prediction: DRACHMA will 100x this year!"
 
 ### 9.2 Reddit Strategy
 

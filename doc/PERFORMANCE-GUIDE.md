@@ -618,7 +618,7 @@ drachma-cli getmempoolinfo
 2. **QR Code Generation**: Placeholder only
    - **Impact**: Generated images not scannable
    - **Mitigation**: Use external QR generator
-   - **Future**: Integrate libqrencode (v0.1.0)
+   - **Future**: Integrate libqrencode (target: DRACHMA v0.1.0)
 
 3. **OpenCL Miner Variance**: Driver-dependent performance
    - **Impact**: Inconsistent hash rates
