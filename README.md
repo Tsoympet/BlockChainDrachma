@@ -46,7 +46,7 @@ Always verify signatures and checksums before running binaries.
   make
   sudo make install
   ```
-  See [`INSTALL.md`](INSTALL.md) for detailed installation instructions.
+  See [`doc/INSTALL.md`](doc/INSTALL.md) for detailed installation instructions.
 - **One-line installers:** `./scripts/install-linux.sh`, `./scripts/install-macos.sh`, and `.\scripts\install-windows.ps1` automate the build and installation process.
 - **Build from source (advanced):** See [`doc/getting-started/building.md`](doc/getting-started/building.md) for platform-specific setup, CMake options, and Qt deployment tips.
 - **Docker quickstart:**
@@ -99,7 +99,7 @@ sudo make install
    ctest --test-dir build
    ```
 
-> Tip: See [`INSTALL.md`](INSTALL.md) for detailed installation options, [`doc/getting-started/building.md`](doc/getting-started/building.md) for platform-specific details, and [`doc/user-guides/mining-guide.md`](doc/user-guides/mining-guide.md) for GPU tuning and troubleshooting.
+> Tip: See [`doc/INSTALL.md`](doc/INSTALL.md) for detailed installation options, [`doc/getting-started/building.md`](doc/getting-started/building.md) for platform-specific details, and [`doc/user-guides/mining-guide.md`](doc/user-guides/mining-guide.md) for GPU tuning and troubleshooting.
 
 ---
 
@@ -254,7 +254,7 @@ Mainnet procedures and host preparation steps are detailed in [`doc/operators/de
 - Consult the [Security Audit Guide](doc/security/audit-guide.md) for scope, fuzzing targets, and testnet/regtest setups.
 - See the [Threat Model](doc/security/threat-model.md) for adversaries, assets, and mitigations guiding validation and monitoring.
 
-Security-impacting changes and reports are welcomed; consensus/crypto modifications require additional review as noted in [CONTRIBUTING.md](CONTRIBUTING.md).
+Security-impacting changes and reports are welcomed; consensus/crypto modifications require additional review as noted in [doc/CONTRIBUTING.md](doc/CONTRIBUTING.md).
 
 ---
 
@@ -457,9 +457,9 @@ This repository now ships a working reference implementation with Layer 1/2/3 bi
 - **Status page:** [https://status.drachma.org](https://status.drachma.org) for seed/faucet uptime during testnet
 - **X/Twitter:** [https://x.com/drachma_org](https://x.com/drachma_org) for short-form status updates
 
-Use Issues/PRs for development work and follow [`CONTRIBUTING.md`](CONTRIBUTING.md) for coding standards and review expectations.
+Use Issues/PRs for development work and follow [`doc/CONTRIBUTING.md`](doc/CONTRIBUTING.md) for coding standards and review expectations.
 
-For development coordination, please prefer issues/PRs and follow [`CONTRIBUTING.md`](CONTRIBUTING.md).
+For development coordination, please prefer issues/PRs and follow [`doc/CONTRIBUTING.md`](doc/CONTRIBUTING.md).
 
 ---
 
