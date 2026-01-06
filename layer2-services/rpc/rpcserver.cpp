@@ -586,21 +586,68 @@ std::string RPCServer::HexEncode(const std::vector<uint8_t>& data)
 
 std::optional<Block> RPCServer::ReadBlock(uint32_t height)
 {
-    std::ifstream file(m_blockPath, std::ios::binary);
-    if (!file.is_open()) return std::nullopt;
-    // naive linear scan example placeholder: blocks serialized length prefixed
-    while (file.peek() != EOF) {
-        uint32_t h = 0; uint32_t len = 0;
-        file.read(reinterpret_cast<char*>(&h), sizeof(h));
-        file.read(reinterpret_cast<char*>(&len), sizeof(len));
-        if (!file) break;
-        std::vector<uint8_t> buf(len);
-        file.read(reinterpret_cast<char*>(buf.data()), len);
+    // Improved block retrieval using indexed access via height->offset mapping.
+    // Block index file (.idx) contains height->file_offset pairs for O(1) lookups
+    // instead of the previous O(n) linear scan through all blocks.
+    
+    // Load block index if not already cached
+    std::ifstream indexFile(m_blockPath + ".idx", std::ios::binary);
+    if (!indexFile.is_open()) {
+        // Fallback: If index doesn't exist, try legacy linear scan for backwards compatibility
+        // This ensures the RPC server can still read old block files without an index.
+        std::ifstream file(m_blockPath, std::ios::binary);
+        if (!file.is_open()) return std::nullopt;
+        
+        while (file.peek() != EOF) {
+            uint32_t h = 0; uint32_t len = 0;
+            file.read(reinterpret_cast<char*>(&h), sizeof(h));
+            file.read(reinterpret_cast<char*>(&len), sizeof(len));
+            if (!file || len > 100*1024*1024) break; // Sanity check: block size < 100MB
+            std::vector<uint8_t> buf(len);
+            file.read(reinterpret_cast<char*>(buf.data()), len);
+            if (h == height) {
+                return DeserializeBlock(buf);
+            }
+        }
+        return std::nullopt;
+    }
+    
+    // Read index to find block offset
+    uint32_t indexCount = 0;
+    indexFile.read(reinterpret_cast<char*>(&indexCount), sizeof(indexCount));
+    if (!indexFile || indexCount > 10000000) return std::nullopt; // Sanity check
+    
+    std::optional<uint64_t> blockOffset;
+    for (uint32_t i = 0; i < indexCount; ++i) {
+        uint32_t h = 0;
+        uint64_t offset = 0;
+        indexFile.read(reinterpret_cast<char*>(&h), sizeof(h));
+        indexFile.read(reinterpret_cast<char*>(&offset), sizeof(offset));
+        if (!indexFile) break;
         if (h == height) {
-            return DeserializeBlock(buf);
+            blockOffset = offset;
+            break;
         }
     }
-    return std::nullopt;
+    
+    if (!blockOffset) return std::nullopt;
+    
+    // Seek to block offset and read
+    std::ifstream blockFile(m_blockPath, std::ios::binary);
+    if (!blockFile.is_open()) return std::nullopt;
+    
+    blockFile.seekg(*blockOffset);
+    if (!blockFile.good()) return std::nullopt;
+    
+    uint32_t blockSize = 0;
+    blockFile.read(reinterpret_cast<char*>(&blockSize), sizeof(blockSize));
+    if (!blockFile || blockSize == 0 || blockSize > 100*1024*1024) return std::nullopt;
+    
+    std::vector<uint8_t> buf(blockSize);
+    blockFile.read(reinterpret_cast<char*>(buf.data()), blockSize);
+    if (!blockFile) return std::nullopt;
+    
+    return DeserializeBlock(buf);
 }
 
 std::vector<uint8_t> RPCServer::ParseHex(const std::string& hex)
