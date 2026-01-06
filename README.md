@@ -404,6 +404,11 @@ For a comprehensive list of all tasks needed to complete the project and prepare
 - **[Launch Action Items](doc/LAUNCH-ACTION-ITEMS.md)** - Prioritized action plan for mainnet launch
 - **[Mainnet Readiness Assessment](doc/MAINNET-READINESS.md)** - Technical readiness evaluation
 
+**🚀 Performance & Branding:**  
+For optimization tips and brand guidelines:
+- **[Performance Guide](doc/PERFORMANCE-GUIDE.md)** - Comprehensive performance optimization guide with benchmarks
+- **[Branding Guide](doc/BRANDING-GUIDE.md)** - Complete branding guidelines, visual identity, and messaging
+
 ---
 
 ## Status
