@@ -99,7 +99,7 @@ sudo make install
    ctest --test-dir build
    ```
 
-> Tip: See [`INSTALL.md`](INSTALL.md) for detailed installation options, [`docs/building.md`](docs/building.md) for platform-specific details, and [`docs/mining-guide.md`](docs/mining-guide.md) for GPU tuning and troubleshooting.
+> Tip: See [`INSTALL.md`](INSTALL.md) for detailed installation options, [`docs/building.md`](docs/building.md) for platform-specific details, and [`docs/user-guides/mining-guide.md`](docs/user-guides/mining-guide.md) for GPU tuning and troubleshooting.
 
 ---
 
@@ -213,7 +213,7 @@ Commands are subject to change as the implementation matures; prefer scripts in 
 The Layer 3 desktop wallet is testnet-ready. Representative views are available via reproducible demo scripts rather than inline binary assets:
 
 - **Dashboard and sync status:** launch `./build/layer3-app/drachma-wallet --connect 127.0.0.1:9333` and use the built-in “Demo Mode” under **Help → Demo Screens** to generate on-demand previews.
-- **Send flow with custom fee selection:** the same demo menu exports a markdown report (`docs/ui_snapshots.md`) describing the send dialog, fee slider, and QR rendering for sharing without embedding binary images in the repository.
+- **Send flow with custom fee selection:** the same demo menu exports a markdown report (`docs/ui-snapshots.md`) describing the send dialog, fee slider, and QR rendering for sharing without embedding binary images in the repository.
 
 ## Internal UI Icon System
 
@@ -363,7 +363,7 @@ Reference mining implementations are provided:
 - GPU miner (CUDA)
 - GPU miner (OpenCL)
 
-These miners serve as transparent reference tools and are not optimized black-box software. See [`docs/mining-guide.md`](docs/mining-guide.md) for configuration tips, intensity tuning, and monitoring guidance.
+These miners serve as transparent reference tools and are not optimized black-box software. See [`docs/user-guides/mining-guide.md`](docs/user-guides/mining-guide.md) for configuration tips, intensity tuning, and monitoring guidance.
 
 ---
 
@@ -395,7 +395,7 @@ drachma-blockchain/
 - 🔄 Release candidate binaries and deterministic build reproducibility
 - 🛠️ Mainnet launch following testnet stability, audits, and reproducible builds
 
-More detail is available in [`docs/roadmap.md`](docs/roadmap.md).
+More detail is available in [`docs/reference/roadmap.md`](docs/reference/roadmap.md).
 
 ---
 
