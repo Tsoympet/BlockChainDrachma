@@ -1,14 +1,16 @@
-# DRACHMA Performance Optimization Guide
+# PARTHENON CHAIN Performance Optimization Guide
 
 ## Overview
 
-This guide documents performance optimizations in the DRACHMA blockchain and provides recommendations for operators, developers, and miners to maximize efficiency.
+This guide documents performance optimizations in the PARTHENON CHAIN blockchain and provides recommendations for operators, developers, and miners to maximize efficiency.
+
+Built on Classical principles of order and permanence, PARTHENON CHAIN combines timeless design with modern performance engineering.
 
 ---
 
 ## Executive Summary
 
-DRACHMA includes several critical performance optimizations:
+PARTHENON CHAIN includes several critical performance optimizations:
 
 | Component | Optimization | Impact |
 |-----------|-------------|--------|
@@ -618,7 +620,7 @@ drachma-cli getmempoolinfo
 2. **QR Code Generation**: Placeholder only
    - **Impact**: Generated images not scannable
    - **Mitigation**: Use external QR generator
-   - **Future**: Integrate libqrencode (target: DRACHMA v0.1.0)
+   - **Future**: Integrate libqrencode (target: PARTHENON CHAIN v0.1.0)
 
 3. **OpenCL Miner Variance**: Driver-dependent performance
    - **Impact**: Inconsistent hash rates
@@ -658,5 +660,12 @@ See `doc/CONTRIBUTING.md` for guidelines.
 ---
 
 **Last Updated**: 2026-01-06  
-**Version**: 1.0  
-**Maintainer**: DRACHMA Core Team
+**Version**: 2.0  
+**Maintainer**: PARTHENON CHAIN Core Team
+
+---
+
+## Version History
+
+**v2.0 (2026-01-06)**: Rebranded to PARTHENON CHAIN  
+**v1.0 (2026-01-06)**: Initial DRACHMA performance guide

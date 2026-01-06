@@ -1,8 +1,13 @@
-# DRACHMA Blockchain Branding Guidelines
+# PARTHENON CHAIN Branding Guidelines
+
+## Master Brand: PARTHENON CHAIN
+
+**Theme**: Classical Greece · Value · Order · Timelessness  
+**Visual DNA**: Marble, Bronze, Silver, Obsidian
 
 ## Overview
 
-This document provides comprehensive branding guidelines for the DRACHMA blockchain project, covering visual identity, messaging, positioning, and community engagement.
+This document provides comprehensive branding guidelines for the PARTHENON CHAIN blockchain project, covering visual identity, messaging, positioning, and community engagement.
 
 ---
 
@@ -25,7 +30,9 @@ This document provides comprehensive branding guidelines for the DRACHMA blockch
 
 ### 1.1 Mission Statement
 
-> **DRACHMA is a transparent, auditable, Proof-of-Work monetary blockchain built on conservative cryptographic principles for long-term stability and minimal trust assumptions.**
+> **PARTHENON CHAIN is a transparent, auditable, Proof-of-Work monetary blockchain built on conservative cryptographic principles for long-term stability and minimal trust assumptions.**
+
+Embodying the enduring values of Classical Greece: order, beauty, permanence, and reasoned governance.
 
 ### 1.2 Core Values
 
@@ -37,18 +44,25 @@ This document provides comprehensive branding guidelines for the DRACHMA blockch
 
 ### 1.3 Brand Personality
 
-**DRACHMA is**:
-- **Serious** but not stuffy
-- **Technical** but accessible
-- **Conservative** but not stagnant
-- **Principled** but pragmatic
-- **Professional** but community-driven
+**PARTHENON CHAIN is**:
+- **Timeless** like marble architecture
+- **Valuable** like bronze and silver
+- **Strong** like obsidian foundations
+- **Ordered** with Classical principles
+- **Enduring** across generations
 
-**DRACHMA is NOT**:
-- Hype-driven or promotional
-- Overly complex or academic
-- Exclusive or elitist
-- Marketing-first, technology-second
+**PARTHENON CHAIN evokes**:
+- Classical Greek wisdom and philosophy
+- Permanence of marble monuments
+- Value of precious metals (bronze, silver)
+- Strength of volcanic obsidian
+- Architectural precision and balance
+
+**PARTHENON CHAIN is NOT**:
+- Trendy or ephemeral
+- Chaotic or disorganized
+- Cheap or disposable
+- Modern for modernity's sake
 
 ---
 
@@ -56,7 +70,7 @@ This document provides comprehensive branding guidelines for the DRACHMA blockch
 
 ### 2.1 Logo System
 
-DRACHMA uses a hierarchical logo system:
+PARTHENON CHAIN uses a hierarchical logo system inspired by Classical Greek architecture:
 
 #### Primary Logo
 **Location**: `assets/core-icons/app-icon.svg`
@@ -72,9 +86,10 @@ DRACHMA uses a hierarchical logo system:
 - **Minimum Size**: 16x16 pixels
 
 #### Wordmark
-- **Typography**: Clean, modern sans-serif
-- **Styling**: "DRACHMA" in all caps or "Drachma" with capital D
-- **Never**: "drachma" in all lowercase (except in code/filenames)
+- **Typography**: Classical serif with modern refinement (inspired by Greek inscriptions)
+- **Styling**: "PARTHENON CHAIN" in all caps or "Parthenon Chain" with capitals
+- **Never**: "parthenon chain" in all lowercase (except in code/filenames)
+- **Visual Reference**: Evokes carved marble inscriptions
 
 ### 2.2 Asset Icons
 
@@ -148,7 +163,7 @@ Three native assets with distinct visual identities:
 ### 3.2 Key Messages
 
 #### Primary Message
-"A transparent, auditable Proof-of-Work blockchain with conservative cryptography and fair launch."
+"A transparent, auditable Proof-of-Work blockchain built on Classical principles: order, permanence, and timeless value."
 
 #### Supporting Messages
 
@@ -175,11 +190,13 @@ Three native assets with distinct visual identities:
 ### 3.3 Terminology
 
 **Preferred Terms**:
-- "Blockchain" or "network" (not "coin" as primary descriptor)
+- "Blockchain" or "chain" (PARTHENON CHAIN)
+- "Classical principles" or "timeless design"
+- "Marble" / "Bronze" / "Silver" / "Obsidian" (when referencing visual theme)
+- "Enduring" / "Permanent" / "Ordered" (brand personality)
 - "Proof-of-Work" (not "mining" when discussing consensus)
 - "Fair launch" (not "no premine" as primary message)
-- "Conservative cryptography" (not "traditional" or "old-school")
-- "Transparent" (not "trustless" unless in technical context)
+- "Conservative cryptography" (proven, time-tested)
 
 **Avoid**:
 - Hype terms: "revolutionary", "game-changing", "disrupting"
@@ -226,60 +243,77 @@ Three native assets with distinct visual identities:
 
 ## 5. Color Palette
 
+**Inspired by Classical Greece**: Marble, Bronze, Silver, Obsidian
+
 ### 5.1 Primary Colors
 
-#### Brand Black
-- **Hex**: `#1a1a1a`
-- **RGB**: 26, 26, 26
-- **Usage**: Primary text, dark backgrounds, logo
+#### Marble White
+- **Hex**: `#F5F5F0`
+- **RGB**: 245, 245, 240
+- **Usage**: Light backgrounds, primary surfaces, evoking Pentelic marble
+- **Reference**: White marble of the Parthenon
 
-#### Brand White
-- **Hex**: `#f8f8f8`
-- **RGB**: 248, 248, 248
-- **Usage**: Light backgrounds, inverted text
+#### Obsidian Black
+- **Hex**: `#1C1C1E`
+- **RGB**: 28, 28, 30
+- **Usage**: Primary text, dark backgrounds, strong contrast
+- **Reference**: Volcanic obsidian, strength and permanence
 
-### 5.2 Accent Colors
+### 5.2 Accent Colors (Classical Metals)
 
-#### TLN Gold (Mining/PoW)
-- **Hex**: `#FFD700`
-- **RGB**: 255, 215, 0
+#### Bronze
+- **Hex**: `#CD7F32`
+- **RGB**: 205, 127, 50
 - **Usage**: TLN asset, mining indicators, security badges
+- **Reference**: Ancient Greek bronze statuary and weapons
 
-#### DRM Blue (Smart Contracts)
-- **Hex**: `#4169E1`
-- **RGB**: 65, 105, 225
+#### Silver
+- **Hex**: `#C0C0C0`
+- **RGB**: 192, 192, 192
 - **Usage**: DRM asset, contract interactions, primary actions
+- **Reference**: Laurion silver mines, Athenian coinage
 
-#### OBL Green (dApps)
-- **Hex**: `#32CD32`
-- **RGB**: 50, 205, 50
-- **Usage**: OBL asset, dApp indicators, success states
+#### Aegean Blue
+- **Hex**: `#1E4D8B`
+- **RGB**: 30, 77, 139
+- **Usage**: OBL asset, dApp indicators, Mediterranean connection
+- **Reference**: Deep blue of the Aegean Sea
 
 ### 5.3 Functional Colors
 
-#### Success
-- **Hex**: `#22C55E`
+#### Success (Olive Branch)
+- **Hex**: `#6B8E23`
+- **RGB**: 107, 142, 35
 - **Usage**: Confirmations, successful operations
+- **Reference**: Olive tree, symbol of peace and victory
 
-#### Warning
-- **Hex**: `#F59E0B`
+#### Warning (Saffron)
+- **Hex**: `#E4A010`
+- **RGB**: 228, 160, 16
 - **Usage**: Pending states, caution notices
+- **Reference**: Ancient Greek saffron dye
 
-#### Error
-- **Hex**: `#EF4444`
+#### Error (Tyrian Purple)
+- **Hex**: `#8B4789`
+- **RGB**: 139, 71, 137
 - **Usage**: Errors, failures, critical alerts
+- **Reference**: Rare Tyrian purple, signals importance
 
-#### Info
-- **Hex**: `#3B82F6`
+#### Info (Sky)
+- **Hex**: `#4A90E2`
+- **RGB**: 74, 144, 226
 - **Usage**: Informational messages, tips
+- **Reference**: Clear Mediterranean sky
 
-### 5.4 Neutral Palette
+### 5.4 Neutral Palette (Stone Gradations)
 
-- **Gray 100**: `#f3f4f6` - Light backgrounds
-- **Gray 300**: `#d1d5db` - Borders, dividers
-- **Gray 500**: `#6b7280` - Secondary text
-- **Gray 700**: `#374151` - Primary text on light
-- **Gray 900**: `#111827` - Dark backgrounds
+- **Marble 100**: `#F5F5F0` - Lightest marble, backgrounds
+- **Marble 300**: `#D4D4C8` - Light stone, borders, dividers
+- **Marble 500**: `#8C8C7F` - Mid-tone stone, secondary text
+- **Marble 700**: `#5A5A52` - Dark stone, primary text on light
+- **Marble 900**: `#2E2E2A` - Almost obsidian, dark backgrounds
+
+**Visual Reference**: Gradations from white marble to dark volcanic stone
 
 ---
 
@@ -287,16 +321,27 @@ Three native assets with distinct visual identities:
 
 ### 6.1 Primary Typeface
 
-**Sans-serif System Stack**:
+**Classical Serif Stack** (Headings & Brand):
+```css
+font-family: "Garamond", "Baskerville", "Georgia", 
+             "Times New Roman", serif;
+```
+
+**Rationale**: 
+- Evokes Classical inscriptions and formal documents
+- Timeless, elegant, authoritative
+- Readable at all sizes
+
+**Modern Sans-serif Stack** (Body Text):
 ```css
 font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", 
              Roboto, "Helvetica Neue", Arial, sans-serif;
 ```
 
 **Rationale**: 
-- Native system fonts for best performance
-- Excellent readability across platforms
-- No web font loading delays
+- Clear readability for technical content
+- Balances Classical headings with modern utility
+- Native system fonts for performance
 
 ### 6.2 Monospace (Code/Technical)
 
@@ -457,10 +502,10 @@ font-family: "JetBrains Mono", "Fira Code", "Source Code Pro",
 ### 9.1 Twitter/X Strategy
 
 **Profile**:
-- **Handle**: @drachma_org (or similar)
-- **Bio**: "Transparent Proof-of-Work blockchain | SHA-256d + Schnorr | Fair Launch | Open Source"
-- **Avatar**: DRACHMA symbol/icon
-- **Banner**: Clean, technical design (network diagram or block visualization)
+- **Handle**: @Parthenon_Chain (or similar)
+- **Bio**: "Proof-of-Work blockchain built on Classical principles | Marble · Bronze · Silver · Obsidian | Timeless · Ordered · Enduring"
+- **Avatar**: PARTHENON CHAIN symbol/icon (Classical Greek inspired)
+- **Banner**: Marble texture with bronze/silver accents, architectural elements
 
 **Content Mix**:
 - 40% Technical updates (releases, features, optimizations)
@@ -473,14 +518,14 @@ font-family: "JetBrains Mono", "Fira Code", "Source Code Pro",
 **Tone**: Professional, technical, informative
 
 **Example Good Tweets**:
-- "DRACHMA v0.1.0-rc released: indexed block retrieval (100x faster), multi-strategy coin selection, enhanced mempool. Download: [link]"
-- "How DRACHMA achieves fair launch: no premine, no ICO, identical consensus rules from block 1. Technical deep-dive: [link]"
+- "PARTHENON CHAIN v0.1.0-rc released: indexed block retrieval (100x faster), multi-strategy coin selection, enhanced mempool. Built to endure. Download: [link]"
+- "How PARTHENON CHAIN achieves permanence: no premine, no ICO, identical consensus rules from block 1. Classical principles, modern execution. [link]"
 - "Community contribution spotlight: @user improved GPU miner efficiency by 15%. Thank you! PR #123"
 
 **Example Bad Tweets**:
-- "🚀🚀🚀 DRACHMA TO THE MOON! Don't miss out! #crypto #blockchain #altcoin"
-- "DRACHMA is the ONLY true blockchain. All others are scams."
-- "Price prediction: DRACHMA will 100x this year!"
+- "🚀🚀🚀 PARTHENON TO THE MOON! Don't miss out! #crypto #blockchain #altcoin"
+- "PARTHENON CHAIN is the ONLY true blockchain. All others are scams."
+- "Price prediction: PARTHENON will 100x this year!"
 
 ### 9.2 Reddit Strategy
 
@@ -488,11 +533,11 @@ font-family: "JetBrains Mono", "Fira Code", "Source Code Pro",
 - r/cryptocurrency (major announcements only)
 - r/CryptoTechnology (technical discussions)
 - r/BitcoinMining (miner-focused content)
-- Own subreddit r/Drachma (if created)
+- Own subreddit r/ParthenonChain (if created)
 
 **Posting Guidelines**:
 - Follow subreddit rules strictly
-- Disclose affiliation ("DRACHMA developer here...")
+- Disclose affiliation ("PARTHENON CHAIN developer here...")
 - Focus on technical content, not marketing
 - Respond to questions professionally
 - Don't spam or cross-post excessively
@@ -518,7 +563,9 @@ font-family: "JetBrains Mono", "Fira Code", "Source Code Pro",
 
 ### 10.1 Market Position
 
-**Primary Position**: Conservative, transparent alternative to experimental blockchains
+**Primary Position**: Timeless, Classical alternative to ephemeral blockchain experiments
+
+**Brand Essence**: "Built like the Parthenon—to stand for millennia"
 
 **Target Audience**:
 1. **Bitcoin users** seeking additional Proof-of-Work options
@@ -552,16 +599,16 @@ font-family: "JetBrains Mono", "Fira Code", "Source Code Pro",
 - ✅ Serious development (not meme/hype coin)
 - ⚠️ Less marketing (technical focus)
 
-**Key Differentiator**: **Radical transparency and conservative design over innovation for its own sake**
+**Key Differentiator**: **Classical principles and enduring design over fleeting trends. Built to last like marble, valued like bronze and silver, strong like obsidian.**
 
 ### 10.3 Messaging Matrix
 
 | Audience | Primary Message | Supporting Points |
 |----------|----------------|-------------------|
-| **Bitcoin Users** | "Proof-of-Work alternative with modern cryptography" | SHA-256d, Schnorr, fair launch, transparent |
-| **Developers** | "Simple, auditable consensus with clear architecture" | Layered design, open RPC, reproducible builds |
-| **Miners** | "Fair-launch PoW with optimized mining software" | No premine, CPU/GPU miners, Stratum support |
-| **Enterprises** | "Transparent, predictable blockchain for auditing" | Open source, deterministic consensus, clear rules |
+| **Bitcoin Users** | "Timeless PoW built on Classical principles" | SHA-256d, Schnorr, enduring design, transparent |
+| **Developers** | "Ordered architecture inspired by Classical philosophy" | Layered design, clear rules, reproducible builds |
+| **Miners** | "Fair-launch PoW built to endure like marble" | No premine, CPU/GPU miners, permanent value |
+| **Enterprises** | "Transparent, permanent blockchain for the ages" | Open source, deterministic, Classical stability |
 
 ---
 
@@ -619,10 +666,10 @@ When creating materials not in the official repository:
 4. Post public disclosure after fix deployed
 5. Update documentation and audit guide
 
-**Tone**: Serious, transparent, factual
+**Tone**: Serious, transparent, factual (maintain Classical dignity)
 
 **Example**:
-> "Security Advisory: DRACHMA-2024-001
+> "Security Advisory: PARTHENON-2026-001
 > 
 > A vulnerability in RPC authentication was discovered and fixed in v0.1.1. All users should upgrade immediately. Details: [link]
 > 
@@ -718,6 +765,15 @@ As DRACHMA grows globally, regional adaptations may be necessary:
 
 ### 15.1 Glossary
 
+**Brand Terms**:
+- **PARTHENON CHAIN**: Master brand name
+- **Marble**: Primary light theme color (white/cream)
+- **Bronze**: Accent color for mining/PoW
+- **Silver**: Accent color for contracts
+- **Obsidian**: Primary dark theme color (black)
+- **Classical Principles**: Order, permanence, timelessness, value
+
+**Technical Terms**:
 - **Fair Launch**: No premine, no ICO, no privileged allocations
 - **Conservative Cryptography**: Proven, peer-reviewed algorithms (SHA-256d, Schnorr)
 - **Transparent**: Open source, reproducible, verifiable
@@ -737,7 +793,14 @@ As DRACHMA grows globally, regional adaptations may be necessary:
 
 ---
 
-**Document Version**: 1.0  
+**Document Version**: 2.0  
 **Effective Date**: 2026-01-06  
-**Maintained By**: DRACHMA Core Team  
+**Maintained By**: PARTHENON CHAIN Core Team  
 **License**: CC BY 4.0 (documentation), MIT (assets)
+
+---
+
+## Brand Update History
+
+**v2.0 (2026-01-06)**: Rebranded to PARTHENON CHAIN with Classical Greek theme (Marble, Bronze, Silver, Obsidian)  
+**v1.0 (2026-01-06)**: Initial DRACHMA branding guidelines
