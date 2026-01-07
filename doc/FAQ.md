@@ -328,6 +328,18 @@ drachma-node --testnet
 
 See `doc/getting-started/quickstart.md` for setup.
 
+### Do I need coverage.py for code coverage?
+
+**No.** PARTHENON CHAIN is a **C++ project** that uses **gcovr** for code coverage, not Python's coverage.py.
+
+**For coverage analysis:**
+- Install `gcovr` (not coverage.py): `sudo apt-get install gcovr`
+- Build with coverage enabled: `cmake -DDRACHMA_COVERAGE=ON`
+- Run tests: `ctest --test-dir build`
+- Generate report: `gcovr --root . --print-summary`
+
+The CI workflow automatically handles coverage using gcovr and uploads results to Codecov.
+
 ---
 
 ## Security Questions
