@@ -182,48 +182,42 @@ bool ValidateTransactions(const std::vector<Transaction>& txs, const consensus::
 
     uint64_t totalFees = 0;
 
-        for (size_t i = 0; i < txs.size(); ++i) {
-            const auto& tx = txs[i];
-            std::optional<uint8_t> txAsset;
+    for (size_t i = 1; i < txs.size(); ++i) {
+        const auto& tx = txs[i];
+        std::optional<uint8_t> txAsset;
 
-            const size_t txSize = Serialize(tx).size();
-            if (txSize == 0 || txSize > MAX_TX_SIZE)
+        const size_t txSize = Serialize(tx).size();
+        if (txSize == 0 || txSize > MAX_TX_SIZE)
+            return false;
+        runningWeight += txSize * 4; // legacy weight approximation
+        if (runningWeight > MAX_BLOCK_WEIGHT)
+            return false;
+
+        uint64_t totalOut = 0;
+        for (const auto& out : tx.vout) {
+            if (!checkAsset(txAsset, out.assetId))
                 return false;
-            runningWeight += txSize * 4; // legacy weight approximation
-            if (runningWeight > MAX_BLOCK_WEIGHT)
+            uint64_t next = 0;
+            if (!SafeAdd(totalOut, out.value, next))
                 return false;
-
-            uint64_t totalOut = 0;
-            for (const auto& out : tx.vout) {
-                if (!checkAsset(txAsset, out.assetId))
-                    return false;
-                uint64_t next = 0;
-                if (!SafeAdd(totalOut, out.value, next))
-                    return false;
-                totalOut = next;
-                const uint8_t assetForRange = txAsset.value_or(out.assetId);
-                if (!consensus::MoneyRange(out.value, params, assetForRange) || !consensus::MoneyRange(totalOut, params, assetForRange))
-                    return false;
-                if (out.scriptPubKey.size() != 32)
-                    return false; // enforce schnorr-only pubkeys
-                if (out.value < DUST_THRESHOLD)
-                    return false;
-            }
-
-            if (i == 0) {
-                if (!checkAsset(txAsset, tx.vin.front().assetId))
-                    return false;
-                continue;
-            }
-
-            if (IsCoinbase(tx))
-                return false; // only the first tx may be coinbase
-
-            if (!lookup)
-                return false; // cannot validate spends without a UTXO provider
-
-            if (tx.vin.empty() || tx.vout.empty())
+            totalOut = next;
+            const uint8_t assetForRange = txAsset.value_or(out.assetId);
+            if (!consensus::MoneyRange(out.value, params, assetForRange) || !consensus::MoneyRange(totalOut, params, assetForRange))
                 return false;
+            if (out.scriptPubKey.size() != 32)
+                return false; // enforce schnorr-only pubkeys
+            if (out.value < DUST_THRESHOLD)
+                return false;
+        }
+
+        if (IsCoinbase(tx))
+            return false; // only the first tx may be coinbase
+
+        if (!lookup)
+            return false; // cannot validate spends without a UTXO provider
+
+        if (tx.vin.empty() || tx.vout.empty())
+            return false;
 
             uint64_t totalIn = 0;
             for (size_t inIdx = 0; inIdx < tx.vin.size(); ++inIdx) {
@@ -267,16 +261,16 @@ bool ValidateTransactions(const std::vector<Transaction>& txs, const consensus::
                 return false;
         }
 
-        uint64_t maxCoinbase = multiAssetActive && coinbaseAsset
-            ? consensus::GetBlockSubsidy(height, params, *coinbaseAsset)
-            : consensus::GetBlockSubsidy(height, params);
-        if (!SafeAdd(maxCoinbase, totalFees, maxCoinbase))
-            return false;
+    uint64_t maxCoinbase = multiAssetActive && coinbaseAsset
+        ? consensus::GetBlockSubsidy(height, params, *coinbaseAsset)
+        : consensus::GetBlockSubsidy(height, params);
+    if (!SafeAdd(maxCoinbase, totalFees, maxCoinbase))
+        return false;
 
-        if (coinbaseOutTotal > maxCoinbase)
-            return false;
+    if (coinbaseOutTotal > maxCoinbase)
+        return false;
 
-        return true;
+    return true;
 }
 
 bool ValidateBlock(const Block& block, const consensus::Params& params, int height, const UTXOLookup& lookup, const BlockValidationOptions& opts)
