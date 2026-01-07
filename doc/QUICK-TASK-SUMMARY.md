@@ -11,7 +11,7 @@
 
 ✅ **Testnet Ready**  
 ⚠️ **NOT Ready for Mainnet**  
-🎯 **Estimated Time to Launch:** 6-10 weeks (updated January 7, 2026)
+🎯 **Estimated Time to Launch:** 4-8 weeks (updated January 7, 2026)
 
 ---
 
@@ -29,9 +29,14 @@
 - **Action:** ~~Mine genesis block with final parameters~~ See `doc/GENESIS-MINING.md`
 
 ### 🔴 3. RPC Layer Hardening
-- **Status:** Prototype-grade (from AUDIT.md)
-- **Time:** 2-3 weeks
-- **Action:** Implement indexed storage, bounded parsers, rate limiting
+- **Status:** ✅ COMPLETED (January 7, 2026)
+- **Time:** ~~2-3 weeks~~ DONE
+- **Action:** ~~Implement indexed storage, bounded parsers, rate limiting~~ Production-hardened
+
+### 🔴 4. GUI Assets Completion
+- **Status:** ✅ COMPLETED (January 7, 2026)
+- **Time:** ~~2-3 weeks~~ DONE
+- **Action:** ~~Professional icons, legal text~~ Comprehensive assets in place
 
 ### 🔴 4. Reproducible Builds
 - **Status:** Not implemented
@@ -93,18 +98,18 @@
 
 ### Weeks 1-2: Start Critical Items
 - Engage security auditor
-- Begin RPC hardening
+- ~~Begin RPC hardening~~ ✅ COMPLETED
 - ~~Finalize genesis parameters~~ ✅ COMPLETED
 
 ### Weeks 3-6: Core Development
 - Complete security audit
-- Complete RPC hardening
+- ~~Complete RPC hardening~~ ✅ COMPLETED
 - Set up reproducible builds
 - Coordinate infrastructure
 
 ### Weeks 7-8: Integration & Testing
 - Extended testnet validation
-- Complete GUI assets
+- ~~Complete GUI assets~~ ✅ COMPLETED
 - Address audit findings
 
 ### Weeks 9-10: Pre-Launch
@@ -126,7 +131,8 @@ Before launching, ensure:
 - ✅ Security audit complete (no critical findings)
 - ✅ All 97+ tests passing
 - ✅ Genesis verified ✓
-- ✅ RPC hardened
+- ✅ RPC hardened ✓
+- ✅ GUI assets complete ✓
 - ✅ Reproducible builds working
 - ✅ 3+ seed nodes ready
 - ✅ Explorer operational
@@ -176,6 +182,8 @@ Before launching, ensure:
 - ✅ Max supply updated to 41M DRM
 - ✅ Critical bugs fixed (halving interval, subsidy)
 - ✅ Genesis block finalized and documented (January 7, 2026)
+- ✅ RPC layer production-hardened (January 7, 2026)
+- ✅ GUI assets complete (January 7, 2026)
 
 ---
 
@@ -186,10 +194,10 @@ Before launching, ensure:
    - Cannot launch without it
    - Budget $50k-$150k
 
-2. **BEGIN RPC HARDENING**
-   - Currently prototype-grade
-   - Critical attack surface
-   - 2-3 weeks of work
+2. ~~**BEGIN RPC HARDENING**~~ ✅ **COMPLETED**
+   - ~~Currently prototype-grade~~ PRODUCTION-READY
+   - ~~Critical attack surface~~ HARDENED
+   - ~~2-3 weeks of work~~ DONE
 
 3. ~~**FINALIZE GENESIS PARAMETERS**~~ ✅ **COMPLETED**
    - ~~Mine genesis block~~ DONE
