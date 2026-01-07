@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file. Dates use ISO 8601 format.
 
 ## [Unreleased]
+### Added
+- Project version management with auto-generated version header (v0.1.0)
+- Comprehensive PROJECT-STATUS.md documenting current state and launch readiness
+- CMake project metadata including version and description
+
 ### Fixed
 - Explorer RPC client now surfaces RPC errors instead of rendering empty results, improving user feedback and debugging.
 - Log file writes flush on warnings and errors to reduce lost diagnostics during crashes while avoiding heavy I/O on info-level logs.

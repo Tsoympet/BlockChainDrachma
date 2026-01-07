@@ -17,7 +17,8 @@ This documentation is organized into **8 main categories** with **43+ documents*
 
 ## 🎯 Project Status & Tasks
 
-**NEW:** Comprehensive task documentation for project completion:
+**NEW:** Comprehensive project status and task documentation:
+- **[Project Status](../PROJECT-STATUS.md)** - Complete overview of current state and progress ⭐ NEW
 - **[Quick Task Summary](QUICK-TASK-SUMMARY.md)** - Quick reference guide to pending tasks
 - **[Project Completion Tasks](PROJECT-COMPLETION-TASKS.md)** - Detailed task list for mainnet launch
 - **[Launch Action Items](LAUNCH-ACTION-ITEMS.md)** - Prioritized action plan
@@ -80,8 +81,9 @@ Templates and supporting materials for documentation and releases.
 ## Quick Links
 
 - **Main README:** [../README.md](../README.md)
-- **Project Completion Tasks:** [PROJECT-COMPLETION-TASKS.md](PROJECT-COMPLETION-TASKS.md) ⭐ NEW
-- **Quick Task Summary:** [QUICK-TASK-SUMMARY.md](QUICK-TASK-SUMMARY.md) ⭐ NEW
+- **Project Status:** [../PROJECT-STATUS.md](../PROJECT-STATUS.md) ⭐ NEW
+- **Project Completion Tasks:** [PROJECT-COMPLETION-TASKS.md](PROJECT-COMPLETION-TASKS.md)
+- **Quick Task Summary:** [QUICK-TASK-SUMMARY.md](QUICK-TASK-SUMMARY.md)
 - **Contributing:** [CONTRIBUTING.md](CONTRIBUTING.md)
 - **License:** [../LICENSE](../LICENSE)
 - **Changelog:** [CHANGELOG.md](CHANGELOG.md)

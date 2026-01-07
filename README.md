@@ -430,6 +430,7 @@ More detail is available in [`doc/reference/roadmap.md`](doc/reference/roadmap.m
 
 **📋 Project Completion Tasks:**  
 For a comprehensive list of all tasks needed to complete the project and prepare for mainnet launch, see:
+- **[Project Status](PROJECT-STATUS.md)** - Complete overview of current state, progress, and timeline ⭐ NEW
 - **[Quick Task Summary](doc/QUICK-TASK-SUMMARY.md)** - Quick reference guide
 - **[Project Completion Tasks](doc/PROJECT-COMPLETION-TASKS.md)** - Detailed task list with priorities, timelines, and dependencies
 - **[Launch Action Items](doc/LAUNCH-ACTION-ITEMS.md)** - Prioritized action plan for mainnet launch
