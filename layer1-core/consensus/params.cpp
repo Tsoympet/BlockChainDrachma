@@ -19,9 +19,9 @@ static Params mainParams {
     60,                // 60 blocks per retarget interval
     41000000ULL * COIN,
     false,             // no min-difficulty blocks
-    1735689600,        // genesis time
+    1740787200,        // genesis time (2025-03-01 00:00:00 UTC)
     0x1e0fffff,        // initial difficulty
-    0,                 // mined later if not provided
+    2437501,           // mainnet genesis nonce (mined)
     "DRACHMA: Proof before trust",
     {},                // checkpoints
     DEFAULT_THRESHOLD,
