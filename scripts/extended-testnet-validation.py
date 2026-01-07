@@ -33,7 +33,11 @@ class NetworkMonitor:
         self.start_time = datetime.now()
         
     def rpc_call(self, node_url, method, params=None):
-        """Make RPC call to a node"""
+        """Make RPC call to a node
+        
+        Note: This sends credentials in plaintext. For production use,
+        ensure the connection is over a trusted network or use SSL/TLS.
+        """
         try:
             payload = {
                 "jsonrpc": "2.0",

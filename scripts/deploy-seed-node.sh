@@ -68,6 +68,8 @@ listen=1
 maxconnections=125
 
 # RPC settings
+# NOTE: Credentials are randomly generated with 256+ bits of entropy
+# Config file is set to mode 600 (owner read/write only)
 server=1
 rpcuser=rpcuser_$(head -c 16 /dev/urandom | base64 | tr -dc 'a-zA-Z0-9')
 rpcpassword=$(head -c 32 /dev/urandom | base64 | tr -dc 'a-zA-Z0-9')

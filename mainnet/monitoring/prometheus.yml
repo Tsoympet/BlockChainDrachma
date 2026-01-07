@@ -20,6 +20,8 @@ rule_files:
 
 scrape_configs:
   # PARTHENON CHAIN mainnet seed nodes
+  # NOTE: Update these hostnames to match your actual deployment
+  # Use environment-specific configuration or service discovery for production
   - job_name: 'drachma-mainnet-seeds'
     static_configs:
       - targets:

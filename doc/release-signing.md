@@ -177,12 +177,26 @@ Only then should you extract and run the binary.
 gpg --armor --export-secret-keys your@email.com > private-key.asc
 ```
 
+⚠️ **CRITICAL SECURITY WARNING**: This file contains your private key in plaintext!
+- Never commit this file to version control
+- Keep it only in secure, encrypted storage
+- Delete immediately after use
+- Consider using a subkey instead of your master key
+
 2. Add to GitHub repository secrets:
    - Navigate to: Settings → Secrets → Actions
    - Add secret: `GPG_PRIVATE_KEY` = contents of `private-key.asc`
    - Add secret: `GPG_PASSPHRASE` = your key passphrase (if set)
 
-3. **Important**: Delete `private-key.asc` after uploading!
+3. **IMPORTANT - Delete immediately**:
+```bash
+# Securely delete the private key file
+shred -vfz -n 10 private-key.asc
+# Or on macOS
+srm -v private-key.asc
+```
+
+**Best Practice**: Use a dedicated signing subkey for CI/CD, not your master key.
 
 ### Workflow Integration
 
