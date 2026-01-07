@@ -75,36 +75,70 @@ std::vector<sidechain::wasm::Instruction> DecodeInstructions(const std::string& 
     std::vector<sidechain::wasm::Instruction> out;
     auto cleaned = hex;
     cleaned.erase(std::remove(cleaned.begin(), cleaned.end(), '"'), cleaned.end());
-    std::vector<uint8_t> bytes;
     
     // Validate hex string format
     if (cleaned.size() % 2 != 0) {
         throw std::runtime_error("Invalid hex string: odd length");
     }
     
+    // Each instruction is 5 bytes (1 byte opcode + 4 bytes immediate)
+    // Fail fast if instruction count exceeds limit before expensive hex decoding
+    if (cleaned.size() % 10 != 0) {
+        throw std::runtime_error("Invalid instruction data: size not multiple of 10 hex chars (5 bytes)");
+    }
+    const size_t instructionCount = cleaned.size() / 10;
+    if (instructionCount > MAX_INSTRUCTIONS) {
+        throw std::runtime_error("Too many instructions");
+    }
+    
+    // Pre-allocate bytes vector to avoid reallocations
+    std::vector<uint8_t> bytes;
+    bytes.reserve(cleaned.size() / 2);
+    
+    // Optimize: use lookup table for hex conversion instead of stoi
+    // Lookup table indexed by ASCII value, returns hex digit value or -1 for invalid
+    static const int8_t hex_lut[256] = {
+        // Control characters (0x00-0x1F)
+        -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
+        -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
+        // Space and symbols (0x20-0x2F)
+        -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
+        // Digits 0-9 (0x30-0x39)
+         0, 1, 2, 3, 4, 5, 6, 7, 8, 9,-1,-1,-1,-1,-1,-1,
+        // Uppercase letters: @ABCDEFGHIJKLMNO (0x40-0x4F)
+        -1,10,11,12,13,14,15,-1,-1,-1,-1,-1,-1,-1,-1,-1,
+        // Uppercase letters: PQRSTUVWXYZ[\]^_ (0x50-0x5F)
+        -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
+        // Lowercase letters: `abcdefghijklmno (0x60-0x6F)
+        -1,10,11,12,13,14,15,-1,-1,-1,-1,-1,-1,-1,-1,-1,
+        // Lowercase letters: pqrstuvwxyz{|}~DEL (0x70-0x7F)
+        -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
+        // Extended ASCII (0x80-0xFF) - all invalid
+        -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
+        -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
+        -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
+        -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
+        -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
+        -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
+        -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
+        -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1
+    };
+    
     for (size_t i = 0; i + 2 <= cleaned.size(); i += 2) {
-        try {
-            uint8_t byte = std::stoi(cleaned.substr(i, 2), nullptr, 16);
-            bytes.push_back(byte);
-        } catch (const std::invalid_argument&) {
+        int8_t high = hex_lut[static_cast<uint8_t>(cleaned[i])];
+        int8_t low = hex_lut[static_cast<uint8_t>(cleaned[i + 1])];
+        if (high < 0 || low < 0) {
             throw std::runtime_error("Invalid hex character in instruction data");
-        } catch (const std::out_of_range&) {
-            throw std::runtime_error("Hex value out of range in instruction data");
         }
+        bytes.push_back(static_cast<uint8_t>((high << 4) | low));
     }
     
     if (bytes.empty()) return out;
     
-    // Each instruction is 5 bytes (1 byte opcode + 4 bytes immediate)
-    if (bytes.size() % 5 != 0) {
-        throw std::runtime_error("Invalid instruction data: size not multiple of 5");
-    }
+    // Pre-allocate output vector
+    out.reserve(instructionCount);
     
     for (size_t i = 0; i + 5 <= bytes.size(); i += 5) {
-        if (out.size() >= MAX_INSTRUCTIONS) {
-            throw std::runtime_error("Too many instructions");
-        }
-        
         sidechain::wasm::Instruction ins;
         ins.op = static_cast<sidechain::wasm::OpCode>(bytes[i]);
         int32_t imm = 0;
