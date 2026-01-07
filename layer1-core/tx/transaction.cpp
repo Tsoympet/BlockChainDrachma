@@ -88,8 +88,14 @@ std::vector<uint8_t> Serialize(const Transaction& tx)
     // Pre-allocate approximate size to reduce reallocations
     // Base: version(4) + vinSize(4) + voutSize(4) + lockTime(4) = 16 bytes
     // Per input: hash(32) + index(4) + assetId(1) + sequence(4) + scriptSig_len(4) + scriptSig
+    //            = 45 bytes + scriptSig size
     // Per output: assetId(1) + value(8) + scriptPubKey_len(4) + scriptPubKey
-    size_t estimated = 16 + tx.vin.size() * 45 + tx.vout.size() * 13;
+    //            = 13 bytes + scriptPubKey size
+    constexpr size_t BASE_SIZE = 16;
+    constexpr size_t INPUT_OVERHEAD = 45;  // Fixed fields per input (excluding scriptSig)
+    constexpr size_t OUTPUT_OVERHEAD = 13; // Fixed fields per output (excluding scriptPubKey)
+    
+    size_t estimated = BASE_SIZE + tx.vin.size() * INPUT_OVERHEAD + tx.vout.size() * OUTPUT_OVERHEAD;
     for (const auto& in : tx.vin) estimated += in.scriptSig.size();
     for (const auto& o : tx.vout) estimated += o.scriptPubKey.size();
     out.reserve(estimated);
@@ -155,7 +161,11 @@ std::array<uint8_t, 32> ComputeInputDigest(const Transaction& tx, size_t inputIn
 
     std::vector<uint8_t> ser;
     // Pre-allocate approximate size to reduce reallocations
-    size_t estimated = 16 + tx.vin.size() * 45 + tx.vout.size() * 13;
+    // Same estimation as Serialize() function
+    constexpr size_t BASE_SIZE = 16;
+    constexpr size_t INPUT_OVERHEAD = 45;
+    constexpr size_t OUTPUT_OVERHEAD = 13;
+    size_t estimated = BASE_SIZE + tx.vin.size() * INPUT_OVERHEAD + tx.vout.size() * OUTPUT_OVERHEAD;
     ser.reserve(estimated);
     WriteUint32(ser, tx.version);
     WriteUint32(ser, static_cast<uint32_t>(tx.vin.size()));

@@ -81,6 +81,16 @@ std::vector<sidechain::wasm::Instruction> DecodeInstructions(const std::string& 
         throw std::runtime_error("Invalid hex string: odd length");
     }
     
+    // Each instruction is 5 bytes (1 byte opcode + 4 bytes immediate)
+    // Fail fast if instruction count exceeds limit before expensive hex decoding
+    if (cleaned.size() % 10 != 0) {
+        throw std::runtime_error("Invalid instruction data: size not multiple of 10 hex chars (5 bytes)");
+    }
+    const size_t instructionCount = cleaned.size() / 10;
+    if (instructionCount > MAX_INSTRUCTIONS) {
+        throw std::runtime_error("Too many instructions");
+    }
+    
     // Pre-allocate bytes vector to avoid reallocations
     std::vector<uint8_t> bytes;
     bytes.reserve(cleaned.size() / 2);
@@ -116,16 +126,7 @@ std::vector<sidechain::wasm::Instruction> DecodeInstructions(const std::string& 
     
     if (bytes.empty()) return out;
     
-    // Each instruction is 5 bytes (1 byte opcode + 4 bytes immediate)
-    if (bytes.size() % 5 != 0) {
-        throw std::runtime_error("Invalid instruction data: size not multiple of 5");
-    }
-    
     // Pre-allocate output vector
-    const size_t instructionCount = bytes.size() / 5;
-    if (instructionCount > MAX_INSTRUCTIONS) {
-        throw std::runtime_error("Too many instructions");
-    }
     out.reserve(instructionCount);
     
     for (size_t i = 0; i + 5 <= bytes.size(); i += 5) {
