@@ -194,7 +194,7 @@ int main()
             if (it == utxos.end()) return std::nullopt;
             return it->second;
         };
-        assert(!ValidateTransactions(txs, params, 2, lookup, true, params.nGenesisBits, 100));
+        assert(!ValidateTransactions(txs, params, 2, lookup));
     }
 
     // Reject coinbase with undersized scriptSig.
