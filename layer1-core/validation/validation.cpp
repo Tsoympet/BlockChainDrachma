@@ -168,6 +168,8 @@ bool ValidateTransactions(const std::vector<Transaction>& txs, const consensus::
             return false;
         if (out.scriptPubKey.size() != 32)
             return false; // enforce schnorr-only pubkeys
+        if (out.value < DUST_THRESHOLD)
+            return false;
     }
     if (!coinbaseAsset || !checkAsset(coinbaseAsset, txs.front().vin.front().assetId))
         return false;
