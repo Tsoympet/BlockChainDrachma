@@ -36,6 +36,7 @@ public:
 
     void Start();
     void Stop();
+    void EnableLogging(bool enable = true);
 
 private:
     void Accept();
@@ -51,6 +52,7 @@ private:
     static uint256 ParseHash(const std::string& params);
     static std::string TrimQuotes(std::string in);
     std::pair<std::string, std::string> ParseJsonRpc(const std::string& body);
+    void LogRequest(const std::string& remote, const std::string& method, bool success, const std::string& error = "");
 
     boost::asio::io_context& m_io;
     boost::asio::ip::tcp::acceptor m_acceptor;
@@ -61,6 +63,7 @@ private:
     std::string m_blockPath{"mainnet/blocks.dat"};
     std::unordered_map<std::string, std::pair<size_t, std::chrono::steady_clock::time_point>> m_rate;
     std::string m_token{"drachma-token"};
+    bool m_loggingEnabled{false};
 };
 
 } // namespace rpc

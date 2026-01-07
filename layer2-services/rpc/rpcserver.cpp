@@ -4,7 +4,9 @@
 #include <boost/beast/version.hpp>
 #include <algorithm>
 #include <chrono>
+#include <ctime>
 #include <fstream>
+#include <iostream>
 #include <sstream>
 #include <stdexcept>
 #include <cstring>
@@ -557,6 +559,37 @@ void RPCServer::Stop()
     m_acceptor.close(ec);
 }
 
+void RPCServer::EnableLogging(bool enable)
+{
+    std::lock_guard<std::mutex> g(m_mutex);
+    m_loggingEnabled = enable;
+}
+
+void RPCServer::LogRequest(const std::string& remote, const std::string& method, bool success, const std::string& error)
+{
+    if (!m_loggingEnabled) return;
+    
+    // Log to stderr for security monitoring
+    // Format: timestamp | remote_ip | method | status | error_msg
+    auto now = std::chrono::system_clock::now();
+    auto time_t = std::chrono::system_clock::to_time_t(now);
+    auto tm = std::gmtime(&time_t);
+    
+    char timestamp[32];
+    std::strftime(timestamp, sizeof(timestamp), "%Y-%m-%d %H:%M:%S", tm);
+    
+    std::cerr << "[RPC] " << timestamp << " | " 
+              << remote << " | " 
+              << method << " | " 
+              << (success ? "SUCCESS" : "FAILED");
+    
+    if (!error.empty()) {
+        std::cerr << " | " << error;
+    }
+    
+    std::cerr << std::endl;
+}
+
 void RPCServer::Accept()
 {
     m_acceptor.async_accept([this](const boost::system::error_code& ec, boost::asio::ip::tcp::socket socket) {
@@ -601,6 +634,7 @@ http::response<http::string_body> RPCServer::Process(const http::request<http::s
     if (!RateLimit(remote)) {
         res.result(http::status::too_many_requests);
         res.body() = "{\"error\":\"rate limited\"}";
+        LogRequest(remote, "", false, "rate limited");
         return res;
     }
 
@@ -608,6 +642,7 @@ http::response<http::string_body> RPCServer::Process(const http::request<http::s
     if (!CheckAuth(std::string(auth)) && !CheckToken(req)) {
         res.result(http::status::unauthorized);
         res.body() = "{\"error\":\"auth required\"}";
+        LogRequest(remote, "", false, "unauthorized");
         return res;
     }
 
@@ -616,15 +651,18 @@ http::response<http::string_body> RPCServer::Process(const http::request<http::s
     if (!handler) {
         res.result(http::status::bad_request);
         res.body() = "{\"error\":\"unknown method\"}";
+        LogRequest(remote, method, false, "unknown method");
         return res;
     }
 
     try {
         auto result = handler(params);
         res.body() = std::string("{\"result\":") + result + "}";
+        LogRequest(remote, method, true);
     } catch (const std::exception& ex) {
         res.result(http::status::internal_server_error);
         res.body() = std::string("{\"error\":\"") + ex.what() + "\"}";
+        LogRequest(remote, method, false, ex.what());
     }
     return res;
 }
