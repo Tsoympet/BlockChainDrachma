@@ -614,16 +614,17 @@ else()
     set(CPACK_DEBIAN_PACKAGE_MAINTAINER "PARTHENON CHAIN Contributors <https://github.com/Tsoympet/PARTHENON-CHAIN>")
     set(CPACK_DEBIAN_PACKAGE_SECTION "net")
     set(CPACK_DEBIAN_PACKAGE_PRIORITY "optional")
-    set(CPACK_DEBIAN_PACKAGE_DEPENDS "libssl1.1 | libssl3, libboost-system1.71.0 | libboost-system1.74.0 | libboost-system1.81.0, libleveldb1d")
-    set(CPACK_DEBIAN_PACKAGE_HOMEPAGE "https://github.com/Tsoympet/PARTHENON-CHAIN")
+    # Use SHLIBDEPS to automatically detect library dependencies instead of hardcoding versions
     set(CPACK_DEBIAN_PACKAGE_SHLIBDEPS ON)
+    set(CPACK_DEBIAN_PACKAGE_HOMEPAGE "https://github.com/Tsoympet/PARTHENON-CHAIN")
     set(CPACK_DEBIAN_FILE_NAME DEB-DEFAULT)
     
     # RPM package configuration
     set(CPACK_RPM_PACKAGE_LICENSE "MIT")
     set(CPACK_RPM_PACKAGE_GROUP "Applications/Internet")
     set(CPACK_RPM_PACKAGE_URL "https://github.com/Tsoympet/PARTHENON-CHAIN")
-    set(CPACK_RPM_PACKAGE_REQUIRES "openssl-libs >= 1.1.1, boost-system >= 1.71.0, leveldb >= 1.20")
+    # Use AUTOREQ to automatically detect library dependencies instead of hardcoding versions
+    set(CPACK_RPM_PACKAGE_AUTOREQ ON)
     set(CPACK_RPM_FILE_NAME RPM-DEFAULT)
     
     # Component-specific packages for DEB
