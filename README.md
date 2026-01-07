@@ -1,4 +1,5 @@
 # PARTHENON CHAIN
+<img width="1024" height="1024" alt="ChatGPT Image 6 Ιαν 2026, 09_00_59 μ μ" src="https://github.com/user-attachments/assets/0fc0e646-cfcf-4610-817a-ba5de3b93c1b" />
 
 [![CI](https://github.com/Tsoympet/PARTHENON-CHAIN/actions/workflows/ci.yml/badge.svg)](https://github.com/Tsoympet/PARTHENON-CHAIN/actions/workflows/ci.yml)
 [![Release](https://github.com/Tsoympet/PARTHENON-CHAIN/actions/workflows/release.yml/badge.svg)](https://github.com/Tsoympet/PARTHENON-CHAIN/actions/workflows/release.yml)
