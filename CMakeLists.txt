@@ -69,11 +69,14 @@ if(NOT LEVELDB_INCLUDE_DIR OR NOT LEVELDB_LIBRARY)
     FetchContent_MakeAvailable(leveldb)
     add_library(LevelDB::LevelDB ALIAS leveldb)
 else()
-    add_library(LevelDB::LevelDB UNKNOWN IMPORTED)
-    set_target_properties(LevelDB::LevelDB PROPERTIES
+    # Create an IMPORTED GLOBAL library, then alias it
+    add_library(LevelDB UNKNOWN IMPORTED GLOBAL)
+    set_target_properties(LevelDB PROPERTIES
         IMPORTED_LOCATION ${LEVELDB_LIBRARY}
         INTERFACE_INCLUDE_DIRECTORIES ${LEVELDB_INCLUDE_DIR}
     )
+    # Now create the alias to the IMPORTED target
+    add_library(LevelDB::LevelDB ALIAS LevelDB)
 endif()
 
 if(DRACHMA_COVERAGE)
