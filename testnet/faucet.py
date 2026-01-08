@@ -101,6 +101,8 @@ class Faucet:
 
 
 def main():
+    global MAX_PAYOUT, RATE_LIMIT_SECONDS  # noqa: PLW0603
+    
     parser = argparse.ArgumentParser(description="DRACHMA testnet faucet")
     parser.add_argument("address", help="Destination testnet address")
     parser.add_argument("--amount", type=float, default=1.0, help="Amount to send (default 1.0)")
@@ -115,7 +117,6 @@ def main():
     parser.add_argument("--dry-run", action="store_true", help="Perform connectivity checks without sending funds")
     args = parser.parse_args()
 
-    global MAX_PAYOUT, RATE_LIMIT_SECONDS  # noqa: PLW0603
     MAX_PAYOUT = args.max_payout
     RATE_LIMIT_SECONDS = args.rate_limit
 
