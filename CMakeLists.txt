@@ -42,9 +42,10 @@ find_package(Threads REQUIRED)
 find_package(OpenSSL REQUIRED)
 
 # Boost handling for compatibility with both old and new versions
-# For Boost 1.73+, set CMP0167 to allow native BoostConfig
+# Use CMP0167 OLD to use FindBoost module which handles header-only libraries
+# TODO: Switch to CMP0167 NEW when Boost provides proper CMake configs for header-only libs
 if(POLICY CMP0167)
-    cmake_policy(SET CMP0167 NEW)
+    cmake_policy(SET CMP0167 OLD)
 endif()
 find_package(Boost REQUIRED COMPONENTS system)
 find_package(CUDAToolkit QUIET)
