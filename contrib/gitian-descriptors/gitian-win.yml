@@ -21,6 +21,7 @@ packages:
 - "autoconf"
 - "automake"
 - "libtool"
+- "git"
 
 remotes:
 - "url": "https://github.com/Tsoympet/PARTHENON-CHAIN.git"
@@ -58,15 +59,77 @@ script: |
     --prefix=$BUILD_DIR/deps install -j$(nproc)
   cd ..
   
+  # Build LevelDB for Windows
+  # Create toolchain file first
+  cat > $BUILD_DIR/mingw-toolchain.cmake << 'ENDTOOLCHAIN'
+  set(CMAKE_SYSTEM_NAME Windows)
+  set(CMAKE_SYSTEM_PROCESSOR x86_64)
+  
+  set(CMAKE_C_COMPILER x86_64-w64-mingw32-gcc)
+  set(CMAKE_CXX_COMPILER x86_64-w64-mingw32-g++)
+  set(CMAKE_RC_COMPILER x86_64-w64-mingw32-windres)
+  
+  set(CMAKE_FIND_ROOT_PATH /usr/x86_64-w64-mingw32)
+  set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
+  set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
+  set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
+  
+  set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -static-libgcc")
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -static-libgcc -static-libstdc++")
+  set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -static -lpthread")
+  ENDTOOLCHAIN
+  
+  git clone --depth 1 --branch 1.23 https://github.com/google/leveldb.git
+  cd leveldb
+  mkdir build-win
+  cmake -S . -B build-win -G Ninja \
+    -DCMAKE_TOOLCHAIN_FILE=$BUILD_DIR/mingw-toolchain.cmake \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=$BUILD_DIR/deps \
+    -DLEVELDB_BUILD_TESTS=OFF \
+    -DLEVELDB_BUILD_BENCHMARKS=OFF \
+    -DBUILD_SHARED_LIBS=OFF
+  cmake --build build-win --parallel
+  cmake --install build-win
+  cd ..
+  
   # Build PARTHENON CHAIN
   cd parthenon-chain
   VERSION=$(cat CMakeLists.txt | grep "VERSION" | head -1 | awk '{print $2}' | tr -d ')')
   
-  # Note: This is a placeholder. Full Windows cross-compilation requires:
-  # 1. Building all dependencies (OpenSSL, Boost, LevelDB) for MinGW
-  # 2. Creating proper CMake toolchain file
-  # 3. Handling static linking correctly
-  # This should be completed before official mainnet launch
+  mkdir -p build-win
+  cd build-win
   
-  echo "Windows Gitian build requires additional setup" > $OUTDIR/WINDOWS_BUILD_STATUS.txt
-  echo "See contrib/gitian-descriptors/gitian-win.yml for requirements" >> $OUTDIR/WINDOWS_BUILD_STATUS.txt
+  cmake .. \
+    -GNinja \
+    -DCMAKE_TOOLCHAIN_FILE=$BUILD_DIR/mingw-toolchain.cmake \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_PREFIX_PATH=$BUILD_DIR/deps \
+    -DOPENSSL_ROOT_DIR=$BUILD_DIR/deps \
+    -DBoost_INCLUDE_DIR=$BUILD_DIR/deps/include \
+    -DDRACHMA_BUILD_GUI=OFF \
+    -DDRACHMA_BUILD_TESTS=OFF \
+    -DDRACHMA_COVERAGE=OFF \
+    -DCMAKE_C_FLAGS="-O2 -march=x86-64 -fno-asynchronous-unwind-tables" \
+    -DCMAKE_CXX_FLAGS="-O2 -march=x86-64 -fno-asynchronous-unwind-tables"
+  
+  ninja
+  
+  # Package binaries
+  mkdir -p $OUTDIR/bin
+  TARGETS=(drachmad.exe drachma-cli.exe drachma_cpu_miner.exe)
+  for name in "${TARGETS[@]}"; do
+    bin_path=$(find . -maxdepth 3 -type f -name "${name}" -print -quit)
+    if [ -n "${bin_path}" ]; then
+      x86_64-w64-mingw32-strip --strip-all "${bin_path}"
+      cp "${bin_path}" $OUTDIR/bin/
+    else
+      echo "Warning: ${name} was not produced; skipping." >&2
+    fi
+  done
+  
+  cd $OUTDIR
+  # Create release archive
+  find . -type f | sort | tar --mtime="@${SOURCE_DATE_EPOCH}" \
+    --mode='u+rw,go+r-w,a+X' --owner=0 --group=0 --sort=name \
+    --no-recursion -T - -czf $OUTDIR/../parthenon-core-${VERSION}-win-x86_64.tar.gz
