@@ -27,11 +27,10 @@
     "forceConsistentCasingInFileNames": true,
     "declaration": true,
     "declarationMap": true,
-    "sourceMap": true,
-    "typeRoots": ["./node_modules/@types", "./types.d.ts"]
+    "sourceMap": true
   },
   "extends": "@tsconfig/react-native/tsconfig.json",
-  "include": ["src", "types.d.ts", "App.tsx", "index.js"],
+  "include": ["src", "types.d.ts", "App.tsx", "index.js", "__tests__"],
   "exclude": [
     "node_modules",
     "babel.config.js",

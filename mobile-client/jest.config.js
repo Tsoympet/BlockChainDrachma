@@ -1,9 +1,23 @@
+// React Native packages that need to be transformed by Babel
+const reactNativePackagesToTransform = [
+  'react-native',
+  '@react-native',
+  '@react-navigation',
+  'react-native-vector-icons',
+  'react-native-svg',
+  'react-native-qrcode-svg',
+  'react-native-mmkv',
+  'react-native-keychain',
+  'react-native-biometrics',
+  'react-native-get-random-values',
+];
+
 module.exports = {
   preset: 'react-native',
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
   setupFiles: ['<rootDir>/jest.setup.js'],
   transformIgnorePatterns: [
-    'node_modules/(?!(react-native|@react-native|@react-navigation|react-native-vector-icons|react-native-svg|react-native-qrcode-svg|react-native-mmkv|react-native-keychain|react-native-biometrics|react-native-get-random-values)/)',
+    `node_modules/(?!(${reactNativePackagesToTransform.join('|')})/)`,
   ],
   moduleNameMapper: {
     '^@components/(.*)$': '<rootDir>/src/components/$1',
