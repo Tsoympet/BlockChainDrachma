@@ -22,32 +22,65 @@ mobile-client/
 │   │   │   ├── AddressDisplay.tsx
 │   │   │   ├── TransactionItem.tsx
 │   │   │   └── index.ts
-│   │   └── nft/           # NFT gallery components
-│   │       ├── NFTCard.tsx
-│   │       ├── NFTGallery.tsx
-│   │       └── index.ts
+│   │   ├── nft/           # NFT gallery components
+│   │   │   ├── NFTCard.tsx
+│   │   │   ├── NFTGallery.tsx
+│   │   │   └── index.ts
+│   │   └── index.ts
 │   ├── screens/           # App screens
 │   │   ├── Home/          # Home screen with balance overview
+│   │   │   ├── HomeScreen.tsx
+│   │   │   └── index.ts
 │   │   ├── Send/          # Send transaction screen
+│   │   │   ├── SendScreen.tsx
+│   │   │   └── index.ts
 │   │   ├── Receive/       # Receive screen with QR code
+│   │   │   ├── ReceiveScreen.tsx
+│   │   │   └── index.ts
 │   │   ├── Transactions/  # Transaction history
+│   │   │   ├── TransactionsScreen.tsx
+│   │   │   └── index.ts
 │   │   ├── Settings/      # App settings
-│   │   └── NFT/           # NFT gallery view
+│   │   │   ├── SettingsScreen.tsx
+│   │   │   └── index.ts
+│   │   ├── NFT/           # NFT gallery view
+│   │   │   ├── NFTScreen.tsx
+│   │   │   └── index.ts
+│   │   └── index.ts
 │   ├── navigation/        # Navigation configuration
 │   │   └── AppNavigator.tsx
 │   ├── services/          # Business logic
 │   │   ├── wallet/        # Wallet management (BIP39, key derivation)
+│   │   │   ├── WalletService.ts
+│   │   │   └── index.ts
 │   │   ├── rpc/           # RPC client for blockchain interaction
+│   │   │   ├── RPCClient.ts
+│   │   │   └── index.ts
 │   │   ├── crypto/        # Cryptographic operations (signing, hashing)
+│   │   │   ├── CryptoService.ts
+│   │   │   └── index.ts
 │   │   ├── mining/        # Mobile mining (specialized, not PC miners)
-│   │   └── storage/       # Secure storage (MMKV, Keychain)
+│   │   │   ├── MobileMiningService.ts
+│   │   │   └── index.ts
+│   │   ├── storage/       # Secure storage (MMKV, Keychain)
+│   │   │   ├── SecureStorage.ts
+│   │   │   └── index.ts
+│   │   └── index.ts
 │   ├── store/             # Redux store
 │   │   ├── slices/        # Feature slices (wallet, network, mining)
+│   │   │   ├── walletSlice.ts
+│   │   │   ├── networkSlice.ts
+│   │   │   ├── miningSlice.ts
+│   │   │   └── index.ts
 │   │   ├── middleware/    # Custom middleware (logger, persist)
+│   │   │   ├── logger.ts
+│   │   │   ├── persist.ts
+│   │   │   └── index.ts
 │   │   └── index.ts
 │   ├── utils/             # Utility functions
 │   │   ├── format.ts      # Formatting utilities
-│   │   └── validation.ts  # Validation utilities
+│   │   ├── validation.ts  # Validation utilities
+│   │   └── index.ts
 │   ├── constants/         # App constants
 │   │   └── index.ts       # Network configs, error messages, etc.
 │   └── types/             # TypeScript types
@@ -55,7 +88,8 @@ mobile-client/
 │       ├── network.ts
 │       ├── transaction.ts
 │       ├── mining.ts
-│       └── nft.ts
+│       ├── nft.ts
+│       └── index.ts
 ├── android/               # Android native code
 ├── ios/                   # iOS native code
 ├── assets/                # Images, fonts, etc.
