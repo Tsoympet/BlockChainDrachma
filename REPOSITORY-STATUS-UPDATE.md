@@ -123,9 +123,10 @@
 - **Action:**
   - Commission professional designer for production icons
   - Update core icons (app, splash, tray)
-  - Enhance asset icons (TLN, DRM, OBL) with Classical Greek theme
+  - Enhance asset icons (TLN, DRM, OBL) aligned with project theme (Classical Greece: Marble, Bronze, Silver, Obsidian)
   - Optional: Create high-DPI variants
 - **Note:** Current placeholders are fully functional for testnet
+- **Theme Context:** PARTHENON CHAIN uses Classical Greek design principles representing timeless value, order, and permanence
 
 ### 🟡 High Priority (Should Complete Before Launch)
 
