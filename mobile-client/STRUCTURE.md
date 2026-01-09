@@ -91,16 +91,39 @@ mobile-client/
 │       ├── nft.ts
 │       └── index.ts
 ├── android/               # Android native code
+│   ├── app/
+│   │   └── src/
+│   │       └── main/
+│   │           ├── AndroidManifest.xml
+│   │           ├── java/
+│   │           └── res/
+│   ├── build.gradle
+│   └── gradle.properties
 ├── ios/                   # iOS native code
+│   ├── DrachmaMobileWallet/
+│   │   ├── AppDelegate.h
+│   │   ├── AppDelegate.m
+│   │   ├── Info.plist
+│   │   └── main.m
+│   ├── DrachmaMobileWallet.xcodeproj/
+│   └── Podfile
 ├── assets/                # Images, fonts, etc.
-│   ├── images/
-│   ├── fonts/
-│   ├── animations/
-│   └── icons/
-└── __tests__/             # Test files
-    ├── components.test.tsx
-    ├── utils.test.ts
-    └── crypto.test.ts
+│   ├── icons/            # Icon sets
+│   │   ├── core/        # Core app icons (app-icon, splash, tray)
+│   │   ├── assets/      # Asset type icons (TLN, DRM, OBL)
+│   │   ├── nft/         # NFT-related icons
+│   │   └── ui/          # UI icons for wallet features
+│   │       ├── light/   # Light theme variants
+│   │       └── dark/    # Dark theme variants
+│   ├── images/          # App images and graphics (placeholder)
+│   ├── fonts/           # Custom fonts (placeholder)
+│   └── animations/      # Lottie animations (placeholder)
+└── __tests__/            # Test files
+    ├── components.test.tsx  # Component tests
+    ├── utils.test.ts        # Utility function tests
+    ├── crypto.test.ts       # Cryptographic service tests
+    ├── screens.test.tsx     # Screen component tests
+    └── integration.test.tsx # Integration tests
 ```
 
 ## Key Features
