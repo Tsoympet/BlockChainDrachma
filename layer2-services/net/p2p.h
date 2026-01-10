@@ -22,7 +22,7 @@ struct Message {
 };
 
 struct PeerInfo {
-    std::string id;      // host:port
+    std::string id;      // address:port (address may be an IP or hostname)
     std::string address; // ip string
     bool inbound{false};
 };
